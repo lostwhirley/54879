@@ -1263,8 +1263,12 @@
     align-items: center;
     justify-content: center;
     gap: 1.2rem;
-    pointer-events: none;
+    pointer-events: all;
     animation: splashFadeOut 0.8s ease-in-out 3.8s forwards;
+  }
+
+  body.splash-active {
+    overflow: hidden;
   }
 
   #splash .splash-address {
@@ -1316,6 +1320,183 @@
 
   @keyframes splashFadeOut {
     to { opacity: 0; visibility: hidden; }
+  }
+  /* NEIGHBORHOOD PHOTOS */
+  .neighborhood-section {
+    background: white;
+    padding: 5rem 4rem;
+  }
+
+  .neighborhood-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .neighborhood-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 200px 200px;
+    gap: 10px;
+  }
+
+  .neighborhood-cell {
+    position: relative;
+    overflow: hidden;
+    background: var(--sand-light);
+  }
+
+  .neighborhood-cell img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .neighborhood-cell:hover img { transform: scale(1.04); }
+
+  .neighborhood-placeholder {
+    width: 100%; height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--sand);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .neighborhood-label {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 0.6rem 0.75rem;
+    background: linear-gradient(transparent, rgba(0,0,0,0.6));
+    color: white;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* LIFESTYLE SECTION */
+  .lifestyle-section {
+    background: var(--sand-light);
+    padding: 5rem 4rem;
+  }
+
+  .lifestyle-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .lifestyle-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .things-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .thing-card {
+    background: white;
+    padding: 1.75rem;
+    border-bottom: 2px solid var(--water-pale);
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .thing-card:hover {
+    border-color: var(--water);
+    transform: translateY(-2px);
+  }
+
+  .thing-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .thing-title {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .thing-desc {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .seasons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  .season-card {
+    background: white;
+    padding: 1.75rem;
+    border-top: 3px solid var(--water-pale);
+  }
+
+  .season-card--summer {
+    border-top-color: var(--water);
+  }
+
+  .season-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .season-name {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--dark);
+    margin-bottom: 1rem;
+  }
+
+  .season-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .season-list li {
+    font-size: 12px;
+    color: var(--mid);
+    font-weight: 300;
+    padding-left: 0.75rem;
+    position: relative;
+  }
+
+  .season-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--water-light);
+    font-size: 10px;
+  }
+
+  @media (max-width: 900px) {
+    .neighborhood-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(4, 180px); }
+    .things-grid { grid-template-columns: 1fr 1fr; }
+    .seasons-grid { grid-template-columns: 1fr 1fr; }
+    .neighborhood-section { padding: 3rem 1.5rem; }
+    .lifestyle-section { padding: 3rem 1.5rem; }
+  }
+
+  @media (max-width: 600px) {
+    .neighborhood-grid { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(4, 160px); }
+    .things-grid { grid-template-columns: 1fr; }
+    .seasons-grid { grid-template-columns: 1fr 1fr; }
   }
 </style>
 </head>
@@ -1833,6 +2014,103 @@
   </div>
 </section>
 
+<!-- LIFESTYLE & LOCATION -->
+<section class="lifestyle-section">
+  <div class="lifestyle-inner">
+
+    <!-- Things To Do -->
+    <div class="lifestyle-header">
+      <p class="section-eyebrow">Explore the Area</p>
+      <h2 class="section-heading">Things To Do <em>Nearby</em></h2>
+    </div>
+    <div class="things-grid">
+      <div class="thing-card">
+        <div class="thing-icon">⛵</div>
+        <h4 class="thing-title">Boating & Water Sports</h4>
+        <p class="thing-desc">Launch your boat right from the property. Indian Lake is perfect for skiing, tubing, kayaking, and leisurely cruises.</p>
+      </div>
+      <div class="thing-card">
+        <div class="thing-icon">🎣</div>
+        <h4 class="thing-title">Fishing</h4>
+        <p class="thing-desc">World-class largemouth bass, bluegill, crappie, and pike fishing. A fisherman's paradise right at your doorstep.</p>
+      </div>
+      <div class="thing-card">
+        <div class="thing-icon">⛳</div>
+        <h4 class="thing-title">Golf</h4>
+        <p class="thing-desc">Indian Lakes Golf Course sits directly across the lake. 5 additional courses within a 15-minute drive.</p>
+      </div>
+      <div class="thing-card">
+        <div class="thing-icon">🍷</div>
+        <h4 class="thing-title">Wine Tasting</h4>
+        <p class="thing-desc">Southwest Michigan wine country surrounds you. 10+ wineries within a 30-minute drive including Tabor Hill and Round Barn.</p>
+      </div>
+      <div class="thing-card">
+        <div class="thing-icon">🏖️</div>
+        <h4 class="thing-title">Silver Beach</h4>
+        <p class="thing-desc">St. Joseph's Silver Beach is one of Michigan's best. Stunning Lake Michigan sunsets, sand dunes, and beachside dining.</p>
+      </div>
+      <div class="thing-card">
+        <div class="thing-icon">🍽️</div>
+        <h4 class="thing-title">Dining & Entertainment</h4>
+        <p class="thing-desc">Charming downtown St. Joseph and Dowagiac offer local restaurants, breweries, live music, and boutique shopping.</p>
+      </div>
+    </div>
+
+    <!-- Seasonal Calendar -->
+    <div class="lifestyle-header" style="margin-top: 4rem;">
+      <p class="section-eyebrow">Year-Round Living</p>
+      <h2 class="section-heading">Four Seasons of <em>Adventure</em></h2>
+    </div>
+    <div class="seasons-grid">
+      <div class="season-card">
+        <div class="season-icon">🌸</div>
+        <h4 class="season-name">Spring</h4>
+        <ul class="season-list">
+          <li>Bass fishing season opens</li>
+          <li>Kayaking & canoeing</li>
+          <li>Wildflower trails</li>
+          <li>Winery tours begin</li>
+          <li>Deck season starts</li>
+        </ul>
+      </div>
+      <div class="season-card season-card--summer">
+        <div class="season-icon">☀️</div>
+        <h4 class="season-name">Summer</h4>
+        <ul class="season-list">
+          <li>Swimming & boating</li>
+          <li>Water skiing & tubing</li>
+          <li>Silver Beach day trips</li>
+          <li>Golf & outdoor dining</li>
+          <li>Lake Michigan sunsets</li>
+        </ul>
+      </div>
+      <div class="season-card">
+        <div class="season-icon">🍂</div>
+        <h4 class="season-name">Fall</h4>
+        <ul class="season-list">
+          <li>Fall foliage on the lake</li>
+          <li>Harvest wine festivals</li>
+          <li>Duck hunting season</li>
+          <li>Apple orchards nearby</li>
+          <li>Cozy fireplace evenings</li>
+        </ul>
+      </div>
+      <div class="season-card">
+        <div class="season-icon">❄️</div>
+        <h4 class="season-name">Winter</h4>
+        <ul class="season-list">
+          <li>Ice fishing on the lake</li>
+          <li>Snowmobiling trails</li>
+          <li>Cross-country skiing</li>
+          <li>Holiday events downtown</li>
+          <li>Warm sunroom retreats</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- SCHEDULE SHOWING -->
 <div class="showing-bar" id="showing">
   <div class="showing-text">
@@ -1922,6 +2200,10 @@
         <a href="mailto:">✉ agent@email.com</a><br>
         <a href="#">View on MLS →</a>
       </div>
+      <div style="margin-top: 1.5rem;">
+        <p class="footer-col-title" style="margin-bottom:0.75rem;">Scan to Share</p>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://indianlakemi.com&bgcolor=0e1c23&color=ffffff&qzone=1" alt="QR Code" style="width:100px;height:100px;opacity:0.7;">
+      </div>
     </div>
 
     <!-- Quick Links -->
@@ -1961,6 +2243,15 @@
     </div>
   </div>
 </footer>
+<script>
+// SPLASH — lock scroll, release at top after animation
+document.body.classList.add('splash-active');
+window.scrollTo(0, 0);
+setTimeout(() => {
+  document.body.classList.remove('splash-active');
+  window.scrollTo(0, 0);
+}, 4600);
+</script>
 <script>
 // CAROUSEL
 (function() {
