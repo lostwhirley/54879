@@ -751,6 +751,36 @@
     letter-spacing: 0.06em;
   }
 
+  /* VIDEO MODAL */
+  .video-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0,0,0,0.88);
+    align-items: center;
+    justify-content: center;
+  }
+  .video-modal.open { display: flex; }
+  .video-modal-inner {
+    position: relative;
+    width: 90vw;
+    max-width: 960px;
+    aspect-ratio: 16/9;
+  }
+  .video-modal-inner iframe {
+    width: 100%; height: 100%; border: none;
+  }
+  .video-modal-close {
+    position: absolute;
+    top: -40px; right: 0;
+    background: none; border: none;
+    color: white; font-size: 28px;
+    cursor: pointer; line-height: 1;
+    opacity: 0.7;
+  }
+  .video-modal-close:hover { opacity: 1; }
+
   @media (max-width: 900px) {
     .carousel-slide { height: 320px; }
     .video-section { padding: 3rem 1.5rem; }
@@ -1274,7 +1304,7 @@
             <svg width="18" height="18" fill="white" viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg>
           </div>
           <span class="video-thumb-label">Video 1 — Walkthrough</span>
-          <span class="video-add-url" onclick="addVideo('vid1')" style="cursor:pointer;">+ Add YouTube / Vimeo URL</span>
+          <span class="video-add-url">+ Add YouTube / Vimeo URL</span>
         </div>
       </div>
       <div class="video-thumb" id="vid2">
@@ -1283,7 +1313,7 @@
             <svg width="18" height="18" fill="white" viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg>
           </div>
           <span class="video-thumb-label">Video 2 — Exterior &amp; Deck</span>
-          <span class="video-add-url" onclick="addVideo('vid2')" style="cursor:pointer;">+ Add YouTube / Vimeo URL</span>
+          <span class="video-add-url">+ Add YouTube / Vimeo URL</span>
         </div>
       </div>
       <div class="video-thumb" id="vid3">
@@ -1292,7 +1322,7 @@
             <svg width="18" height="18" fill="white" viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg>
           </div>
           <span class="video-thumb-label">Video 3 — Lake View</span>
-          <span class="video-add-url" onclick="addVideo('vid3')" style="cursor:pointer;">+ Add YouTube / Vimeo URL</span>
+          <span class="video-add-url">+ Add YouTube / Vimeo URL</span>
         </div>
       </div>
       <div class="video-thumb" id="vid4">
@@ -1301,7 +1331,7 @@
             <svg width="18" height="18" fill="white" viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg>
           </div>
           <span class="video-thumb-label">Video 4 — Sunroom</span>
-          <span class="video-add-url" onclick="addVideo('vid4')" style="cursor:pointer;">+ Add YouTube / Vimeo URL</span>
+          <span class="video-add-url">+ Add YouTube / Vimeo URL</span>
         </div>
       </div>
       <div class="video-thumb" id="vid5">
@@ -1310,15 +1340,28 @@
             <svg width="18" height="18" fill="white" viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg>
           </div>
           <span class="video-thumb-label">Video 5</span>
-          <span class="video-add-url" onclick="addVideo('vid5')" style="cursor:pointer;">+ Add YouTube / Vimeo URL</span>
+          <span class="video-add-url">+ Add YouTube / Vimeo URL</span>
         </div>
       </div>
-      <div class="video-thumb has-video" id="vid6">
-        <iframe src="https://www.youtube.com/embed/ttXIoym0dXM?rel=0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      <div class="video-thumb" id="vid6" data-url="https://youtu.be/ttXIoym0dXM" onclick="openVideoModal(this)" style="background: url('deer_thumb.jpg') center/cover no-repeat;">
+        <div class="video-thumb-placeholder" style="background: rgba(0,0,0,0.35);">
+          <div class="video-play-btn">
+            <svg width="18" height="18" fill="white" viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg>
+          </div>
+          <span class="video-thumb-label">Video 6</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- VIDEO MODAL -->
+<div class="video-modal" id="videoModal" onclick="closeVideoModal(event)">
+  <div class="video-modal-inner">
+    <button class="video-modal-close" onclick="closeVideoModal()">&times;</button>
+    <iframe id="videoModalFrame" src="" allow="autoplay; fullscreen" allowfullscreen></iframe>
+  </div>
+</div>
 
 <!-- CAROUSEL -->
 <section class="carousel-section">
@@ -1700,28 +1743,46 @@
   });
 })();
 
-// VIDEO URL HANDLER
-function addVideo(id) {
-  const url = prompt('Paste your YouTube or Vimeo URL:');
-  if (!url) return;
-  let embedUrl = '';
-
+// VIDEO MODAL
+function getEmbedUrl(url) {
   const ytMatch = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
   const vimeoMatch = url.match(/vimeo\.com\/(\d+)/);
-
-  if (ytMatch) {
-    embedUrl = `https://www.youtube.com/embed/${ytMatch[1]}?rel=0&autoplay=1`;
-  } else if (vimeoMatch) {
-    embedUrl = `https://player.vimeo.com/video/${vimeoMatch[1]}?autoplay=1`;
-  } else {
-    alert('Please enter a valid YouTube or Vimeo URL.');
-    return;
-  }
-
-  const thumb = document.getElementById(id);
-  thumb.classList.add('has-video');
-  thumb.innerHTML = `<iframe src="${embedUrl}" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
+  if (ytMatch) return `https://www.youtube.com/embed/${ytMatch[1]}?rel=0&autoplay=1`;
+  if (vimeoMatch) return `https://player.vimeo.com/video/${vimeoMatch[1]}?autoplay=1`;
+  return null;
 }
+
+function openVideoModal(el) {
+  const url = el.dataset.url;
+  if (!url) {
+    const input = prompt('Paste your YouTube or Vimeo URL:');
+    if (!input) return;
+    const embedUrl = getEmbedUrl(input);
+    if (!embedUrl) { alert('Please enter a valid YouTube or Vimeo URL.'); return; }
+    el.dataset.url = input;
+    document.getElementById('videoModalFrame').src = embedUrl;
+  } else {
+    const embedUrl = getEmbedUrl(url);
+    if (!embedUrl) return;
+    document.getElementById('videoModalFrame').src = embedUrl;
+  }
+  document.getElementById('videoModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeVideoModal(e) {
+  if (e && e.target !== document.getElementById('videoModal') && !e.target.classList.contains('video-modal-close')) return;
+  document.getElementById('videoModal').classList.remove('open');
+  document.getElementById('videoModalFrame').src = '';
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideoModal({}); });
+
+// Wire up placeholder thumbs without a data-url to open modal on click
+document.querySelectorAll('.video-thumb:not([data-url])').forEach(el => {
+  el.addEventListener('click', () => openVideoModal(el));
+});
 </script>
 
 <script>
