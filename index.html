@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>54879 Indian Lake Road — Dowagiac, Michigan</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1165,9 +1166,82 @@
     .mortgage-result .result-payment { font-size: 2.6rem; }
     .showing-actions { flex-direction: column; }
   }
+
+  /* SPLASH INTRO */
+  #splash {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: #1a2e38;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    pointer-events: none;
+    animation: splashFadeOut 0.8s ease-in-out 3.8s forwards;
+  }
+
+  #splash .splash-address {
+    font-family: var(--sans);
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: splashSlideUp 0.7s ease-out 0.3s forwards;
+  }
+
+  #splash .splash-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 400;
+    color: white;
+    text-align: center;
+    line-height: 1.1;
+    max-width: 700px;
+    padding: 0 2rem;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: splashSlideUp 0.9s ease-out 1s forwards;
+  }
+
+  #splash .splash-title em {
+    font-style: italic;
+    color: #6db3cc;
+  }
+
+  #splash .splash-line {
+    width: 40px;
+    height: 1px;
+    background: rgba(255,255,255,0.3);
+    opacity: 0;
+    animation: splashFadeIn 0.6s ease-out 2.2s forwards;
+  }
+
+  @keyframes splashSlideUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes splashFadeIn {
+    to { opacity: 1; }
+  }
+
+  @keyframes splashFadeOut {
+    to { opacity: 0; visibility: hidden; }
+  }
 </style>
 </head>
 <body>
+
+<!-- SPLASH INTRO -->
+<div id="splash">
+  <p class="splash-address">54879 Indian Lake Road · Dowagiac, Michigan</p>
+  <h1 class="splash-title">Where Every Day <em>Feels Like a Vacation</em></h1>
+  <div class="splash-line"></div>
+</div>
 
 <!-- HERO -->
 <section class="hero">
