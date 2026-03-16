@@ -509,23 +509,105 @@
 
   /* FOOTER */
   footer {
-    padding: 2.5rem 4rem;
-    background: #111;
+    background: #0e1c23;
+    color: rgba(255,255,255,0.5);
+    font-size: 13px;
+  }
+
+  .footer-main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 4rem 4rem 3rem;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .footer-col-title {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--water-light);
+    margin-bottom: 1.2rem;
+  }
+
+  .footer-contact-name {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: white;
+    margin-bottom: 0.4rem;
+  }
+
+  .footer-contact-info {
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    line-height: 2;
+  }
+
+  .footer-contact-info a {
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-contact-info a:hover { color: var(--water-light); }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .footer-links a {
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: white; }
+
+  .footer-specs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .footer-spec-row {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-  }
-
-  footer .footer-address {
     font-size: 12px;
-    color: rgba(255,255,255,0.3);
-    font-weight: 300;
-    letter-spacing: 0.04em;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding-bottom: 0.5rem;
   }
 
-  footer .footer-note {
-    font-size: 11px;
+  .footer-spec-row span:first-child { color: rgba(255,255,255,0.3); }
+  .footer-spec-row span:last-child { color: rgba(255,255,255,0.7); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding: 1.5rem 4rem;
+    max-width: 100%;
+  }
+
+  .footer-disclaimer {
+    font-size: 10px;
     color: rgba(255,255,255,0.2);
+    line-height: 1.8;
+    max-width: 1100px;
+    margin: 0 auto 1rem;
+  }
+
+  .footer-copy {
+    font-size: 11px;
+    color: rgba(255,255,255,0.15);
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
   }
 
   /* RESPONSIVE */
@@ -544,6 +626,9 @@
     .map-section { padding: 2.5rem 1.5rem; }
     .scroll-hint { display: none; }
     footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+    .footer-main { grid-template-columns: 1fr; gap: 2rem; padding: 2.5rem 1.5rem 2rem; }
+    .footer-bottom { padding: 1.5rem; }
+    .footer-copy { flex-direction: column; gap: 0.4rem; }
   }
 
   @media (max-width: 600px) {
@@ -930,7 +1015,7 @@
 
   /* MORTGAGE CALCULATOR */
   .mortgage-section {
-    padding: 5rem 4rem;
+    padding: 3rem 4rem;
     background: white;
   }
 
@@ -939,14 +1024,14 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: start;
+    gap: 3rem;
+    align-items: center;
   }
 
   .mortgage-inputs { }
 
   .mortgage-field {
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.9rem;
   }
 
   .mortgage-field label {
@@ -1761,7 +1846,7 @@
 </div>
 
 <!-- MAP -->
-<section class="map-section">
+<section class="map-section" id="map">
   <div class="map-inner">
     <div class="map-header">
       <div>
@@ -1825,8 +1910,56 @@
 
 <!-- FOOTER -->
 <footer>
-  <p class="footer-address">54879 Indian Lake Road · Dowagiac, MI 49047 · Cass County</p>
-  <p class="footer-note">© 2025 · All rights reserved · Listed for sale</p>
+  <div class="footer-main">
+
+    <!-- Contact -->
+    <div>
+      <p class="footer-col-title">Listing Agent</p>
+      <p class="footer-contact-name">Your Realtor Name</p>
+      <div class="footer-contact-info">
+        Your Brokerage<br>
+        <a href="tel:">📞 (000) 000-0000</a><br>
+        <a href="mailto:">✉ agent@email.com</a><br>
+        <a href="#">View on MLS →</a>
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+      <p class="footer-col-title">Quick Links</p>
+      <ul class="footer-links">
+        <li><a href="#carousel">Photos</a></li>
+        <li><a href="#videoGrid">Videos</a></li>
+        <li><a href="#mortgage">Mortgage Calculator</a></li>
+        <li><a href="#showing">Schedule a Showing</a></li>
+        <li><a href="#map">Map & Location</a></li>
+      </ul>
+    </div>
+
+    <!-- Property Highlights -->
+    <div>
+      <p class="footer-col-title">Property Highlights</p>
+      <div class="footer-specs">
+        <div class="footer-spec-row"><span>Address</span><span>54879 Indian Lake Rd</span></div>
+        <div class="footer-spec-row"><span>City</span><span>Dowagiac, MI 49047</span></div>
+        <div class="footer-spec-row"><span>Bedrooms</span><span>3</span></div>
+        <div class="footer-spec-row"><span>Bathrooms</span><span>3 Full</span></div>
+        <div class="footer-spec-row"><span>Built</span><span>1923</span></div>
+        <div class="footer-spec-row"><span>Lake</span><span>Indian Lake</span></div>
+        <div class="footer-spec-row"><span>Land</span><span>Fee Simple</span></div>
+        <div class="footer-spec-row"><span>Asking</span><span>Upper $300s</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p class="footer-disclaimer">This listing is provided for informational purposes only. All information is deemed reliable but not guaranteed. Square footage, lot size, and other details should be independently verified. This is not an offer to sell or solicitation to buy real estate. Contact a licensed real estate professional for complete details. Equal Housing Opportunity.</p>
+    <div class="footer-copy">
+      <span>54879 Indian Lake Road · Dowagiac, MI 49047 · Cass County</span>
+      <span>© 2025 · All rights reserved · Listed for sale</span>
+    </div>
+  </div>
 </footer>
 <script>
 // CAROUSEL
