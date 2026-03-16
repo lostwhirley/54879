@@ -1426,8 +1426,12 @@
 <!-- HIGHLIGHTS STRIP -->
 <div class="highlights">
   <div class="highlight-item">
-    <div class="highlight-num">3+</div>
+    <div class="highlight-num">3</div>
     <div class="highlight-label">Bedrooms</div>
+  </div>
+  <div class="highlight-item">
+    <div class="highlight-num">3</div>
+    <div class="highlight-label">Full Bathrooms</div>
   </div>
   <div class="highlight-item">
     <div class="highlight-num" style="font-size:1.8rem; padding-top:0.5rem;">Indian</div>
@@ -1440,6 +1444,10 @@
   <div class="highlight-item">
     <div class="highlight-num" style="font-size: 1.5rem; padding-top: 0.6rem;">2025</div>
     <div class="highlight-label">Listed for Sale</div>
+  </div>
+  <div class="highlight-item">
+    <div class="highlight-num" style="font-size: 1.4rem; padding-top: 0.6rem;">Owned</div>
+    <div class="highlight-label">Not Leased Land</div>
   </div>
 </div>
 
@@ -1464,7 +1472,7 @@
     <div class="features">
       <div class="feature-pill">
         <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M3 20h18M5 20V8l7-5 7 5v12M9 20v-6h6v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        3+ Bedrooms
+        3 Bedrooms
       </div>
       <div class="feature-pill">
         <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18A9 9 0 0 0 12 3z" stroke="currentColor" stroke-width="1.5"/><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -1481,6 +1489,10 @@
       <div class="feature-pill">
         <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M3 17h18M5 17V9a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         Waterfront Location
+      </div>
+      <div class="feature-pill">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        You Own the Land
       </div>
     </div>
 
@@ -1499,14 +1511,16 @@
     <div class="divider"></div>
 
     <div class="spec-row"><span class="spec-label">Location</span><span class="spec-val">Indian Lake, MI</span></div>
-    <div class="spec-row"><span class="spec-label">Bedrooms</span><span class="spec-val">3+</span></div>
+    <div class="spec-row"><span class="spec-label">Bedrooms</span><span class="spec-val">3</span></div>
         <div class="spec-row"><span class="spec-label">Bathrooms</span><span class="spec-val">3 full</span></div>
+        <div class="spec-row"><span class="spec-label">Built</span><span class="spec-val">1923</span></div>
         <div class="spec-row"><span class="spec-label">Renovated</span><span class="spec-val">Recently</span></div>
         <div class="spec-row"><span class="spec-label">Deck</span><span class="spec-val">Large</span></div>
         <div class="spec-row"><span class="spec-label">Sunroom</span><span class="spec-val">Yes</span></div>
     <div class="spec-row"><span class="spec-label">Fireplace</span><span class="spec-val">Yes</span></div>
     <div class="spec-row"><span class="spec-label">Kitchen</span><span class="spec-val">Full</span></div>
     <div class="spec-row"><span class="spec-label">Lake</span><span class="spec-val">Indian Lake</span></div>
+    <div class="spec-row"><span class="spec-label">Land</span><span class="spec-val">Fee Simple — Not Leased</span></div>
     <div class="spec-row"><span class="spec-label">Status</span><span class="spec-val" style="color:#6db3cc;">For Sale · 2025</span></div>
 
     <div class="divider"></div>
@@ -1583,6 +1597,41 @@
   </div>
 </section>
 
+<!-- SCHEDULE SHOWING -->
+<div class="showing-bar" id="showing">
+  <div class="showing-text">
+    <h3>Ready to See It in Person?</h3>
+    <p>Contact the listing agent to schedule a private showing at your convenience.</p>
+  </div>
+  <div class="showing-actions">
+    <a href="tel:" class="showing-btn-primary" onclick="alert('Add realtor phone number.')">Call to Schedule</a>
+    <a href="mailto:" class="showing-btn-secondary" onclick="alert('Add realtor email.')">Email for Showing</a>
+  </div>
+</div>
+
+<!-- MAP -->
+<section class="map-section">
+  <div class="map-inner">
+    <div class="map-header">
+      <div>
+        <p class="section-eyebrow">Location</p>
+        <h3 style="font-family: var(--serif); font-size: 1.8rem; font-weight: 400;">Indian Lake, Dowagiac</h3>
+      </div>
+      <a href="https://maps.google.com/?q=54879+Indian+Lake+Road+Dowagiac+MI" target="_blank"
+         style="font-size:12px; color:var(--water); text-decoration:none; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; border-bottom:1px solid var(--water-light); padding-bottom:2px;">
+        Open in Google Maps →
+      </a>
+    </div>
+    <div class="map-placeholder" style="padding:0; overflow:hidden;">
+      <iframe
+        src="https://maps.google.com/maps?q=54879+Indian+Lake+Road,Dowagiac,MI&t=k&z=17&output=embed"
+        width="100%" height="100%" style="border:0; display:block;"
+        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
+
 <!-- MORTGAGE CALCULATOR -->
 <section class="mortgage-section" id="mortgage">
   <div class="mortgage-inner">
@@ -1623,55 +1672,11 @@
   </div>
 </section>
 
-<!-- SCHEDULE SHOWING -->
-<div class="showing-bar" id="showing">
-  <div class="showing-text">
-    <h3>Ready to See It in Person?</h3>
-    <p>Contact the listing agent to schedule a private showing at your convenience.</p>
-  </div>
-  <div class="showing-actions">
-    <a href="tel:" class="showing-btn-primary" onclick="alert('Add realtor phone number.')">Call to Schedule</a>
-    <a href="mailto:" class="showing-btn-secondary" onclick="alert('Add realtor email.')">Email for Showing</a>
-  </div>
-</div>
-
-<!-- MAP -->
-<section class="map-section">
-  <div class="map-inner">
-    <div class="map-header">
-      <div>
-        <p class="section-eyebrow">Location</p>
-        <h3 style="font-family: var(--serif); font-size: 1.8rem; font-weight: 400;">Indian Lake, Dowagiac</h3>
-      </div>
-      <a href="https://maps.google.com/?q=54879+Indian+Lake+Road+Dowagiac+MI" target="_blank"
-         style="font-size:12px; color:var(--water); text-decoration:none; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; border-bottom:1px solid var(--water-light); padding-bottom:2px;">
-        Open in Google Maps →
-      </a>
-    </div>
-    <div class="map-placeholder">
-      <div class="map-grid-overlay"></div>
-      <div class="map-pin">
-        <svg width="36" height="48" viewBox="0 0 36 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M18 0C8.06 0 0 8.06 0 18c0 13.5 18 30 18 30s18-16.5 18-30C36 8.06 27.94 0 18 0z" fill="#2C5F7A"/>
-          <circle cx="18" cy="18" r="7" fill="white"/>
-        </svg>
-      </div>
-      <div class="map-placeholder-text">
-        54879 Indian Lake Road<br>Dowagiac, Michigan 49047<br><br>
-        <a href="https://maps.google.com/?q=54879+Indian+Lake+Road+Dowagiac+MI" target="_blank"
-           style="color:#3a6070; font-size:11px; text-decoration:underline; letter-spacing:0.06em;">
-          View on Google Maps
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- FOOTER -->
 <footer>
   <p class="footer-address">54879 Indian Lake Road · Dowagiac, MI 49047 · Cass County</p>
   <p class="footer-note">© 2025 · All rights reserved · Listed for sale</p>
-</fo
+</footer>
 <script>
 // CAROUSEL
 (function() {
