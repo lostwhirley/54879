@@ -2630,10 +2630,24 @@ calcMortgage();
 // SAVE BUTTON
 function toggleSave() {
   const btn = document.getElementById('saveBtn');
-  const saved = btn.classList.toggle('saved');
-  btn.innerHTML = saved
-    ? '<svg width="14" height="14" fill="#e05555" viewBox="0 0 24 24"><path d="M12 21s-9-5.5-9-12a6 6 0 0 1 9-5.2A6 6 0 0 1 21 9c0 6.5-9 12-9 12z" stroke="#e05555" stroke-width="1.5" stroke-linejoin="round"/></svg> Saved'
-    : '<svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 21s-9-5.5-9-12a6 6 0 0 1 9-5.2A6 6 0 0 1 21 9c0 6.5-9 12-9 12z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg> Save';
+  const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  const isAndroid = /android/i.test(navigator.userAgent);
+
+  let msg = '';
+  if (isIOS) {
+    msg = 'Tap the Share button (□↑) at the bottom of your browser, then tap "Add to Home Screen" to bookmark this listing.';
+  } else if (isAndroid) {
+    msg = 'Tap the menu (⋮) in your browser, then tap "Add to Home Screen" or "Bookmarks" to save this listing.';
+  } else if (isMac) {
+    msg = 'Press ⌘ + D to bookmark this listing in your browser.';
+  } else {
+    msg = 'Press Ctrl + D to bookmark this listing in your browser.';
+  }
+
+  alert(msg);
+  btn.classList.add('saved');
+  btn.innerHTML = '<svg width="14" height="14" fill="#e05555" viewBox="0 0 24 24"><path d="M12 21s-9-5.5-9-12a6 6 0 0 1 9-5.2A6 6 0 0 1 21 9c0 6.5-9 12-9 12z" stroke="#e05555" stroke-width="1.5" stroke-linejoin="round"/></svg> Bookmarked';
 }
 
 // SHARE FUNCTIONS
