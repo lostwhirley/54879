@@ -1500,6 +1500,184 @@
     .things-grid { grid-template-columns: 1fr; }
     .seasons-grid { grid-template-columns: 1fr 1fr; }
   }
+  /* PHOTO GALLERY */
+  .gallery-section {
+    background: var(--dark);
+    padding: 5rem 4rem;
+  }
+
+  .gallery-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .gallery-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .gallery-tab {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.4);
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .gallery-tab:hover { color: rgba(255,255,255,0.7); }
+
+  .gallery-tab.active {
+    color: white;
+    border-bottom-color: var(--water-light);
+  }
+
+  .gallery-panel {
+    display: none;
+  }
+
+  .gallery-panel.active {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+  }
+
+  .gallery-item {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    cursor: pointer;
+    background: #1e1e1e;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .gallery-item:hover img { transform: scale(1.05); }
+
+  .gallery-item-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0);
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .gallery-item:hover .gallery-item-overlay {
+    background: rgba(0,0,0,0.25);
+  }
+
+  .gallery-item-overlay svg {
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .gallery-item:hover .gallery-item-overlay svg { opacity: 1; }
+
+  /* LIGHTBOX */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(0,0,0,0.95);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .lightbox.open { display: flex; }
+
+  .lightbox-img-wrap {
+    position: relative;
+    max-width: 90vw;
+    max-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lightbox-img-wrap img {
+    max-width: 90vw;
+    max-height: 80vh;
+    object-fit: contain;
+    display: block;
+  }
+
+  .lightbox-close {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    opacity: 0.6;
+    line-height: 1;
+    z-index: 2001;
+  }
+
+  .lightbox-close:hover { opacity: 1; }
+
+  .lightbox-nav {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    z-index: 2001;
+  }
+
+  .lightbox-nav:hover { background: rgba(255,255,255,0.2); }
+  .lightbox-prev { left: 1rem; }
+  .lightbox-next { right: 1rem; }
+
+  .lightbox-counter {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.4);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+
+  @media (max-width: 900px) {
+    .gallery-section { padding: 3rem 1.5rem; }
+    .gallery-panel.active { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 600px) {
+    .gallery-panel.active { grid-template-columns: repeat(2, 1fr); }
+    .gallery-tabs { overflow-x: auto; }
+    .gallery-tab { padding: 0.75rem 1rem; white-space: nowrap; }
+  }
 </style>
 </head>
 <body>
@@ -1659,6 +1837,127 @@
   </div>
 </div>
 
+<!-- DETAILS + SIDEBAR -->
+<section class="details-section">
+  <div class="details-main">
+    <p class="section-eyebrow">Property Overview</p>
+    <h2 class="section-heading">Life on <em>Indian Lake</em></h2>
+    <p class="description">
+      Nestled along the quiet shores of Indian Lake in Dowagiac, Michigan, this lakehouse offers
+      the rare combination of genuine privacy and easy access to one of southwest Michigan's most
+      beloved inland lakes. Whether you're watching morning mist rise off the water from the
+      comfort of the living room, or gathering around the fireplace after a day on the lake —
+      this is the place where memories are made. Recently renovated throughout, the home is move-in ready with nothing left to do but enjoy it.
+    </p>
+    <p class="description">
+      With three bedrooms and a fully equipped kitchen, there's room for the whole family
+      and then some. Indian Lake is a premier destination for fishing, kayaking, and boating — and
+      this address puts you right on it. Step outside to a massive deck perfect for entertaining, or unwind in the beautiful sunroom — your own private retreat no matter the season.
+    </p>
+    <p class="description">
+      The home sits on fee simple land — you own it outright, no lease fees, no surprises.
+      Built in 1923 with classic lakehouse character and recently renovated throughout, it blends timeless
+      charm with modern comfort. Three full bathrooms mean no morning rush, and the large
+      sunroom brings the outside in year-round. Whether you're here for a weekend or a lifetime,
+      54879 Indian Lake Road is ready to become your favorite place on earth.
+    </p>
+
+    <div class="features">
+      <div class="feature-pill">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M3 20h18M5 20V8l7-5 7 5v12M9 20v-6h6v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        3 Bedrooms
+      </div>
+      <div class="feature-pill">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18A9 9 0 0 0 12 3z" stroke="currentColor" stroke-width="1.5"/><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Full Kitchen
+      </div>
+      <div class="feature-pill">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 2C6 8 4 12 4 14a8 8 0 0 0 16 0c0-2-2-6-8-12z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        Fireplace
+      </div>
+      <div class="feature-pill">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M2 12s2-6 10-6 10 6 10 6-2 6-10 6-10-6-10-6z" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="2" stroke="currentColor" stroke-width="1.5"/></svg>
+        Indian Lake Views
+      </div>
+      <div class="feature-pill">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M3 17h18M5 17V9a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Waterfront Location
+      </div>
+      <div class="feature-pill">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        You Own the Land
+      </div>
+      <div class="feature-pill">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3m8 0h3a2 2 0 0 0 2-2v-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Sunroom
+      </div>
+      <div class="feature-pill">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Large Deck
+      </div>
+      <div class="feature-pill">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        3 Full Bathrooms
+      </div>
+    </div>
+
+    <div class="address-row">
+      <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 21s-7-6.75-7-11a7 7 0 0 1 14 0c0 4.25-7 11-7 11z" stroke="#888" stroke-width="1.5"/><circle cx="12" cy="10" r="2.5" stroke="#888" stroke-width="1.5"/></svg>
+      <strong>54879 Indian Lake Road</strong>&nbsp;·&nbsp;Dowagiac, MI 49047&nbsp;·&nbsp;Cass County
+    </div>
+  </div>
+
+  <!-- CONTACT CARD -->
+  <div class="contact-card">
+    <p class="card-eyebrow">Asking Price</p>
+    <div class="price-display">Upper $300s</div>
+    <p class="price-note">Contact listing agent for details</p>
+
+    <div class="divider"></div>
+
+    <div class="spec-row"><span class="spec-label">Location</span><span class="spec-val">Indian Lake, MI</span></div>
+    <div class="spec-row"><span class="spec-label">Bedrooms</span><span class="spec-val">3</span></div>
+        <div class="spec-row"><span class="spec-label">Bathrooms</span><span class="spec-val">3 full</span></div>
+        <div class="spec-row"><span class="spec-label">Built</span><span class="spec-val">1923</span></div>
+        <div class="spec-row"><span class="spec-label">Renovated</span><span class="spec-val">Recently</span></div>
+        <div class="spec-row"><span class="spec-label">Deck</span><span class="spec-val">Large</span></div>
+        <div class="spec-row"><span class="spec-label">Sunroom</span><span class="spec-val">Yes</span></div>
+    <div class="spec-row"><span class="spec-label">Fireplace</span><span class="spec-val">Yes</span></div>
+    <div class="spec-row"><span class="spec-label">Kitchen</span><span class="spec-val">Full</span></div>
+    <div class="spec-row"><span class="spec-label">Lake</span><span class="spec-val">Indian Lake</span></div>
+    <div class="spec-row"><span class="spec-label">Land</span><span class="spec-val">Fee Simple — Not Leased</span></div>
+    <div class="spec-row"><span class="spec-label">Status</span><span class="spec-val" style="color:#6db3cc;">For Sale · 2025</span></div>
+
+    <div class="divider"></div>
+
+    <a href="tel:" class="cta-btn" onclick="alert('Add your realtor\'s phone number to this button.')">
+      Call Listing Agent
+    </a>
+    <a href="/cdn-cgi/l/email-protection#06" class="cta-secondary" onclick="alert('Add your realtor\'s email to this button.')">
+      Send an Inquiry
+    </a>
+    <a href="#showing" class="cta-secondary" style="margin-top:10px;">
+      Schedule a Showing
+    </a>
+
+    <div class="realtor-card" style="margin-top:1.5rem;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+        <div class="realtor-avatar">R</div>
+        <div class="realtor-info">
+          <div class="realtor-name">Your Realtor Name</div>
+          <div class="realtor-title">Licensed Real Estate Agent</div>
+        </div>
+      </div>
+      <div class="realtor-brokerage">Brokerage Name · Dowagiac, MI</div>
+      <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.08);">
+        <a href="#" class="mls-link" style="color:rgba(108,179,204,0.8);border-color:rgba(108,179,204,0.2);" onclick="alert('Add your MLS listing URL once available.'); return false;">View on MLS →</a>
+      </div>
+    </div>
+
+    <p class="card-note">Listed through a licensed real estate agent. Contact for showings and disclosures.</p>
+  </div>
+</section>
+
 <!-- VIDEOS -->
 <section class="video-section">
   <div class="video-inner">
@@ -1736,7 +2035,7 @@
   <div class="carousel-track-wrap" id="carousel">
     <div class="carousel-track" id="carouselTrack">
       <div class="carousel-slide">
-        <img src="outdoorOfHouse/IMG_3097.jpeg" alt="Front of home" style="width:100%;height:100%;object-fit:cover;">
+        <img src="outdoorOfHouse/house8.jpeg" alt="Front of home" style="width:100%;height:100%;object-fit:cover;">
       </div>
       <div class="carousel-slide">
         <img src="outdoorOfHouse/deck1.jpeg" alt="Deck" style="width:100%;height:100%;object-fit:cover;">
@@ -1769,46 +2068,113 @@
   </div>
 </section>
 
-<!-- PHOTO GRID -->
-<section class="photo-section">
-  <div class="photo-grid">
-    <div class="photo-cell">
-      <div class="photo-placeholder">
-        <svg width="32" height="32" fill="none" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="1.5"/><path d="m21 15-5-5L5 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        Add Main Photo
-      </div>
-      <button class="photo-add-btn">+ Add Photo</button>
+
+
+<!-- PHOTO GALLERY -->
+<section class="gallery-section">
+  <div class="gallery-inner">
+    <p class="section-eyebrow" style="color:var(--water-light);">Browse the Property</p>
+    <h2 class="section-heading" style="color:white; margin-bottom:2rem;">Photo <em style="color:var(--water-light);">Gallery</em></h2>
+
+    <div class="gallery-tabs">
+      <button class="gallery-tab active" onclick="switchTab('indoors')">Indoors</button>
+      <button class="gallery-tab" onclick="switchTab('outdoors')">Outdoors</button>
+      <button class="gallery-tab" onclick="switchTab('lake')">Lake Views</button>
     </div>
-    <div class="photo-cell">
-      <div class="photo-placeholder">
-        <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="1.5"/><path d="m21 15-5-5L5 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        Lakefront
-      </div>
-      <button class="photo-add-btn">+ Add</button>
+
+    <!-- INDOORS -->
+    <div class="gallery-panel active" id="panel-indoors">
+      <div class="gallery-item" onclick="openLightbox('indoors',0)"><img src="Indoors/kitchen.jpeg" alt="Kitchen" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',1)"><img src="Indoors/kitchen1.jpeg" alt="Kitchen 1" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',2)"><img src="Indoors/kitchen2.jpeg" alt="Kitchen 2" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',3)"><img src="Indoors/kitchen3.jpeg" alt="Kitchen 3" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',4)"><img src="Indoors/kitchen6.jpeg" alt="Kitchen 6" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',5)"><img src="Indoors/kitchen7.jpeg" alt="Kitchen 7" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',6)"><img src="Indoors/kitchenApplianceAlley.jpeg" alt="Kitchen Appliances" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',7)"><img src="Indoors/kitchenPortrait.jpeg" alt="Kitchen Portrait" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',8)"><img src="Indoors/kitchenShelves.jpeg" alt="Kitchen Shelves" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',9)"><img src="Indoors/kitchencoffee.jpeg" alt="Kitchen Coffee" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',10)"><img src="Indoors/kitchenstove.jpeg" alt="Kitchen Stove" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',11)"><img src="Indoors/kitchenview.jpeg" alt="Kitchen View" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',12)"><img src="Indoors/kitchenview2.jpeg" alt="Kitchen View 2" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',13)"><img src="Indoors/apothocary.jpeg" alt="Apothecary" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',14)"><img src="Indoors/familyroom.jpeg" alt="Family Room" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',15)"><img src="Indoors/familyroom3.jpeg" alt="Family Room 3" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',16)"><img src="Indoors/familyroom4.jpeg" alt="Family Room 4" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',17)"><img src="Indoors/familyroomFireplace.jpeg" alt="Fireplace" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',18)"><img src="Indoors/livingroom1.jpeg" alt="Living Room" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',19)"><img src="Indoors/diningroom.jpeg" alt="Dining Room" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',20)"><img src="Indoors/diningroom2.jpeg" alt="Dining Room 2" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',21)"><img src="Indoors/woodfloors.jpeg" alt="Wood Floors" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',22)"><img src="Indoors/firstfloorbathroom.jpeg" alt="First Floor Bathroom" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',23)"><img src="Indoors/firstfloorbathroom2.jpeg" alt="First Floor Bathroom 2" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',24)"><img src="Indoors/firstfloorbathroom3.jpeg" alt="First Floor Bathroom 3" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',25)"><img src="Indoors/firstfloorslidingdoors.jpeg" alt="Sliding Doors" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',26)"><img src="Indoors/slidingdoors.jpeg" alt="Sliding Doors 2" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',27)"><img src="Indoors/sunroom.jpeg" alt="Sunroom" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',28)"><img src="Indoors/sunroom1.jpeg" alt="Sunroom 1" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',29)"><img src="Indoors/sunroom2.jpeg" alt="Sunroom 2" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',30)"><img src="Indoors/sunroom3.jpeg" alt="Sunroom 3" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',31)"><img src="Indoors/window.jpeg" alt="Window" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',32)"><img src="Indoors/windowDeck.jpeg" alt="Window Deck" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',33)"><img src="Indoors/masterbathroom1.jpeg" alt="Master Bathroom" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',34)"><img src="Indoors/masterbathroomshower.jpeg" alt="Master Bathroom Shower" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',35)"><img src="Indoors/mastherbathroom3.jpeg" alt="Master Bathroom 3" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',36)"><img src="Indoors/bedroom3.jpeg" alt="Bedroom" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',37)"><img src="Indoors/desk.jpeg" alt="Desk" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('indoors',38)"><img src="Indoors/bathroomKids.jpeg" alt="Kids Bathroom" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="photo-cell">
-      <div class="photo-placeholder">
-        <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="1.5"/><path d="m21 15-5-5L5 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        Living Area
-      </div>
-      <button class="photo-add-btn">+ Add</button>
+
+    <!-- OUTDOORS -->
+    <div class="gallery-panel" id="panel-outdoors">
+      <div class="gallery-item" onclick="openLightbox('outdoors',0)"><img src="outdoorOfHouse/deck 5.jpeg" alt="Deck 5" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('outdoors',1)"><img src="outdoorOfHouse/deck1.jpeg" alt="Deck 1" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('outdoors',2)"><img src="outdoorOfHouse/deck2.jpeg" alt="Deck 2" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('outdoors',3)"><img src="outdoorOfHouse/deck3.jpeg" alt="Deck 3" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('outdoors',4)"><img src="outdoorOfHouse/deckwithchairs.jpeg" alt="Deck with Chairs" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('outdoors',5)"><img src="outdoorOfHouse/house.jpeg" alt="House" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('outdoors',6)"><img src="outdoorOfHouse/house2.jpeg" alt="House 2" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('outdoors',7)"><img src="outdoorOfHouse/house3.jpeg" alt="House 3" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('outdoors',8)"><img src="outdoorOfHouse/house4.jpeg" alt="House 4" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('outdoors',9)"><img src="outdoorOfHouse/house5.jpeg" alt="House 5" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('outdoors',10)"><img src="outdoorOfHouse/house6.jpeg" alt="House 6" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('outdoors',11)"><img src="outdoorOfHouse/house7.jpeg" alt="House 7" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('outdoors',12)"><img src="outdoorOfHouse/house8.jpeg" alt="House 8" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('outdoors',13)"><img src="outdoorOfHouse/houseBack.jpeg" alt="House Back" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('outdoors',14)"><img src="outdoorOfHouse/housePortrait.jpeg" alt="House Portrait" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('outdoors',15)"><img src="outdoorOfHouse/houseStairs.jpeg" alt="House Stairs" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('outdoors',16)"><img src="outdoorOfHouse/sunset.jpeg" alt="Sunset" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('outdoors',17)"><img src="outdoorOfHouse/sunset2.jpeg" alt="Sunset 2" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('outdoors',18)"><img src="outdoorOfHouse/sunset3.jpeg" alt="Sunset 3" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('outdoors',19)"><img src="outdoorOfHouse/sunset4.JPG" alt="Sunset 4" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="photo-cell">
-      <div class="photo-placeholder">
-        <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="1.5"/><path d="m21 15-5-5L5 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        Kitchen
-      </div>
-      <button class="photo-add-btn">+ Add</button>
+
+    <!-- LAKE VIEWS -->
+    <div class="gallery-panel" id="panel-lake">
+      <div class="gallery-item" onclick="openLightbox('lake',0)"><img src="viewsOfLake/IMG_2869.jpeg" alt="Lake View" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('lake',1)"><img src="viewsOfLake/IMG_2874.JPG" alt="Lake View 2" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('lake',2)"><img src="viewsOfLake/IMG_2938.jpeg" alt="Lake View 3" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('lake',3)"><img src="viewsOfLake/IMG_2940.jpeg" alt="Lake View 4" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('lake',4)"><img src="viewsOfLake/IMG_3185.jpeg" alt="Lake View 5" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('lake',5)"><img src="viewsOfLake/IMG_3480.jpeg" alt="Lake View 6" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('lake',6)"><img src="viewsOfLake/IMG_3640.jpeg" alt="Lake View 7" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('lake',7)"><img src="viewsOfLake/IMG_3644.jpeg" alt="Lake View 8" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="gallery-item" onclick="openLightbox('lake',8)"><img src="viewsOfLake/IMG_3835.jpeg" alt="Lake View 9" loading="lazy"><div class="gallery-item-overlay"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="photo-cell">
-      <div class="photo-placeholder">
-        <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="1.5"/><path d="m21 15-5-5L5 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        Bedroom
-      </div>
-      <button class="photo-add-btn">+ Add</button>
-    </div>
+
   </div>
 </section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <button class="lightbox-nav lightbox-prev" onclick="lightboxNav(-1)">&#8592;</button>
+  <div class="lightbox-img-wrap">
+    <img id="lightboxImg" src="" alt="">
+  </div>
+  <button class="lightbox-nav lightbox-next" onclick="lightboxNav(1)">&#8594;</button>
+  <div class="lightbox-counter" id="lightboxCounter"></div>
+</div>
 
 <!-- HIGHLIGHTS STRIP -->
 <div class="highlights">
@@ -1837,109 +2203,6 @@
     <div class="highlight-label">Not Leased Land</div>
   </div>
 </div>
-
-<!-- DETAILS + SIDEBAR -->
-<section class="details-section">
-  <div class="details-main">
-    <p class="section-eyebrow">Property Overview</p>
-    <h2 class="section-heading">Life on <em>Indian Lake</em></h2>
-    <p class="description">
-      Nestled along the quiet shores of Indian Lake in Dowagiac, Michigan, this lakehouse offers
-      the rare combination of genuine privacy and easy access to one of southwest Michigan's most
-      beloved inland lakes. Whether you're watching morning mist rise off the water from the
-      comfort of the living room, or gathering around the fireplace after a day on the lake —
-      this is the place where memories are made. Recently renovated throughout, the home is move-in ready with nothing left to do but enjoy it.
-    </p>
-    <p class="description">
-      With three or more bedrooms and a fully equipped kitchen, there's room for the whole family
-      and then some. Indian Lake is a premier destination for fishing, kayaking, and boating — and
-      this address puts you right on it. Step outside to a massive deck perfect for entertaining, or unwind in the beautiful sunroom — your own private retreat no matter the season.
-    </p>
-
-    <div class="features">
-      <div class="feature-pill">
-        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M3 20h18M5 20V8l7-5 7 5v12M9 20v-6h6v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        3 Bedrooms
-      </div>
-      <div class="feature-pill">
-        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18A9 9 0 0 0 12 3z" stroke="currentColor" stroke-width="1.5"/><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        Full Kitchen
-      </div>
-      <div class="feature-pill">
-        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 2C6 8 4 12 4 14a8 8 0 0 0 16 0c0-2-2-6-8-12z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
-        Fireplace
-      </div>
-      <div class="feature-pill">
-        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M2 12s2-6 10-6 10 6 10 6-2 6-10 6-10-6-10-6z" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="2" stroke="currentColor" stroke-width="1.5"/></svg>
-        Indian Lake Views
-      </div>
-      <div class="feature-pill">
-        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M3 17h18M5 17V9a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        Waterfront Location
-      </div>
-      <div class="feature-pill">
-        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        You Own the Land
-      </div>
-    </div>
-
-    <div class="address-row">
-      <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 21s-7-6.75-7-11a7 7 0 0 1 14 0c0 4.25-7 11-7 11z" stroke="#888" stroke-width="1.5"/><circle cx="12" cy="10" r="2.5" stroke="#888" stroke-width="1.5"/></svg>
-      <strong>54879 Indian Lake Road</strong>&nbsp;·&nbsp;Dowagiac, MI 49047&nbsp;·&nbsp;Cass County
-    </div>
-  </div>
-
-  <!-- CONTACT CARD -->
-  <div class="contact-card">
-    <p class="card-eyebrow">Asking Price</p>
-    <div class="price-display">Upper $300s</div>
-    <p class="price-note">Contact listing agent for details</p>
-
-    <div class="divider"></div>
-
-    <div class="spec-row"><span class="spec-label">Location</span><span class="spec-val">Indian Lake, MI</span></div>
-    <div class="spec-row"><span class="spec-label">Bedrooms</span><span class="spec-val">3</span></div>
-        <div class="spec-row"><span class="spec-label">Bathrooms</span><span class="spec-val">3 full</span></div>
-        <div class="spec-row"><span class="spec-label">Built</span><span class="spec-val">1923</span></div>
-        <div class="spec-row"><span class="spec-label">Renovated</span><span class="spec-val">Recently</span></div>
-        <div class="spec-row"><span class="spec-label">Deck</span><span class="spec-val">Large</span></div>
-        <div class="spec-row"><span class="spec-label">Sunroom</span><span class="spec-val">Yes</span></div>
-    <div class="spec-row"><span class="spec-label">Fireplace</span><span class="spec-val">Yes</span></div>
-    <div class="spec-row"><span class="spec-label">Kitchen</span><span class="spec-val">Full</span></div>
-    <div class="spec-row"><span class="spec-label">Lake</span><span class="spec-val">Indian Lake</span></div>
-    <div class="spec-row"><span class="spec-label">Land</span><span class="spec-val">Fee Simple — Not Leased</span></div>
-    <div class="spec-row"><span class="spec-label">Status</span><span class="spec-val" style="color:#6db3cc;">For Sale · 2025</span></div>
-
-    <div class="divider"></div>
-
-    <a href="tel:" class="cta-btn" onclick="alert('Add your realtor\'s phone number to this button.')">
-      Call Listing Agent
-    </a>
-    <a href="/cdn-cgi/l/email-protection#06" class="cta-secondary" onclick="alert('Add your realtor\'s email to this button.')">
-      Send an Inquiry
-    </a>
-    <a href="#showing" class="cta-secondary" style="margin-top:10px;">
-      Schedule a Showing
-    </a>
-
-    <div class="realtor-card" style="margin-top:1.5rem;">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
-        <div class="realtor-avatar">R</div>
-        <div class="realtor-info">
-          <div class="realtor-name">Your Realtor Name</div>
-          <div class="realtor-title">Licensed Real Estate Agent</div>
-        </div>
-      </div>
-      <div class="realtor-brokerage">Brokerage Name · Dowagiac, MI</div>
-      <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.08);">
-        <a href="#" class="mls-link" style="color:rgba(108,179,204,0.8);border-color:rgba(108,179,204,0.2);" onclick="alert('Add your MLS listing URL once available.'); return false;">View on MLS →</a>
-      </div>
-    </div>
-
-    <p class="card-note">Listed through a licensed real estate agent. Contact for showings and disclosures.</p>
-  </div>
-</section>
-
 
 <!-- LAKE INFO -->
 <section class="lake-section">
@@ -2327,6 +2590,81 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideoMo
 // Wire up placeholder thumbs without a data-url to open modal on click
 document.querySelectorAll('.video-thumb:not([data-url])').forEach(el => {
   el.addEventListener('click', () => openVideoModal(el));
+});
+
+// GALLERY
+const galleryData = {
+  indoors: [
+    'Indoors/kitchen.jpeg','Indoors/kitchen1.jpeg','Indoors/kitchen2.jpeg','Indoors/kitchen3.jpeg','Indoors/kitchen6.jpeg','Indoors/kitchen7.jpeg',
+    'Indoors/kitchenApplianceAlley.jpeg','Indoors/kitchenPortrait.jpeg','Indoors/kitchenShelves.jpeg','Indoors/kitchencoffee.jpeg','Indoors/kitchenstove.jpeg','Indoors/kitchenview.jpeg',
+    'Indoors/kitchenview2.jpeg','Indoors/apothocary.jpeg','Indoors/familyroom.jpeg','Indoors/familyroom3.jpeg','Indoors/familyroom4.jpeg','Indoors/familyroomFireplace.jpeg',
+    'Indoors/livingroom1.jpeg','Indoors/diningroom.jpeg','Indoors/diningroom2.jpeg','Indoors/woodfloors.jpeg','Indoors/firstfloorbathroom.jpeg','Indoors/firstfloorbathroom2.jpeg','Indoors/firstfloorbathroom3.jpeg','Indoors/firstfloorslidingdoors.jpeg','Indoors/slidingdoors.jpeg',
+    'Indoors/sunroom.jpeg','Indoors/sunroom1.jpeg','Indoors/sunroom2.jpeg','Indoors/sunroom3.jpeg','Indoors/window.jpeg','Indoors/windowDeck.jpeg',
+    'Indoors/masterbathroom1.jpeg','Indoors/masterbathroomshower.jpeg','Indoors/mastherbathroom3.jpeg','Indoors/bedroom3.jpeg','Indoors/desk.jpeg','Indoors/bathroomKids.jpeg'
+  ],
+  outdoors: [
+    'outdoorOfHouse/deck 5.jpeg','outdoorOfHouse/deck1.jpeg',
+    'outdoorOfHouse/deck2.jpeg','outdoorOfHouse/deck3.jpeg','outdoorOfHouse/deckwithchairs.jpeg',
+    'outdoorOfHouse/house.jpeg','outdoorOfHouse/house2.jpeg','outdoorOfHouse/house3.jpeg',
+    'outdoorOfHouse/house4.jpeg','outdoorOfHouse/house5.jpeg','outdoorOfHouse/house6.jpeg',
+    'outdoorOfHouse/house7.jpeg','outdoorOfHouse/house8.jpeg','outdoorOfHouse/houseBack.jpeg',
+    'outdoorOfHouse/housePortrait.jpeg','outdoorOfHouse/houseStairs.jpeg',
+    'outdoorOfHouse/sunset.jpeg','outdoorOfHouse/sunset2.jpeg','outdoorOfHouse/sunset3.jpeg',
+    'outdoorOfHouse/sunset4.JPG'
+  ],
+  lake: [
+    'viewsOfLake/IMG_2869.jpeg','viewsOfLake/IMG_2874.JPG','viewsOfLake/IMG_2938.jpeg',
+    'viewsOfLake/IMG_2940.jpeg','viewsOfLake/IMG_3185.jpeg','viewsOfLake/IMG_3480.jpeg',
+    'viewsOfLake/IMG_3640.jpeg','viewsOfLake/IMG_3644.jpeg','viewsOfLake/IMG_3835.jpeg'
+  ]
+};
+
+let currentTab = 'indoors';
+let currentIndex = 0;
+
+function switchTab(tab) {
+  document.querySelectorAll('.gallery-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.gallery-panel').forEach(p => p.classList.remove('active'));
+  document.querySelector(`[onclick="switchTab('${tab}')"]`).classList.add('active');
+  document.getElementById(`panel-${tab}`).classList.add('active');
+  currentTab = tab;
+}
+
+function openLightbox(tab, index) {
+  currentTab = tab;
+  currentIndex = index;
+  updateLightbox();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function updateLightbox() {
+  const imgs = galleryData[currentTab];
+  document.getElementById('lightboxImg').src = imgs[currentIndex];
+  document.getElementById('lightboxCounter').textContent = `${currentIndex + 1} / ${imgs.length}`;
+}
+
+function lightboxNav(dir) {
+  const imgs = galleryData[currentTab];
+  currentIndex = (currentIndex + dir + imgs.length) % imgs.length;
+  updateLightbox();
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.getElementById('lightboxImg').src = '';
+  document.body.style.overflow = '';
+}
+
+function closeLightboxOutside(e) {
+  if (e.target === document.getElementById('lightbox')) closeLightbox();
+}
+
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'ArrowLeft') lightboxNav(-1);
+  if (e.key === 'ArrowRight') lightboxNav(1);
+  if (e.key === 'Escape') closeLightbox();
 });
 </script>
 
