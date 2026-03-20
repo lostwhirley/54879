@@ -1293,6 +1293,59 @@
     .showing-actions { flex-direction: column; }
   }
 
+  /* INQUIRY FORM */
+  .inquiry-section {
+    background: var(--sand-light, #f7f4ef);
+    padding: 5rem 2rem;
+  }
+  .inquiry-inner {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .inquiry-inner .section-eyebrow { color: var(--water); }
+  .inquiry-inner h2 { font-family: var(--serif); font-size: 2.2rem; font-weight: 400; color: var(--navy, #1a2a35); margin-bottom: 2rem; }
+  .inquiry-form { display: flex; flex-direction: column; gap: 1rem; }
+  .inquiry-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .inquiry-form input,
+  .inquiry-form select,
+  .inquiry-form textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 1px solid #d0ccc5;
+    background: white;
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--navy, #1a2a35);
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.15s;
+    outline: none;
+  }
+  .inquiry-form input:focus,
+  .inquiry-form select:focus,
+  .inquiry-form textarea:focus { border-color: var(--water); }
+  .inquiry-form textarea { resize: vertical; min-height: 100px; }
+  .inquiry-submit {
+    padding: 0.9rem 2.5rem;
+    background: var(--water);
+    color: white;
+    border: none;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 4px;
+    align-self: flex-start;
+    transition: opacity 0.15s;
+  }
+  .inquiry-submit:hover { opacity: 0.85; }
+  @media (max-width: 600px) {
+    .inquiry-row { grid-template-columns: 1fr; }
+    .inquiry-submit { width: 100%; }
+  }
+
   /* SPLASH INTRO */
   #splash {
     position: fixed;
@@ -1974,7 +2027,7 @@
     <a href="tel:2696844445" class="cta-btn">
       Call Beth Van · Listing Agent
     </a>
-    <a href="mailto:bethvan@bonrealty.com" class="cta-secondary">
+    <a href="#inquiry" class="cta-secondary">
       Send an Inquiry
     </a>
     <a href="#showing" class="cta-secondary" style="margin-top:10px;">
@@ -2353,10 +2406,38 @@
     <p>Contact the listing agent to schedule a private showing at your convenience.</p>
   </div>
   <div class="showing-actions">
-    <a href="tel:" class="showing-btn-primary" onclick="alert('Add realtor phone number.')">Call to Schedule</a>
+    <a href="tel:2696844445" class="showing-btn-primary">Call to Schedule</a>
     <a href="mailto:bethvan@bonrealty.com" class="showing-btn-secondary">Email for Showing</a>
   </div>
 </div>
+
+<!-- INQUIRY FORM -->
+<section class="inquiry-section" id="inquiry">
+  <div class="inquiry-inner">
+    <p class="section-eyebrow">Get in Touch</p>
+    <h2>Send an Inquiry</h2>
+    <form class="inquiry-form" action="https://formsubmit.co/lostwhirley@gmail.com" method="POST">
+      <input type="hidden" name="_cc" value="bethvan@bonrealty.com">
+      <input type="hidden" name="_subject" value="New Inquiry — 54879 Indian Lake Road">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://lostwhirley.github.io/54879/?sent=1">
+      <div class="inquiry-row">
+        <input type="text" name="first_name" placeholder="First Name" required>
+        <input type="text" name="last_name" placeholder="Last Name" required>
+      </div>
+      <input type="tel" name="phone" placeholder="Phone Number">
+      <select name="subject" required>
+        <option value="" disabled selected>Subject</option>
+        <option value="Schedule a Showing">Schedule a Showing</option>
+        <option value="General Question">General Question</option>
+        <option value="Make an Offer">Make an Offer</option>
+        <option value="Request More Info">Request More Info</option>
+      </select>
+      <textarea name="message" placeholder="Message (optional)"></textarea>
+      <button type="submit" class="inquiry-submit">Send Inquiry</button>
+    </form>
+  </div>
+</section>
 
 <!-- MAP -->
 <section class="map-section" id="map">
