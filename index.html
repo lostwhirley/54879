@@ -987,6 +987,47 @@
   }
   .mls-link:hover { border-color: var(--water-light); }
 
+  /* REALTOR PHOTO MODAL */
+  .realtor-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0,0,0,0.75);
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+  }
+  .realtor-modal.open { display: flex; }
+  .realtor-modal-inner {
+    position: relative;
+    background: #1a2a35;
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    max-width: 340px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .realtor-modal-inner img {
+    width: 100%;
+    border-radius: 12px;
+    display: block;
+    margin-bottom: 16px;
+  }
+  .realtor-modal-name { font-size: 20px; font-weight: 600; color: white; margin-bottom: 4px; }
+  .realtor-modal-title { font-size: 13px; color: rgba(255,255,255,0.5); }
+  .realtor-modal-close {
+    position: absolute;
+    top: 12px; right: 14px;
+    background: none; border: none;
+    color: rgba(255,255,255,0.5);
+    font-size: 22px;
+    cursor: pointer;
+    line-height: 1;
+  }
+  .realtor-modal-close:hover { color: white; }
+
   /* REALTOR CARD */
   .realtor-card {
     margin-top: 1.5rem;
@@ -1942,9 +1983,9 @@
 
     <div class="realtor-card" style="margin-top:1.5rem;">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
-        <div class="realtor-avatar">B</div>
+        <img src="bethVan.jpeg" class="realtor-avatar" onclick="openRealtorPhoto()" style="cursor:pointer;object-fit:cover;" alt="Beth Van">
         <div class="realtor-info">
-          <div class="realtor-name">Beth Van</div>
+          <div class="realtor-name" onclick="openRealtorPhoto()" style="cursor:pointer;">Beth Van</div>
           <div class="realtor-title">Listing Agent · Bon Realty</div>
         </div>
       </div>
@@ -2080,6 +2121,16 @@
 
   </div>
 </section>
+
+<!-- REALTOR PHOTO MODAL -->
+<div class="realtor-modal" id="realtorModal" onclick="closeRealtorPhoto(event)">
+  <div class="realtor-modal-inner">
+    <button class="realtor-modal-close" onclick="closeRealtorPhoto()">&times;</button>
+    <img src="bethVan.jpeg" alt="Beth Van">
+    <div class="realtor-modal-name">Beth Van</div>
+    <div class="realtor-modal-title">Listing Agent · Bon Realty · Niles, MI</div>
+  </div>
+</div>
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
@@ -2559,6 +2610,17 @@ function lightboxNav(dir) {
   const imgs = galleryData[currentTab];
   currentIndex = (currentIndex + dir + imgs.length) % imgs.length;
   updateLightbox();
+}
+
+function openRealtorPhoto() {
+  document.getElementById('realtorModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeRealtorPhoto(e) {
+  if (!e || e.target === document.getElementById('realtorModal')) {
+    document.getElementById('realtorModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
 }
 
 function closeLightbox() {
