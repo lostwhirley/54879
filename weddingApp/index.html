@@ -289,6 +289,119 @@
 
     .bottom-spacer { height: 120px; }
 
+    /* VIEW PHOTOS LINK */
+    .view-photos-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      color: var(--black);
+      text-decoration: underline;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--sans);
+    }
+
+    /* PHOTO GALLERY SECTION */
+    .photo-gallery {
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .gallery-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .gallery-header h2 {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    .back-btn {
+      background: none;
+      border: none;
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--black);
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .photo-grid-item {
+      aspect-ratio: 1;
+      background: #f0f0ee;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .photo-grid-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.2s;
+    }
+
+    .photo-grid-item:hover img { transform: scale(1.03); }
+
+    .gallery-empty {
+      text-align: center;
+      padding: 3rem 0;
+      color: var(--gray);
+      font-size: 15px;
+    }
+
+    .gallery-loading {
+      text-align: center;
+      padding: 2rem 0;
+      color: var(--gray);
+      font-size: 14px;
+    }
+
+    /* LIGHTBOX */
+    .photo-lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .photo-lightbox.open { display: flex; }
+
+    .photo-lightbox img {
+      max-width: 95vw;
+      max-height: 90vh;
+      object-fit: contain;
+    }
+
+    .lightbox-close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
     /* FOOTER */
     footer {
       text-align: center;
@@ -315,6 +428,7 @@
     <p class="header-eyebrow">You're invited to share a moment</p>
     <h1 class="couple-names">Katie <span class="ampersand">&</span> Riley</h1>
     <div class="ornament">· · ·</div>
+    <button class="view-photos-link" onclick="showGallery()">View Shared Photos</button>
   </header>
 
   <main>
@@ -397,7 +511,24 @@
       <button class="btn-another" onclick="shareAnother()">Share another photo</button>
     </div>
 
+    <!-- PHOTO GALLERY -->
+    <div class="photo-gallery" id="photoGallery">
+      <div class="gallery-header">
+        <h2>Shared Photos</h2>
+        <button class="back-btn" onclick="hideGallery()">← Back</button>
+      </div>
+      <div id="photoGrid" class="photo-grid"></div>
+      <div id="galleryEmpty" class="gallery-empty" style="display:none;">No photos yet — be the first to share one!</div>
+      <div id="galleryLoading" class="gallery-loading">Loading photos…</div>
+    </div>
+
   </main>
+
+  <!-- PHOTO LIGHTBOX -->
+  <div class="photo-lightbox" id="photoLightbox" onclick="closeLightbox()">
+    <button class="lightbox-close-btn" onclick="closeLightbox()">&times;</button>
+    <img id="lightboxImg" src="" alt="">
+  </div>
 
   <div class="bottom-spacer"></div>
   <footer>Katie & Riley · August 2026</footer>
@@ -450,6 +581,34 @@
         document.getElementById('uploadFlow').style.display = 'none';
         document.getElementById('successScreen').style.display = 'flex';
       }, 1200);
+    }
+
+    function showGallery() {
+      document.getElementById('uploadFlow').style.display = 'none';
+      document.getElementById('successScreen').style.display = 'none';
+      document.getElementById('photoGallery').style.display = 'flex';
+      loadPhotos();
+    }
+
+    function hideGallery() {
+      document.getElementById('photoGallery').style.display = 'none';
+      document.getElementById('uploadFlow').style.display = 'flex';
+    }
+
+    function loadPhotos() {
+      // TODO: fetch real photos from Google Apps Script
+      document.getElementById('galleryLoading').style.display = 'none';
+      document.getElementById('galleryEmpty').style.display = 'block';
+    }
+
+    function openLightbox(src) {
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('photoLightbox').classList.add('open');
+    }
+
+    function closeLightbox() {
+      document.getElementById('photoLightbox').classList.remove('open');
+      document.getElementById('lightboxImg').src = '';
     }
 
     function shareAnother() {
