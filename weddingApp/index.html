@@ -422,47 +422,16 @@
       galleryInput.value = '';
     }
 
-    // Paste your Google Apps Script Web App URL here after deploying
-    const APPS_SCRIPT_URL = 'PASTE_YOUR_APPS_SCRIPT_URL_HERE';
-
-    function getBase64(file) {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = reject;
-      });
-    }
-
-    async function submitPhoto() {
+    function submitPhoto() {
       if (!selectedFile) return;
       submitBtn.disabled = true;
       submitBtn.textContent = 'Sharing…';
 
-      try {
-        const image   = await getBase64(selectedFile);
-        const caption = document.getElementById('captionInput').value.trim();
-        const guest   = document.getElementById('guestInput').value.trim();
-
-        const response = await fetch(APPS_SCRIPT_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'text/plain' },
-          body: JSON.stringify({ image, caption, guest })
-        });
-
-        const result = await response.json();
-        if (result.success) {
-          document.getElementById('uploadFlow').style.display = 'none';
-          document.getElementById('successScreen').style.display = 'flex';
-        } else {
-          throw new Error(result.error);
-        }
-      } catch (err) {
-        console.error(err);
-        alert('Something went wrong. Please try again.');
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Share This Moment';
-      }
+      // TODO: wire up Google Apps Script upload
+      setTimeout(() => {
+        document.getElementById('uploadFlow').style.display = 'none';
+        document.getElementById('successScreen').style.display = 'flex';
+      }, 1200);
     }
 
     function shareAnother() {
