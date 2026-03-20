@@ -2416,10 +2416,7 @@
   <div class="inquiry-inner">
     <p class="section-eyebrow">Get in Touch</p>
     <h2>Send an Inquiry</h2>
-    <form class="inquiry-form" action="https://formsubmit.co/lostwhirley@gmail.com" method="POST">
-      <input type="hidden" name="_subject" value="New Inquiry — 54879 Indian Lake Road">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://lostwhirley.github.io/54879/?sent=1">
+    <form class="inquiry-form" id="inquiryForm">
       <div class="inquiry-row">
         <input type="text" name="first_name" placeholder="First Name" required>
         <input type="text" name="last_name" placeholder="Last Name" required>
@@ -2429,11 +2426,11 @@
         <option value="" disabled selected>Subject</option>
         <option value="Schedule a Showing">Schedule a Showing</option>
         <option value="General Question">General Question</option>
-        <option value="Make an Offer">Make an Offer</option>
         <option value="Request More Info">Request More Info</option>
       </select>
       <textarea name="message" placeholder="Message (optional)"></textarea>
       <button type="submit" class="inquiry-submit">Send Inquiry</button>
+      <p id="inquirySuccess" style="display:none;color:var(--water);font-size:14px;margin-top:0.5rem;">Thank you! Your message has been sent.</p>
     </form>
   </div>
 </section>
@@ -2693,6 +2690,36 @@ function lightboxNav(dir) {
   currentIndex = (currentIndex + dir + imgs.length) % imgs.length;
   updateLightbox();
 }
+
+document.getElementById('inquiryForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('.inquiry-submit');
+  const data = new FormData(form);
+  data.append('_subject', 'New Inquiry — 54879 Indian Lake Road');
+  data.append('_captcha', 'false');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+  fetch('https://formsubmit.co/ajax/lostwhirley@gmail.com', {
+    method: 'POST',
+    headers: { 'Accept': 'application/json' },
+    body: data
+  }).then(function(res) {
+    if (res.ok) {
+      form.reset();
+      document.getElementById('inquirySuccess').style.display = 'block';
+      btn.style.display = 'none';
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'Send Inquiry';
+      alert('Something went wrong. Please try again.');
+    }
+  }).catch(function() {
+    btn.disabled = false;
+    btn.textContent = 'Send Inquiry';
+    alert('Something went wrong. Please try again.');
+  });
+});
 
 function openRealtorPhoto() {
   document.getElementById('realtorModal').classList.add('open');
