@@ -345,6 +345,7 @@
       background: #f0f0ee;
       overflow: hidden;
       cursor: pointer;
+      border: 1px solid #e0e0e0;
     }
 
     .photo-grid-item img {
@@ -356,6 +357,56 @@
     }
 
     .photo-grid-item:hover img { transform: scale(1.03); }
+
+    .photo-stub {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px;
+      text-align: center;
+      transition: background 0.15s;
+    }
+
+    .photo-stub:hover { background: #e8e8e6; }
+
+    .stub-icon {
+      width: 56px;
+      height: 56px;
+      background: #e0e0de;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .stub-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .stub-guest {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--black);
+    }
+
+    .stub-caption {
+      font-size: 11px;
+      color: var(--gray);
+      font-style: italic;
+      line-height: 1.3;
+    }
+
+    .stub-time {
+      font-size: 10px;
+      color: #aaa;
+      margin-top: 2px;
+    }
 
     .gallery-empty {
       text-align: center;
@@ -595,13 +646,52 @@
       document.getElementById('uploadFlow').style.display = 'flex';
     }
 
+    // Stub photo data — replace with real API call when Drive is connected
+    const stubPhotos = [
+      { id: 1, guest: 'Sarah M.', caption: 'Congratulations you two! 🎉', time: '2:14 PM' },
+      { id: 2, guest: 'James & Linda', caption: 'What a beautiful day!', time: '2:31 PM' },
+      { id: 3, guest: 'Uncle Rob', caption: '', time: '3:02 PM' },
+      { id: 4, guest: 'The Johnsons', caption: 'So happy for you both!', time: '3:18 PM' },
+      { id: 5, guest: 'Megan T.', caption: 'Best wedding ever 💕', time: '3:45 PM' },
+      { id: 6, guest: 'Guest', caption: '', time: '4:10 PM' },
+    ];
+
     function loadPhotos() {
-      // TODO: fetch real photos from Google Apps Script
+      // TODO: replace stubPhotos with real fetch from Google Apps Script
       document.getElementById('galleryLoading').style.display = 'none';
-      document.getElementById('galleryEmpty').style.display = 'block';
+
+      if (stubPhotos.length === 0) {
+        document.getElementById('galleryEmpty').style.display = 'block';
+        return;
+      }
+
+      const grid = document.getElementById('photoGrid');
+      grid.innerHTML = '';
+
+      stubPhotos.forEach(photo => {
+        const item = document.createElement('div');
+        item.className = 'photo-grid-item';
+        item.innerHTML = `
+          <div class="photo-stub" onclick="openLightbox(null, ${photo.id})">
+            <div class="stub-icon">
+              <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="#aaa" stroke-width="1">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+            </div>
+            <div class="stub-meta">
+              <span class="stub-guest">${photo.guest}</span>
+              ${photo.caption ? `<span class="stub-caption">${photo.caption}</span>` : ''}
+              <span class="stub-time">${photo.time}</span>
+            </div>
+          </div>
+        `;
+        grid.appendChild(item);
+      });
     }
 
-    function openLightbox(src) {
+    function openLightbox(src, stubId) {
+      if (!src) return; // stub — no real image yet
       document.getElementById('lightboxImg').src = src;
       document.getElementById('photoLightbox').classList.add('open');
     }
