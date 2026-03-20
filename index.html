@@ -2698,6 +2698,7 @@ document.getElementById('inquiryForm').addEventListener('submit', function(e) {
   const data = new FormData(form);
   data.append('_subject', 'New Inquiry — 54879 Indian Lake Road');
   data.append('_captcha', 'false');
+  data.append('_template', 'table');
   btn.disabled = true;
   btn.textContent = 'Sending…';
   fetch('https://formsubmit.co/ajax/lostwhirley@gmail.com', {
