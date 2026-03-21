@@ -569,18 +569,13 @@
           <img id="previewImg" src="" alt="Preview">
           <button class="preview-retake" id="retakeBtn" onclick="retake()">Retake</button>
         </div>
-        <button class="btn-upload-now" id="uploadNowBtn" onclick="submitPhoto()" style="display:none;">
-          ↑ Upload This Photo
-        </button>
-
-        <button class="view-photos-link" onclick="showGallery()">View Shared Photos</button>
-
         <div class="caption-wrap" id="captionWrap">
           <input type="text" id="guestInput" placeholder="Your name (optional)" style="width:100%;padding:0.9rem 1rem;border:1px solid #e0e0e0;border-bottom:none;background:#f9f9f7;font-family:'Montserrat',sans-serif;font-size:13px;outline:none;">
           <textarea id="captionInput" placeholder="Add a caption or message to the couple… (optional)"></textarea>
         </div>
 
         <button class="btn-submit" id="submitBtn" onclick="submitPhoto()">Share This Moment</button>
+        <button class="view-photos-link" onclick="showGallery()">View Shared Photos</button>
       </div>
 
     </div>
@@ -642,7 +637,6 @@
     const previewPlaceholder = document.getElementById('previewPlaceholder');
     const retakeBtn = document.getElementById('retakeBtn');
     const submitBtn = document.getElementById('submitBtn');
-    const uploadNowBtn = document.getElementById('uploadNowBtn');
     const captionWrap = document.getElementById('captionWrap');
 
     let selectedFile = null;
@@ -659,7 +653,6 @@
       previewImg.style.display = 'block';
       previewPlaceholder.style.display = 'none';
       retakeBtn.style.display = 'block';
-      uploadNowBtn.style.display = 'block';
       captionWrap.style.display = 'block';
       submitBtn.style.display = 'block';
     }
@@ -673,7 +666,6 @@
       previewImg.src = '';
       previewPlaceholder.style.display = 'flex';
       retakeBtn.style.display = 'none';
-      uploadNowBtn.style.display = 'none';
       captionWrap.style.display = 'none';
       submitBtn.style.display = 'none';
       cameraInput.value = '';
