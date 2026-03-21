@@ -656,6 +656,9 @@
       retakeBtn.style.display = 'block';
       captionWrap.style.display = 'block';
       submitBtn.style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('previewWrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
     }
 
     cameraInput.addEventListener('change', e => handleFile(e.target.files[0]));
