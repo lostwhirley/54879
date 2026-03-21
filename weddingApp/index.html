@@ -218,6 +218,22 @@
     .btn-submit:hover { opacity: 0.8; }
     .btn-submit:disabled { opacity: 0.4; cursor: default; }
 
+    .btn-upload-now {
+      width: 100%;
+      padding: 1.1rem;
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      border: none;
+      transition: opacity 0.15s;
+    }
+
+    .btn-upload-now:hover { opacity: 0.85; }
+
     /* Caption */
     .caption-wrap {
       width: 100%;
@@ -553,6 +569,9 @@
           <img id="previewImg" src="" alt="Preview">
           <button class="preview-retake" id="retakeBtn" onclick="retake()">Retake</button>
         </div>
+        <button class="btn-upload-now" id="uploadNowBtn" onclick="submitPhoto()" style="display:none;">
+          ↑ Upload This Photo
+        </button>
 
         <div class="btn-row">
           <button class="btn btn-camera" onclick="document.getElementById('cameraInput').click()">
@@ -639,6 +658,7 @@
     const previewPlaceholder = document.getElementById('previewPlaceholder');
     const retakeBtn = document.getElementById('retakeBtn');
     const submitBtn = document.getElementById('submitBtn');
+    const uploadNowBtn = document.getElementById('uploadNowBtn');
     const captionWrap = document.getElementById('captionWrap');
 
     let selectedFile = null;
@@ -655,6 +675,7 @@
       previewImg.style.display = 'block';
       previewPlaceholder.style.display = 'none';
       retakeBtn.style.display = 'block';
+      uploadNowBtn.style.display = 'block';
       captionWrap.style.display = 'block';
       submitBtn.style.display = 'block';
     }
@@ -668,6 +689,7 @@
       previewImg.src = '';
       previewPlaceholder.style.display = 'flex';
       retakeBtn.style.display = 'none';
+      uploadNowBtn.style.display = 'none';
       captionWrap.style.display = 'none';
       submitBtn.style.display = 'none';
       cameraInput.value = '';
