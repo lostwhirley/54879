@@ -408,6 +408,21 @@
       margin-top: 2px;
     }
 
+    .refresh-btn {
+      width: 100%;
+      padding: 0.75rem;
+      background: none;
+      border: 1px solid var(--black);
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--black);
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .refresh-btn:hover { background: #f0f0ee; }
+
     .gallery-empty {
       text-align: center;
       padding: 3rem 0;
@@ -581,11 +596,13 @@
     <div class="photo-gallery" id="photoGallery">
       <div class="gallery-header">
         <h2>Shared Photos</h2>
-        <button class="back-btn" onclick="hideGallery()">← Back</button>
+        <button class="back-btn" onclick="hideGallery()">← Back to Upload</button>
       </div>
-      <div id="photoGrid" class="photo-grid"></div>
+      <button class="refresh-btn" onclick="loadPhotos()">↻ Refresh</button>
+      <div id="galleryLoading" class="gallery-loading" style="display:none;">Loading photos…</div>
       <div id="galleryEmpty" class="gallery-empty" style="display:none;">No photos yet — be the first to share one!</div>
-      <div id="galleryLoading" class="gallery-loading">Loading photos…</div>
+      <div id="photoGrid" class="photo-grid"></div>
+      <button class="refresh-btn" onclick="loadPhotos()">↻ Refresh</button>
     </div>
 
   </main>
@@ -687,17 +704,26 @@
 
     function loadPhotos() {
       // TODO: replace stubPhotos with real fetch from Google Apps Script
-      document.getElementById('galleryLoading').style.display = 'none';
-
-      if (stubPhotos.length === 0) {
-        document.getElementById('galleryEmpty').style.display = 'block';
-        return;
-      }
-
+      const loading = document.getElementById('galleryLoading');
+      const empty = document.getElementById('galleryEmpty');
       const grid = document.getElementById('photoGrid');
+
+      loading.style.display = 'block';
+      empty.style.display = 'none';
       grid.innerHTML = '';
 
-      stubPhotos.forEach(photo => {
+      // Simulate a brief load delay
+      setTimeout(() => {
+        loading.style.display = 'none';
+
+        const recent = stubPhotos.slice(-20).reverse(); // last 20, newest first
+
+        if (recent.length === 0) {
+          empty.style.display = 'block';
+          return;
+        }
+
+        recent.forEach(photo => {
         const item = document.createElement('div');
         item.className = 'photo-grid-item';
         item.innerHTML = `
@@ -716,7 +742,8 @@
           </div>
         `;
         grid.appendChild(item);
-      });
+        });
+      }, 600);
     }
 
     function openLightbox(src, stubId) {
