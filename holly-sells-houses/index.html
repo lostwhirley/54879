@@ -136,14 +136,18 @@
 
     /* HERO */
     .hero {
-      background: linear-gradient(135deg, var(--primary) 0%, #2d5a7b 100%);
+      background: linear-gradient(90deg, rgba(26, 60, 94, 0.85) 0%, rgba(26, 60, 94, 0.6) 50%, transparent 100%), url('hero-background.webp') center/cover no-repeat;
       color: var(--white);
-      padding: 6rem 2rem;
+      padding: 8rem 2rem;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
     }
 
     .hero-inner {
       max-width: 1200px;
       margin: 0 auto;
+      width: 100%;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 3rem;
