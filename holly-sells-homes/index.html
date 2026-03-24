@@ -1445,57 +1445,9 @@
     <h2 class="section-title">Current Listings</h2>
   </div>
 
-  <div class="listings-grid">
-    <!-- Listing 1 -->
-    <a href="listing/5872-MayFlower-way-ave-maria-fl/" style="text-decoration: none; color: inherit;">
-      <div class="listing-card">
-        <img src="listing/5872-MayFlower-way-ave-maria-fl/618314353_10231956317034893_2680327470437226850_n (1).jpg" alt="5872 Mayflower Way">
-        <div class="listing-content">
-          <div class="listing-price">$599,000</div>
-          <div class="listing-address">5872 Mayflower Way</div>
-          <div class="listing-city">Ave Maria, FL 34142</div>
-          <div class="listing-specs">
-            <div class="spec">4 Bed</div>
-            <div class="spec">3 Bath</div>
-          </div>
-          <div class="btn btn-primary">View Details</div>
-        </div>
-      </div>
-    </a>
-
-    <!-- Listing 2 -->
-    <a href="listing/6174-revelry-ct-ave-maria-fl/" style="text-decoration: none; color: inherit;">
-      <div class="listing-card">
-        <img src="listing/6174-revelry-ct-ave-maria-fl/649037128_10232518233482453_1782500750137805818_n.jpg" alt="6174 Revelry Ct">
-        <div class="listing-content">
-          <div class="listing-price">$475,000</div>
-          <div class="listing-address">6174 Revelry Ct</div>
-          <div class="listing-city">Ave Maria, FL 34142</div>
-          <div class="listing-specs">
-            <div class="spec">🛏️ 3 Bed</div>
-            <div class="spec">🚿 2 Bath</div>
-          </div>
-          <div class="btn btn-primary">View Details</div>
-        </div>
-      </div>
-    </a>
-
-    <!-- Listing 3 -->
-    <a href="listing/6217-Harmony-Drive-ava-marie-fl/" style="text-decoration: none; color: inherit;">
-      <div class="listing-card">
-        <div style="height: 280px; background: var(--light); display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-family: 'Jost', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em;">Photos Coming Soon</div>
-        <div class="listing-content">
-          <div class="listing-price">$509,900</div>
-          <div class="listing-address">6217 Harmony Drive</div>
-          <div class="listing-city">Ave Maria, FL 34142</div>
-          <div class="listing-specs">
-            <div class="spec">🛏️ 2 Bed</div>
-            <div class="spec">🚿 2 Bath</div>
-          </div>
-          <div class="btn btn-primary">View Details</div>
-        </div>
-      </div>
-    </a>
+  <div class="listings-grid" id="listings-grid">
+    <!-- Listings will be loaded here by JavaScript -->
+    <div style="text-align: center; padding: 2rem; grid-column: 1/-1; color: var(--text-muted);">Loading listings...</div>
   </div>
 </section>
 
@@ -1683,6 +1635,78 @@
     alert('Thank you for your inquiry! Holly will contact you shortly.');
     this.reset();
   });
+
+  // Fetch and display listings from API
+  async function loadListings() {
+    const listingsGrid = document.getElementById('listings-grid');
+
+    try {
+      const response = await fetch('https://realty-us.p.rapidapi.com/agents/v2/listings?fulfillmentId=100732851', {
+        headers: {
+          'x-rapidapi-key': '2a1eca8e84msh49b38948c7d92c3p168af6jsnbb278f742246',
+          'x-rapidapi-host': 'realty-us.p.rapidapi.com'
+        }
+      });
+
+      const data = await response.json();
+      const listings = data.data.home_search.results;
+
+      // Filter for Ave Maria only
+      const areaListings = listings.filter(listing =>
+        listing.location.address.city.toLowerCase() === 'ave maria'
+      );
+
+      // Clear loading message
+      listingsGrid.innerHTML = '';
+
+      // Generate listing cards
+      areaListings.forEach(listing => {
+        const address = listing.location.address;
+        const price = listing.list_price;
+        const beds = listing.description.beds;
+        const baths = listing.description.baths_consolidated;
+        const photo = listing.primary_photo?.href || '';
+        const line = address.line;
+
+        const card = document.createElement('div');
+        card.style.cssText = 'text-decoration: none; color: inherit;';
+
+        const photoHtml = photo
+          ? `<img src="${photo}" alt="${line}" style="width: 100%; height: 280px; object-fit: cover; display: block;">`
+          : `<div style="height: 280px; background: var(--light); display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-family: 'Jost', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em;">Photos Loading...</div>`;
+
+        card.innerHTML = `
+          <div class="listing-card">
+            ${photoHtml}
+            <div class="listing-content">
+              <div class="listing-price">$${price.toLocaleString()}</div>
+              <div class="listing-address">${line}</div>
+              <div class="listing-city">${address.city}, ${address.state_code} ${address.postal_code}</div>
+              <div class="listing-specs">
+                <div class="spec">${beds} Bed</div>
+                <div class="spec">${baths} Bath</div>
+              </div>
+              <div class="btn btn-primary">View on Realtor.com</div>
+            </div>
+          </div>
+        `;
+
+        card.addEventListener('click', function(e) {
+          e.preventDefault();
+          window.open(listing.href, '_blank');
+        });
+
+        listingsGrid.appendChild(card);
+      });
+
+    } catch (error) {
+      console.error('Error loading listings:', error);
+      listingsGrid.innerHTML = '<div style="text-align: center; padding: 2rem; grid-column: 1/-1; color: var(--text-muted);">Unable to load listings. Please try again later.</div>';
+    }
+  }
+
+  // Load listings when page loads
+  document.addEventListener('DOMContentLoaded', loadListings);
 </script>
 
 </body>
