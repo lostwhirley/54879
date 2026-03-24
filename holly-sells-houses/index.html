@@ -193,9 +193,12 @@
       font-weight: 600;
       cursor: pointer;
       text-decoration: none;
-      display: inline-block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       transition: all 0.2s;
       font-size: 0.95rem;
+      min-height: 44px;
     }
 
     .btn-primary {
@@ -442,6 +445,8 @@
       border-radius: 6px;
       font-family: inherit;
       font-size: 0.95rem;
+      min-height: 44px;
+      width: 100%;
     }
 
     .inquiry-form input:focus,
@@ -454,6 +459,7 @@
     .inquiry-form textarea {
       resize: vertical;
       min-height: 120px;
+      padding: 0.75rem;
     }
 
     .inquiry-form .btn {
@@ -495,6 +501,11 @@
     .footer-links a {
       color: #d1d5db;
       text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 0.5rem;
     }
 
     .footer-links a:hover {
@@ -509,17 +520,36 @@
 
     /* RESPONSIVE */
     @media (max-width: 768px) {
+      .nav-inner {
+        padding: 0.75rem 1rem;
+      }
+
+      .nav-logo {
+        font-size: 1.3rem;
+      }
+
+      .nav-logo span {
+        font-size: 0.6rem;
+      }
+
       .nav-links {
         gap: 1rem;
+        font-size: 0.85rem;
+      }
+
+      .hero {
+        padding: 2rem 1.5rem;
+        min-height: auto;
       }
 
       .hero-inner {
         grid-template-columns: 1fr;
-        padding: 3rem 0;
+        padding: 0;
+        gap: 1.5rem;
       }
 
       .hero-content h1 {
-        font-size: 1.75rem;
+        font-size: 1.8rem;
       }
 
       .hero-content .tagline {
@@ -527,33 +557,85 @@
       }
 
       .hero-buttons {
-        justify-content: center;
+        justify-content: flex-start;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .hero-buttons .btn {
+        width: 100%;
+      }
+
+      .hero-image img {
+        max-width: 100%;
+      }
+
+      .listings-section,
+      .about-section,
+      .contact-section {
+        margin: 3rem 0;
+        padding: 2rem 1.5rem;
+      }
+
+      .listings-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .listing-card img {
+        height: 250px;
       }
 
       .section-title {
         font-size: 1.5rem;
       }
 
-      .listings-grid {
-        grid-template-columns: 1fr;
-      }
-
       .about-inner {
         grid-template-columns: 1fr;
-      }
-
-      .contact-inner {
-        grid-template-columns: 1fr;
+        gap: 1.5rem;
       }
 
       .about-highlights {
         grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .contact-inner {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .contact-info h2 {
+        font-size: 1.5rem;
+      }
+
+      .inquiry-form {
+        gap: 0.75rem;
+      }
+
+      .inquiry-form .btn {
+        width: 100%;
+        min-height: 48px;
+      }
+
+      .footer-links {
+        gap: 1rem;
+      }
+
+      .footer-links a {
+        min-height: 44px;
+        padding: 0 0.25rem;
+        font-size: 0.9rem;
       }
     }
 
     @media (max-width: 480px) {
       .nav-inner {
-        padding: 1rem;
+        padding: 0.75rem 1rem;
+      }
+
+      .nav-logo {
+        font-size: 1.2rem;
       }
 
       .nav-links {
@@ -561,17 +643,175 @@
       }
 
       .hero {
-        padding: 3rem 1rem;
+        padding: 2rem 1rem;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-content h1 {
+        font-size: 1.5rem;
+      }
+
+      .hero-content .tagline {
+        font-size: 0.95rem;
+      }
+
+      .hero-content p {
+        font-size: 0.9rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .hero-buttons .btn {
+        width: 100%;
+        min-height: 44px;
+        padding: 0.75rem 1rem;
+      }
+
+      .hero-image {
+        display: none;
       }
 
       .listings-section,
       .about-section,
       .contact-section {
-        padding: 3rem 1rem;
+        padding: 2rem 1rem;
+        margin: 2rem 0;
+      }
+
+      .listings-grid {
+        gap: 1rem;
+      }
+
+      .listing-card {
+        border: none;
+      }
+
+      .listing-card img {
+        height: 200px;
+      }
+
+      .listing-content {
+        padding: 1rem;
+      }
+
+      .section-header {
+        margin-bottom: 1.5rem;
       }
 
       .section-title {
         font-size: 1.25rem;
+      }
+
+      .section-label {
+        font-size: 0.75rem;
+      }
+
+      h2 {
+        font-size: 1.3rem;
+      }
+
+      .about-content h2 {
+        font-size: 1.3rem;
+      }
+
+      .about-content p {
+        font-size: 0.9rem;
+      }
+
+      .about-highlights {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+
+      .highlight {
+        padding: 1rem;
+      }
+
+      .contact-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-info h2 {
+        font-size: 1.25rem;
+      }
+
+      .contact-item {
+        margin-bottom: 1rem;
+      }
+
+      .inquiry-form {
+        gap: 0.5rem;
+      }
+
+      .inquiry-form input,
+      .inquiry-form textarea {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+      }
+
+      .inquiry-form .btn {
+        width: 100%;
+        min-height: 48px;
+        padding: 0.75rem 1rem;
+      }
+
+      footer {
+        padding: 2rem 1rem;
+      }
+
+      .footer-brokerage {
+        font-size: 0.95rem;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .footer-links a {
+        width: 100%;
+        min-height: 44px;
+        font-size: 0.85rem;
+      }
+
+      body {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .nav-logo {
+        font-size: 1rem;
+      }
+
+      .hero-content h1 {
+        font-size: 1.3rem;
+      }
+
+      .section-title {
+        font-size: 1.1rem;
+      }
+
+      h2 {
+        font-size: 1.15rem;
+      }
+
+      .listing-price {
+        font-size: 1.25rem;
+      }
+
+      .listings-grid {
+        gap: 0.75rem;
+      }
+
+      .listing-card img {
+        height: 180px;
       }
     }
   </style>

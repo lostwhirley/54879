@@ -54,7 +54,21 @@
     .contact-value { font-size: 1rem; color: var(--dark); }
     .contact-value a { color: var(--accent); text-decoration: none; font-weight: 600; }
 
-    .btn { padding: 0.75rem 1.5rem; background: var(--accent); color: var(--primary); border: none; border-radius: 6px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; }
+    .btn {
+      padding: 0.75rem 1.5rem;
+      background: var(--accent);
+      color: var(--primary);
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      min-height: 44px;
+    }
     .btn:hover { background: #f0b84f; transform: translateY(-2px); }
 
     .location-section { background: var(--white); padding: 4rem 2rem; margin: 3rem 0; }
@@ -68,15 +82,310 @@
     footer { background: var(--primary); color: #d1d5db; padding: 3rem 2rem; text-align: center; font-size: 0.9rem; }
     .footer-inner { max-width: 1200px; margin: 0 auto; }
     .footer-brokerage { font-weight: 600; color: var(--white); margin-bottom: 0.5rem; }
-    .footer-links { display: flex; justify-content: center; gap: 2rem; margin-top: 1rem; flex-wrap: wrap; }
-    .footer-links a { color: #d1d5db; text-decoration: none; }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: #d1d5db;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 0.5rem;
+    }
     .footer-links a:hover { color: var(--accent); }
 
     @media (max-width: 768px) {
-      .hero h1 { font-size: 1.5rem; }
-      .hero-specs { gap: 1rem; }
-      .contact-inner { grid-template-columns: 1fr; }
-      .details { padding: 0 1rem; }
+      .nav-inner {
+        padding: 0.75rem 1rem;
+      }
+
+      .nav-logo {
+        font-size: 1.2rem;
+      }
+
+      .nav-logo span {
+        font-size: 0.6rem;
+        margin-top: 2px;
+      }
+
+      .hero {
+        padding: 2rem 1.5rem;
+      }
+
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .hero-sub {
+        font-size: 1rem;
+      }
+
+      .hero-price {
+        font-size: 1.8rem;
+      }
+
+      .hero-specs {
+        gap: 0.75rem;
+        flex-direction: column;
+      }
+
+      .spec-badge {
+        width: 100%;
+        text-align: center;
+      }
+
+      .video-container {
+        padding: 0 1.5rem;
+        margin: 1.5rem auto;
+      }
+
+      .details {
+        padding: 2rem 1.5rem;
+        margin: 2rem 0;
+      }
+
+      .details h2 {
+        font-size: 1.3rem;
+      }
+
+      .specs-grid {
+        gap: 1rem;
+      }
+
+      .contact-bar {
+        padding: 1.5rem;
+        margin: 2rem 0;
+      }
+
+      .contact-inner {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+        gap: 1.5rem;
+      }
+
+      .contact-info h3 {
+        font-size: 1.1rem;
+      }
+
+      .contact-item {
+        margin-bottom: 0.75rem;
+      }
+
+      .btn {
+        width: 100%;
+        min-height: 48px;
+      }
+
+      .location-section {
+        padding: 2rem 1.5rem;
+        margin: 2rem 0;
+      }
+
+      .location-header h2 {
+        font-size: 1.5rem;
+      }
+
+      .location-map {
+        height: 400px;
+      }
+
+      footer {
+        padding: 2rem 1.5rem;
+      }
+
+      .footer-brokerage {
+        font-size: 0.95rem;
+      }
+
+      .footer-links {
+        gap: 1rem;
+      }
+
+      .footer-links a {
+        min-height: 44px;
+        padding: 0 0.25rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-inner {
+        padding: 0.75rem 1rem;
+      }
+
+      ul {
+        display: none !important;
+      }
+
+      .nav-logo {
+        font-size: 1.1rem;
+      }
+
+      .hero {
+        padding: 2rem 1rem;
+      }
+
+      .hero h1 {
+        font-size: 1.5rem;
+      }
+
+      .hero-sub {
+        font-size: 0.9rem;
+      }
+
+      .hero-price {
+        font-size: 1.5rem;
+      }
+
+      .hero-specs {
+        gap: 0.5rem;
+        flex-direction: column;
+      }
+
+      .spec-badge {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+        width: 100%;
+        text-align: center;
+      }
+
+      .video-container {
+        padding: 0 1rem;
+        margin: 1rem auto;
+      }
+
+      .details {
+        padding: 2rem 1rem;
+      }
+
+      .details h2 {
+        font-size: 1.2rem;
+      }
+
+      .details p {
+        font-size: 0.9rem;
+      }
+
+      .details ul {
+        margin: 0.5rem 0 0 1.5rem !important;
+        font-size: 0.9rem;
+      }
+
+      .specs-grid {
+        gap: 0.75rem;
+        grid-template-columns: 1fr;
+      }
+
+      .spec-item {
+        padding: 1rem;
+      }
+
+      .spec-label {
+        font-size: 0.75rem;
+      }
+
+      .spec-value {
+        font-size: 1.1rem;
+      }
+
+      .contact-bar {
+        padding: 1rem;
+        margin: 1.5rem 0;
+      }
+
+      .contact-inner {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+        gap: 1rem;
+      }
+
+      .contact-info h3 {
+        font-size: 1rem;
+      }
+
+      .contact-label {
+        font-size: 0.7rem;
+      }
+
+      .contact-value {
+        font-size: 0.95rem;
+      }
+
+      .btn {
+        width: 100%;
+        min-height: 44px;
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+      }
+
+      .location-section {
+        padding: 2rem 1rem;
+        margin: 1.5rem 0;
+      }
+
+      .location-header h2 {
+        font-size: 1.25rem;
+      }
+
+      .location-map {
+        height: 300px;
+      }
+
+      footer {
+        padding: 1.5rem 1rem;
+        font-size: 0.85rem;
+      }
+
+      .footer-brokerage {
+        font-size: 0.9rem;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+
+      .footer-links a {
+        width: 100%;
+        min-height: 44px;
+        padding: 0.5rem 0;
+        font-size: 0.8rem;
+      }
+
+      body {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .nav-logo {
+        font-size: 1rem;
+      }
+
+      .hero h1 {
+        font-size: 1.3rem;
+      }
+
+      .hero-price {
+        font-size: 1.3rem;
+      }
+
+      .details h2 {
+        font-size: 1.1rem;
+      }
+
+      .spec-value {
+        font-size: 1rem;
+      }
+
+      .location-map {
+        height: 250px;
+      }
     }
   </style>
 </head>
