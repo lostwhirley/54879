@@ -56,6 +56,13 @@
     .btn { padding: 0.75rem 1.5rem; background: var(--accent); color: var(--primary); border: none; border-radius: 6px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; }
     .btn:hover { background: #f0b84f; transform: translateY(-2px); }
 
+    .location-section { background: var(--light); padding: 3rem 2rem; margin: 3rem 0; border-radius: 12px; }
+    .location-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .location-content h2 { font-size: 1.75rem; font-weight: 700; margin-bottom: 1rem; color: var(--dark); }
+    .location-content p { color: #4b5563; line-height: 1.8; margin-bottom: 1rem; }
+    .location-map { border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); height: 350px; }
+    .location-map iframe { width: 100%; height: 100%; border: none; }
+
     footer { background: var(--primary); color: #d1d5db; padding: 3rem 2rem; text-align: center; font-size: 0.9rem; }
     .footer-inner { max-width: 1200px; margin: 0 auto; }
     .footer-brokerage { font-weight: 600; color: var(--white); margin-bottom: 0.5rem; }
@@ -122,6 +129,19 @@
     <div class="spec-item">
       <div class="spec-label">Location</div>
       <div class="spec-value">Ave Maria, FL</div>
+    </div>
+  </div>
+</section>
+
+<section class="location-section">
+  <div class="location-inner">
+    <div class="location-content">
+      <h2>Location & Neighborhood</h2>
+      <p>Located in the vibrant heart of Ave Maria, this property offers the perfect blend of suburban comfort and convenient access to everything Southwest Florida has to offer. Ave Maria is one of the region's most sought-after communities, featuring a master-planned design with excellent amenities and a strong sense of community.</p>
+      <p>The neighborhood features top-rated schools, upscale shopping and dining options, beautiful recreational facilities, and well-maintained parks. You're just minutes away from Ave Maria's town center with its shops, restaurants, and community events, while maintaining the peaceful charm of a residential area. Major highways and attractions are within easy reach for all your lifestyle needs.</p>
+    </div>
+    <div class="location-map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3456.7890123456!2d-81.74!3d26.17!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88db4f8e9e9e9e9d%3A0x1234567890!2s5872%20Mayflower%20Way%2C%20Ave%20Maria%2C%20FL%2034142!5e0!3m2!1sen!2sus!4v1234567890123" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
 </section>
