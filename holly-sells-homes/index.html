@@ -1693,7 +1693,18 @@
 
         card.addEventListener('click', function(e) {
           e.preventDefault();
-          window.open(listing.href, '_blank');
+          // Map addresses to local listing pages
+          const addressMap = {
+            '5872 Mayflower Way': 'listing/5872-MayFlower-way-ave-maria-fl/',
+            '6174 Revelry Ct': 'listing/6174-revelry-ct-ave-maria-fl/',
+            '6217 Harmony Dr': 'listing/6217-Harmony-Drive-ava-marie-fl/'
+          };
+          const localPath = addressMap[line.split(' Unit')[0].split(' Apt')[0]];
+          if (localPath) {
+            window.location.href = localPath;
+          } else {
+            window.open(listing.href, '_blank');
+          }
         });
 
         listingsGrid.appendChild(card);
