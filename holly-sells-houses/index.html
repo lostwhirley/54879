@@ -648,6 +648,8 @@
 
       .hero-inner {
         grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column-reverse;
       }
 
       .hero-content h1 {
@@ -674,7 +676,14 @@
       }
 
       .hero-image {
-        display: none;
+        width: 100%;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-image img {
+        width: 100%;
+        max-width: 280px;
+        height: auto;
       }
 
       .listings-section,
