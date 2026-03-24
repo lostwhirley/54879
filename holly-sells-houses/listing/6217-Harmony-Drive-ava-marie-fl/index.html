@@ -24,12 +24,14 @@
     .nav-logo { font-size: 1.25rem; font-weight: 700; color: var(--primary); text-decoration: none; }
     .nav-logo span { display: block; font-size: 0.75rem; font-weight: 500; color: var(--gray); margin-top: 2px; }
 
-    .hero { background: linear-gradient(135deg, var(--primary) 0%, #2d5a7b 100%); color: var(--white); padding: 3rem 2rem; }
+    .hero { background: linear-gradient(135deg, var(--primary) 0%, #2d5a7b 100%); color: var(--white); padding: 4rem 2rem; }
     .hero-inner { max-width: 1200px; margin: 0 auto; }
-    .hero h1 { font-size: 2rem; margin-bottom: 0.5rem; }
-    .hero-sub { font-size: 1.1rem; color: #d1d5db; margin-bottom: 1.5rem; }
-    .hero-specs { display: flex; gap: 2rem; flex-wrap: wrap; }
-    .spec-badge { background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.95rem; }
+    .hero h1 { font-size: 2.8rem; margin-bottom: 0.75rem; font-weight: 700; letter-spacing: -0.5px; }
+    .hero-sub { font-size: 1.2rem; color: #d1d5db; margin-bottom: 1.25rem; font-weight: 500; }
+    .hero-price { font-size: 2.2rem; font-weight: 700; color: var(--accent); margin-bottom: 1.5rem; }
+    .hero-specs { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .spec-badge { background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 0.65rem 1.25rem; border-radius: 25px; font-size: 0.95rem; font-weight: 500; border: 1px solid rgba(255,255,255,0.2); transition: all 0.2s; }
+    .spec-badge:hover { background: rgba(255,255,255,0.25); }
 
     .video-container { max-width: 1200px; margin: 2rem auto; padding: 0 2rem; }
     .video-embed { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
@@ -87,7 +89,7 @@
   <div class="hero-inner">
     <h1>6217 Harmony Drive</h1>
     <div class="hero-sub">Ave Maria, FL 34142</div>
-    <div style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem;">$509,900</div>
+    <div class="hero-price">$509,900</div>
     <div class="hero-specs">
       <div class="spec-badge">🛏️ 2 Bedrooms</div>
       <div class="spec-badge">🚿 2 Bathrooms</div>
