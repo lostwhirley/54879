@@ -75,6 +75,19 @@
     .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; text-transform: uppercase; font-weight: 400; }
     .footer-links a:hover { color: var(--accent); }
 
+    .listing-contact-section { background: var(--light); padding: 5rem 2rem; margin: 3rem 0; }
+    .listing-contact-inner { max-width: 1200px; margin: 0 auto; }
+    .listing-contact-header { margin-bottom: 3rem; text-align: center; }
+    .listing-contact-header h2 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 400; color: var(--primary); margin-bottom: 0.5rem; }
+    .listing-contact-header p { color: var(--text-muted); font-size: 0.9rem; }
+    .listing-contact-form { max-width: 600px; margin: 0 auto; }
+    .form-group { margin-bottom: 1.5rem; }
+    .form-group label { display: block; font-family: 'Jost', sans-serif; font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--primary); margin-bottom: 0.5rem; }
+    .form-group input, .form-group textarea { width: 100%; padding: 0.85rem 1rem; border: 1px solid var(--border); background: var(--white); font-family: 'Jost', sans-serif; font-size: 0.95rem; color: var(--dark); border-radius: 0; }
+    .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px rgba(176, 141, 122, 0.1); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .listing-contact-form .btn { width: 100%; text-align: center; padding: 1rem 2rem; }
+
     @media (max-width: 768px) {
       .hero h1 { font-size: 1.5rem; }
       .hero-specs { gap: 1rem; }
@@ -147,6 +160,34 @@
     <div class="location-map">
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3456.7890123456!2d-81.74!3d26.17!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88db4f8e9e9e9e9d%3A0x1234567890!2s6174%20Revelry%20Ct%2C%20Ave%20Maria%2C%20FL%2034142!5e0!3m2!1sen!2sus!4v1234567890123" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
+  </div>
+</section>
+
+<section class="listing-contact-section">
+  <div class="listing-contact-inner">
+    <div class="listing-contact-header">
+      <h2>Interested in This Property?</h2>
+      <p>Get more information or schedule a showing</p>
+    </div>
+    <form class="listing-contact-form" onsubmit="event.preventDefault(); alert('Thank you! Holly will contact you shortly.'); this.reset();">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" name="phone">
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Tell us what you'd like to know about this property..."></textarea>
+      </div>
+      <button type="submit" class="btn">Send Inquiry</button>
+    </form>
   </div>
 </section>
 
