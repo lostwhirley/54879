@@ -1091,24 +1091,14 @@
       const startTime = Date.now();
       const minLoadTime = 500;
 
-      // Fetch listings from new API
-      const response = await fetch('https://realty-in-us.p.rapidapi.com/properties/v3/list', {
-        method: 'POST',
+      // Fetch Holly's listings directly by agent ID
+      const response = await fetch('https://realty-in-us.p.rapidapi.com/agents/v2/get-listings?fulfillment_id=100732851', {
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json',
           'x-rapidapi-host': 'realty-in-us.p.rapidapi.com',
           'x-rapidapi-key': '2a1eca8e84msh49b38948c7d92c3p168af6jsnbb278f742246'
-        },
-        body: JSON.stringify({
-          limit: 50,
-          offset: 0,
-          postal_code: '34142',
-          status: ['for_sale'],
-          sort: {
-            direction: 'desc',
-            field: 'list_date'
-          }
-        })
+        }
       });
 
       const data = await response.json();
@@ -1120,25 +1110,21 @@
         listings = data;
       } else if (data.data?.home_search?.results && Array.isArray(data.data.home_search.results)) {
         listings = data.data.home_search.results;
+      } else if (data.agent?.listings && Array.isArray(data.agent.listings)) {
+        listings = data.agent.listings;
+      } else if (data.listings && Array.isArray(data.listings)) {
+        listings = data.listings;
       } else if (data.properties && Array.isArray(data.properties)) {
         listings = data.properties;
       } else if (data.results && Array.isArray(data.results)) {
         listings = data.results;
-      } else if (data.data?.properties && Array.isArray(data.data.properties)) {
-        listings = data.data.properties;
       } else {
         console.warn('Unexpected API response format:', data);
         listings = [];
       }
 
-      // Filter for Holly's listings (fulfillmentId 100732851)
-      const hollyListings = listings.filter(listing => {
-        if (!listing.advertisers || !Array.isArray(listing.advertisers)) return false;
-        return listing.advertisers.some(advertiser => advertiser.fulfillment_id === '100732851');
-      });
-
-      console.log(`Filtered listings: ${hollyListings.length} of ${listings.length} are Holly's`);
-      const areaListings = hollyListings;
+      console.log(`Found ${listings.length} of Holly's listings`);
+      const areaListings = listings;
 
       // Populate gallery_images from API response
       // Populate gallery_images from photos array in JSON
