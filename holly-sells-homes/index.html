@@ -1786,47 +1786,22 @@
         return parseInt(b.listing_id) - parseInt(a.listing_id);
       });
 
-      // Fetch detailed property information and images for each listing
-      const enhancedListings = await Promise.all(areaListings.map(async (listing) => {
-        try {
-          const propertyDetail = await fetch(`https://realty-us.p.rapidapi.com/properties/detail?propertyId=${listing.property_id}`, {
-            headers: {
-              'x-rapidapi-key': '2a1eca8e84msh49b38948c7d92c3p168af6jsnbb278f742246',
-              'x-rapidapi-host': 'realty-us.p.rapidapi.com'
-            }
-          });
+      // Use listings data from JSON file (API quota exhausted)
+      // Populate gallery_images from photos array in JSON
+      const enhancedListings = areaListings.map(listing => {
+        // Get photos from listing (API format includes photos array with href property)
+        const photos = listing.photos || [];
+        const imageUrls = photos.map(photo => {
+          const url = typeof photo === 'string' ? photo : photo.href;
+          return url;
+        });
 
-          const detailData = await propertyDetail.json();
-
-          // Extract and transform image URLs
-          let images = [];
-          let photos = detailData.data?.photos || detailData.photos || [];
-
-          if (photos && photos.length > 0) {
-            images = photos.map(photo => {
-              const url = typeof photo === 'string' ? photo : photo.href;
-              // Replace s.jpg with od-w1024_h768 for larger version
-              return url.replace(/s\.jpg/, 'od-w1024_h768.jpg');
-            });
-          } else {
-            console.warn(`No photos found for property ${listing.property_id}`, detailData);
-          }
-
-          // Add images to listing object, preserving original photos as fallback
-          return {
-            ...listing,
-            gallery_images: images,
-            photos: images.length > 0 ? images.map(url => ({ href: url })) : listing.photos
-          };
-        } catch (error) {
-          console.warn(`Error fetching details for property ${listing.property_id}:`, error);
-          // Return listing with empty images array if detail fetch fails
-          return {
-            ...listing,
-            gallery_images: []
-          };
-        }
-      }));
+        return {
+          ...listing,
+          gallery_images: imageUrls,
+          photos: imageUrls.length > 0 ? imageUrls.map(url => ({ href: url })) : listing.photos
+        };
+      });
 
       // Save enhanced listings to sessionStorage for use on listing detail pages
       sessionStorage.setItem('hollyListings', JSON.stringify(enhancedListings));
