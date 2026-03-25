@@ -1026,8 +1026,12 @@
     const listingsGrid = document.getElementById('listings-grid');
 
     try {
-      // Check if listings are already cached in sessionStorage
-      const cachedListings = sessionStorage.getItem('hollyListings');
+      // Check for refresh parameter to bypass cache
+      const urlParams = new URLSearchParams(window.location.search);
+      const forceRefresh = urlParams.has('refresh');
+
+      // Check if listings are already cached in sessionStorage (unless refresh is requested)
+      const cachedListings = !forceRefresh && sessionStorage.getItem('hollyListings');
       if (cachedListings) {
         // Use cached data
         const enhancedListings = JSON.parse(cachedListings);
