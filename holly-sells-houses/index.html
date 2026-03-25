@@ -1144,6 +1144,8 @@
           return url;
         });
 
+        console.log(`Listing ${listing.property_id}: photos=${photos.length}, imageUrls=${imageUrls.length}`, imageUrls);
+
         return {
           ...listing,
           gallery_images: imageUrls,
