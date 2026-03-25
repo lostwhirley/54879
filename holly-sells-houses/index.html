@@ -1067,17 +1067,23 @@
 
           // Extract and transform image URLs
           let images = [];
-          if (detailData.data && detailData.data.photos) {
-            images = detailData.data.photos.map(photo => {
+          let photos = detailData.data?.photos || detailData.photos || [];
+
+          if (photos && photos.length > 0) {
+            images = photos.map(photo => {
+              const url = typeof photo === 'string' ? photo : photo.href;
               // Replace s.jpg with od-w1024_h768 for larger version
-              return photo.href.replace(/s\.jpg/, 'od-w1024_h768.jpg');
+              return url.replace(/s\.jpg/, 'od-w1024_h768.jpg');
             });
+          } else {
+            console.warn(`No photos found for property ${listing.property_id}`, detailData);
           }
 
-          // Add images to listing object
+          // Add images to listing object, preserving original photos as fallback
           return {
             ...listing,
-            gallery_images: images
+            gallery_images: images,
+            photos: images.length > 0 ? images.map(url => ({ href: url })) : listing.photos
           };
         } catch (error) {
           console.warn(`Error fetching details for property ${listing.property_id}:`, error);
