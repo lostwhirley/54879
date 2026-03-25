@@ -1044,8 +1044,13 @@
         listing.location.address.city.toLowerCase() === 'ave maria'
       );
 
-      // Sort by listing_id descending (newest first)
-      areaListings.sort((a, b) => parseInt(b.listing_id) - parseInt(a.listing_id));
+      // Sort: for_sale first, then everything else, then by listing_id descending within each group
+      areaListings.sort((a, b) => {
+        const aForSale = a.status === 'for_sale' ? 0 : 1;
+        const bForSale = b.status === 'for_sale' ? 0 : 1;
+        if (aForSale !== bForSale) return aForSale - bForSale;
+        return parseInt(b.listing_id) - parseInt(a.listing_id);
+      });
 
       // Wait for minimum load time before showing results
       const elapsedTime = Date.now() - startTime;
