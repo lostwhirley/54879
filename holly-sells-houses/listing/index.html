@@ -379,6 +379,37 @@
       console.log('gallery_images:', listing.gallery_images);
       console.log('photos:', listing.photos);
 
+      // Fetch detailed property info including additional photos
+      try {
+        const detailResponse = await fetch(`https://realty-in-us.p.rapidapi.com/properties/v3/detail?property_id=${listing.property_id}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-rapidapi-host': 'realty-in-us.p.rapidapi.com',
+            'x-rapidapi-key': '2a1eca8e84msh49b38948c7d92c3p168af6jsnbb278f742246'
+          }
+        });
+        const detailData = await detailResponse.json();
+        console.log('Property detail API response:', detailData);
+
+        // Merge detail data into listing if available
+        if (detailData.data?.photos && Array.isArray(detailData.data.photos)) {
+          const detailPhotos = detailData.data.photos.map(photo => {
+            let url = typeof photo === 'string' ? photo : photo.href;
+            // Upgrade to high-res version
+            if (url && url.includes('s.jpg')) {
+              url = url.replace(/s\.jpg/, 'od-w1024_h768.jpg');
+            }
+            return url;
+          });
+          console.log(`Detail API returned ${detailPhotos.length} photos`);
+          listing.gallery_images = detailPhotos;
+        }
+      } catch (error) {
+        console.warn('Error fetching property details:', error);
+        // Continue with existing listing data if detail API fails
+      }
+
       const address = listing.location.address;
       const desc = listing.description;
       const photos = listing.gallery_images || listing.photos || [];
