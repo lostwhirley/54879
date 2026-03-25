@@ -558,6 +558,22 @@
           <div class="spec-label">Status</div>
           <div class="spec-value">${listing.status.replace('_', ' ')}</div>
         </div>
+        <div class="spec-item">
+          <div class="spec-label">Garage</div>
+          <div class="spec-value">${desc.garage ? desc.garage : 'N/A'}</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label">New Construction</div>
+          <div class="spec-value">${desc.is_new_construction ? 'Yes' : 'No'}</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label">Pending</div>
+          <div class="spec-value">${listing.status === 'pending' ? 'Yes' : 'No'}</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label">Contingent</div>
+          <div class="spec-value">${listing.status === 'contingent' ? 'Yes' : 'No'}</div>
+        </div>
       `;
 
       // Update location map
