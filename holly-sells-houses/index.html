@@ -1118,6 +1118,8 @@
       let listings = [];
       if (Array.isArray(data)) {
         listings = data;
+      } else if (data.data?.home_search?.results && Array.isArray(data.data.home_search.results)) {
+        listings = data.data.home_search.results;
       } else if (data.properties && Array.isArray(data.properties)) {
         listings = data.properties;
       } else if (data.results && Array.isArray(data.results)) {
@@ -1129,9 +1131,16 @@
         listings = [];
       }
 
-      const areaListings = listings;
+      // Filter for Holly's listings (fulfillmentId 100732851)
+      const hollyListings = listings.filter(listing => {
+        if (!listing.advertisers || !Array.isArray(listing.advertisers)) return false;
+        return listing.advertisers.some(advertiser => advertiser.fulfillment_id === '100732851');
+      });
 
-      // Use listings data from JSON file (API quota exhausted)
+      console.log(`Filtered listings: ${hollyListings.length} of ${listings.length} are Holly's`);
+      const areaListings = hollyListings;
+
+      // Populate gallery_images from API response
       // Populate gallery_images from photos array in JSON
       const enhancedListings = areaListings.map(listing => {
         // Get photos from listing (API format includes photos array with href property)
