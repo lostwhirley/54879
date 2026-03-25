@@ -92,6 +92,20 @@
     .property-image img { opacity: 0; }
     .property-image img.loaded { opacity: 1; transition: opacity 0.3s; }
 
+    .calculator-section { background: var(--light); padding: 3rem 2rem; margin: 3rem 0; border-radius: 8px; }
+    .calculator-inner { max-width: 1200px; margin: 0 auto; }
+    .calculator-inner h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem; color: var(--primary); }
+    .calculator-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+    .calc-input { display: flex; flex-direction: column; }
+    .calc-input label { font-size: 0.85rem; font-weight: 600; color: var(--primary); margin-bottom: 0.5rem; text-transform: uppercase; }
+    .calc-input input { padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 4px; font-size: 1rem; }
+    .calc-result { background: var(--white); padding: 1.5rem; border-radius: 4px; border-left: 4px solid var(--accent); }
+    .calc-label { font-size: 0.9rem; color: #6b7280; margin-bottom: 0.5rem; }
+    .calc-value { font-size: 1.75rem; font-weight: 700; color: var(--primary); }
+    .save-btn { background: none; border: 2px solid var(--accent); color: var(--accent); padding: 0.6rem 1.2rem; border-radius: 4px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+    .save-btn:hover { background: var(--accent); color: var(--white); }
+    .save-btn.saved { background: var(--accent); color: var(--white); }
+
     footer { background: var(--primary); color: #d1d5db; padding: 3rem 2rem; text-align: center; font-size: 0.9rem; }
     .footer-inner { max-width: 1200px; margin: 0 auto; }
     .footer-brokerage { font-weight: 600; color: var(--white); margin-bottom: 0.5rem; }
@@ -211,6 +225,40 @@
   </div>
 </div>
 
+<!-- SAVE BUTTON -->
+<div style="max-width: 1200px; margin: 2rem auto; padding: 0 2rem;">
+  <button id="save-btn" class="save-btn" onclick="toggleSaveListing()">♥ Save Listing</button>
+</div>
+
+<!-- MORTGAGE CALCULATOR -->
+<section class="calculator-section">
+  <div class="calculator-inner">
+    <h2>Mortgage Calculator</h2>
+    <div class="calculator-grid">
+      <div class="calc-input">
+        <label>Home Price</label>
+        <input type="number" id="homePrice" placeholder="0" oninput="calculateMortgage()">
+      </div>
+      <div class="calc-input">
+        <label>Down Payment %</label>
+        <input type="number" id="downPercent" value="20" oninput="calculateMortgage()">
+      </div>
+      <div class="calc-input">
+        <label>Interest Rate %</label>
+        <input type="number" id="interestRate" value="7" step="0.1" oninput="calculateMortgage()">
+      </div>
+      <div class="calc-input">
+        <label>Loan Term (years)</label>
+        <input type="number" id="loanTerm" value="30" oninput="calculateMortgage()">
+      </div>
+    </div>
+    <div class="calc-result">
+      <div class="calc-label">Estimated Monthly Payment</div>
+      <div class="calc-value" id="monthlyPayment">$0</div>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT SECTION -->
 <section class="contact-bar">
   <div class="contact-inner">
@@ -249,6 +297,8 @@
       <a href="../">Home</a>
       <a href="../#listings">Listings</a>
       <a href="../#contact">Contact</a>
+      <a href="https://facebook.com/hollyfloridarealtor" target="_blank" title="Facebook">f</a>
+      <a href="https://instagram.com/hollyfloridarealtor" target="_blank" title="Instagram">📷</a>
     </div>
   </div>
 </footer>
@@ -381,7 +431,74 @@
   }
 
   // Load listing when page loads
-  document.addEventListener('DOMContentLoaded', loadListing);
+  document.addEventListener('DOMContentLoaded', function() {
+    loadListing();
+    updateSaveButton();
+    // Set home price to listing price when it loads
+    setTimeout(() => {
+      const price = parseInt(document.getElementById('price').textContent.replace(/[^0-9]/g, ''));
+      if (price) document.getElementById('homePrice').value = price;
+    }, 100);
+  });
+
+  // Mortgage Calculator
+  function calculateMortgage() {
+    const principal = parseFloat(document.getElementById('homePrice').value) || 0;
+    const downPercent = parseFloat(document.getElementById('downPercent').value) || 0;
+    const interestRate = parseFloat(document.getElementById('interestRate').value) || 0;
+    const loanTerm = parseInt(document.getElementById('loanTerm').value) || 30;
+
+    const downPayment = principal * (downPercent / 100);
+    const loanAmount = principal - downPayment;
+    const monthlyRate = interestRate / 100 / 12;
+    const numberOfPayments = loanTerm * 12;
+
+    let monthlyPayment = 0;
+    if (monthlyRate > 0) {
+      monthlyPayment = (loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments))) /
+                       (Math.pow(1 + monthlyRate, numberOfPayments) - 1);
+    } else {
+      monthlyPayment = loanAmount / numberOfPayments;
+    }
+
+    document.getElementById('monthlyPayment').textContent =
+      '$' + monthlyPayment.toLocaleString('en-US', {maximumFractionDigits: 0});
+  }
+
+  // Save Listing
+  function toggleSaveListing() {
+    const listing = JSON.parse(sessionStorage.getItem('selectedListing'));
+    if (!listing) return;
+
+    let saved = JSON.parse(localStorage.getItem('savedListings')) || [];
+    const isSaved = saved.some(l => l.listing_id === listing.listing_id);
+
+    if (isSaved) {
+      saved = saved.filter(l => l.listing_id !== listing.listing_id);
+    } else {
+      saved.push(listing);
+    }
+
+    localStorage.setItem('savedListings', JSON.stringify(saved));
+    updateSaveButton();
+  }
+
+  function updateSaveButton() {
+    const listing = JSON.parse(sessionStorage.getItem('selectedListing'));
+    if (!listing) return;
+
+    const saved = JSON.parse(localStorage.getItem('savedListings')) || [];
+    const isSaved = saved.some(l => l.listing_id === listing.listing_id);
+    const btn = document.getElementById('save-btn');
+
+    if (isSaved) {
+      btn.classList.add('saved');
+      btn.textContent = '♥ Saved';
+    } else {
+      btn.classList.remove('saved');
+      btn.textContent = '♥ Save Listing';
+    }
+  }
 </script>
 
 </body>
