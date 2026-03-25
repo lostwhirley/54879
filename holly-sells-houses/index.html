@@ -1092,6 +1092,20 @@
       // Save enhanced listings to sessionStorage for use on listing detail pages
       sessionStorage.setItem('hollyListings', JSON.stringify(enhancedListings));
 
+      // Pre-cache all gallery images in background
+      enhancedListings.forEach(listing => {
+        // Cache primary photo
+        if (listing.primary_photo?.href) {
+          fetch(listing.primary_photo.href, { mode: 'no-cors' }).catch(() => {});
+        }
+        // Cache all gallery images
+        if (listing.gallery_images && listing.gallery_images.length > 0) {
+          listing.gallery_images.forEach(imageUrl => {
+            fetch(imageUrl, { mode: 'no-cors' }).catch(() => {});
+          });
+        }
+      });
+
       // Wait for minimum load time before showing results
       const elapsedTime = Date.now() - startTime;
       if (elapsedTime < minLoadTime) {
