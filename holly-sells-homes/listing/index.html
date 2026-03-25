@@ -254,7 +254,6 @@
 
       if (selectedListingData) {
         listing = JSON.parse(selectedListingData);
-        sessionStorage.removeItem('selectedListing'); // Clear it after use
       } else {
         document.body.innerHTML = '<div style="text-align: center; padding: 4rem 2rem;"><h1>Listing not found</h1><p><a href="../">Return to home</a></p></div>';
         return;
