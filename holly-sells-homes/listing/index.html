@@ -77,8 +77,10 @@
     .page-loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--cream); display: flex; align-items: center; justify-content: center; z-index: 9999; }
     .page-loader.hidden { display: none; }
 
-    body { visibility: hidden; }
-    body.loaded { visibility: visible; }
+    .hero { opacity: 0; }
+    .hero.loaded { opacity: 1; }
+    .property-image img { opacity: 0; }
+    .property-image img.loaded { opacity: 1; transition: opacity 0.3s; }
 
     footer { background: var(--cream); color: var(--text-muted); padding: 3rem 2rem; text-align: center; font-size: 0.85rem; border-top: 1px solid var(--border); }
     .footer-inner { max-width: 1200px; margin: 0 auto; }
@@ -305,10 +307,12 @@
       document.getElementById('beds').textContent = desc.beds;
       document.getElementById('baths').textContent = desc.baths_consolidated;
       document.getElementById('status-badge').textContent = listing.status.replace('_', ' ').toUpperCase();
+      document.querySelector('.hero').classList.add('loaded');
 
       // Update main photo
       if (primaryPhoto) {
         mainPhoto.src = primaryPhoto;
+        mainPhoto.classList.add('loaded');
       }
 
       // Add photo gallery
@@ -376,9 +380,8 @@
       const mapUrl = `https://maps.google.com/maps?q=${encodeURIComponent(fullAddress)}&t=m&z=15&output=embed`;
       document.querySelector('.location-map iframe').src = mapUrl;
 
-      // Hide loader and show content once everything is loaded
+      // Hide loader once content is loaded
       document.getElementById('page-loader').classList.add('hidden');
-      document.body.classList.add('loaded');
 
     } catch (error) {
       console.error('Error loading listing:', error);
