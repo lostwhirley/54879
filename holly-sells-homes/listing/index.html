@@ -435,7 +435,7 @@
             <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2rem; align-items: center;">
               <button id="gallery-prev" style="background: none; border: 1px solid var(--border); color: var(--primary); padding: 0.5rem 0.75rem; cursor: pointer; font-size: 1.2rem; transition: all 0.2s; flex-shrink: 0;">←</button>
               <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; flex: 1;">
-                ${photos.slice(0, 8).map((p, i) => {
+                ${photos.map((p, i) => {
                   const imageUrl = typeof p === 'string' ? p : p.href;
                   return `<img src="${imageUrl}" alt="Photo ${i+1}"
                     style="width: 120px; height: 120px; object-fit: cover; cursor: pointer; border: 2px solid transparent; transition: all 0.2s; border-radius: 4px;"
