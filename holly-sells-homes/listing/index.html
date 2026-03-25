@@ -432,13 +432,13 @@
         const photoGalleryHtml = `
           <div style="max-width: 1200px; margin: 2rem auto; padding: 0 2rem;">
             <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--primary);">Photo Gallery (${photos.length} photos)</h3>
-            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2rem; align-items: center;">
+            <div style="display: flex; gap: 0.75rem; margin-bottom: 2rem; align-items: center;">
               <button id="gallery-prev" style="background: none; border: 1px solid var(--border); color: var(--primary); padding: 0.5rem 0.75rem; cursor: pointer; font-size: 1.2rem; transition: all 0.2s; flex-shrink: 0;">←</button>
-              <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; flex: 1;">
+              <div id="thumbnails-container" style="display: flex; gap: 0.75rem; flex: 1; overflow: hidden;">
                 ${photos.map((p, i) => {
                   const imageUrl = typeof p === 'string' ? p : p.href;
                   return `<img src="${imageUrl}" alt="Photo ${i+1}"
-                    style="width: 120px; height: 120px; object-fit: cover; cursor: pointer; border: 2px solid transparent; transition: all 0.2s; border-radius: 4px;"
+                    style="width: 120px; height: 120px; object-fit: cover; cursor: pointer; border: 2px solid transparent; transition: all 0.2s; border-radius: 4px; flex-shrink: 0;"
                     class="gallery-thumb"
                     data-full="${imageUrl}"
                     data-index="${i}"
@@ -452,6 +452,10 @@
         `;
         document.querySelector('.property-image').insertAdjacentHTML('afterend', photoGalleryHtml);
 
+        const thumbnailsContainer = document.getElementById('thumbnails-container');
+        let scrollPosition = 0;
+        const thumbWidth = 120 + 6; // 120px width + 6px gap
+
         // Add click handler to gallery thumbnails
         document.querySelectorAll('.gallery-thumb').forEach(thumb => {
           thumb.addEventListener('click', function() {
@@ -462,17 +466,16 @@
           });
         });
 
-        // Add arrow navigation handlers
+        // Add arrow navigation handlers to scroll thumbnails
         document.getElementById('gallery-prev').addEventListener('click', function() {
-          currentPhotoIndex = (currentPhotoIndex - 1 + allPhotos.length) % allPhotos.length;
-          mainPhoto.src = allPhotos[currentPhotoIndex];
-          mainPhoto.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          scrollPosition = Math.max(0, scrollPosition - thumbWidth * 3);
+          thumbnailsContainer.scrollLeft = scrollPosition;
         });
 
         document.getElementById('gallery-next').addEventListener('click', function() {
-          currentPhotoIndex = (currentPhotoIndex + 1) % allPhotos.length;
-          mainPhoto.src = allPhotos[currentPhotoIndex];
-          mainPhoto.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          const maxScroll = thumbnailsContainer.scrollWidth - thumbnailsContainer.clientWidth;
+          scrollPosition = Math.min(maxScroll, scrollPosition + thumbWidth * 3);
+          thumbnailsContainer.scrollLeft = scrollPosition;
         });
       }
 
