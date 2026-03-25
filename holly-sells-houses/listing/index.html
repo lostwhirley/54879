@@ -379,9 +379,9 @@
       console.log('gallery_images:', listing.gallery_images);
       console.log('photos:', listing.photos);
 
-      // Fetch detailed property info including additional photos
+      // Fetch property photos from dedicated photos API
       try {
-        const detailResponse = await fetch(`https://realty-in-us.p.rapidapi.com/properties/v3/detail?property_id=${listing.property_id}`, {
+        const photosResponse = await fetch(`https://realty-in-us.p.rapidapi.com/properties/v3/get-photos?property_id=${listing.property_id}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -389,12 +389,22 @@
             'x-rapidapi-key': '2a1eca8e84msh49b38948c7d92c3p168af6jsnbb278f742246'
           }
         });
-        const detailData = await detailResponse.json();
-        console.log('Property detail API response:', detailData);
+        const photosData = await photosResponse.json();
+        console.log('Property photos API response:', photosData);
 
-        // Merge detail data into listing if available
-        if (detailData.data?.photos && Array.isArray(detailData.data.photos)) {
-          const detailPhotos = detailData.data.photos.map(photo => {
+        // Extract photos from API response
+        let apiPhotos = [];
+        if (Array.isArray(photosData)) {
+          apiPhotos = photosData;
+        } else if (photosData.data && Array.isArray(photosData.data)) {
+          apiPhotos = photosData.data;
+        } else if (photosData.photos && Array.isArray(photosData.photos)) {
+          apiPhotos = photosData.photos;
+        }
+
+        // Process photos to high-res versions
+        if (apiPhotos.length > 0) {
+          const detailPhotos = apiPhotos.map(photo => {
             let url = typeof photo === 'string' ? photo : photo.href;
             // Upgrade to high-res version
             if (url && url.includes('s.jpg')) {
@@ -402,12 +412,12 @@
             }
             return url;
           });
-          console.log(`Detail API returned ${detailPhotos.length} photos`);
+          console.log(`Photos API returned ${detailPhotos.length} photos`);
           listing.gallery_images = detailPhotos;
         }
       } catch (error) {
-        console.warn('Error fetching property details:', error);
-        // Continue with existing listing data if detail API fails
+        console.warn('Error fetching property photos:', error);
+        // Continue with existing listing data if photos API fails
       }
 
       const address = listing.location.address;
