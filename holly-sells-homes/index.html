@@ -1705,6 +1705,9 @@
         return parseInt(b.listing_id) - parseInt(a.listing_id);
       });
 
+      // Save to sessionStorage for use on listing detail pages
+      sessionStorage.setItem('hollyListings', JSON.stringify(areaListings));
+
       // Wait for minimum load time before showing results
       const elapsedTime = Date.now() - startTime;
       if (elapsedTime < minLoadTime) {
