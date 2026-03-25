@@ -81,8 +81,8 @@
     }
     .btn:hover { background: var(--dark); }
 
-    .location-section { background: var(--cream); padding: 4rem 2rem; margin: 3rem 0; }
-    .location-inner { max-width: 1200px; margin: 0 auto; }
+    .location-section { background: var(--cream); padding: 4rem 0; margin: 3rem 0; }
+    .location-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
     .location-header { margin-bottom: 2rem; }
     .location-header h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.8rem; font-weight: 400; margin-bottom: 0.5rem; color: var(--primary); letter-spacing: -0.01em; }
     .location-header p { color: var(--text-muted); font-family: 'Jost', sans-serif; font-size: 0.75rem; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase; }
@@ -118,6 +118,22 @@
     .save-btn { background: none; border: 1px solid var(--accent); color: var(--accent); padding: 0.5rem 1rem; border-radius: 0; font-family: 'Jost', sans-serif; font-weight: 500; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
     .save-btn:hover { background: var(--accent-soft); }
     .save-btn.saved { background: var(--accent); color: var(--white); border-color: var(--accent); }
+
+    .get-in-touch-section { background: var(--light); padding: 4rem 0; margin: 3rem 0; }
+    .get-in-touch-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    .get-in-touch-header { text-align: center; margin-bottom: 3rem; }
+    .get-in-touch-header h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2rem; font-weight: 400; margin-bottom: 0.5rem; color: var(--primary); }
+    .get-in-touch-header p { color: var(--text-muted); font-family: 'Jost', sans-serif; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; }
+    .get-in-touch-content { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem; }
+    .get-in-touch-contact div { margin-bottom: 2rem; }
+    .get-in-touch-contact-label { font-family: 'Jost', sans-serif; font-size: 0.65rem; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.5rem; }
+    .get-in-touch-contact-link { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.5rem; font-weight: 400; color: var(--primary); text-decoration: none; border-bottom: 1px solid var(--accent-soft); display: inline-block; }
+    .get-in-touch-form { background: var(--white); padding: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+    .get-in-touch-form input,
+    .get-in-touch-form textarea { padding: 0.6rem; border: none; border-bottom: 1px solid var(--border); border-radius: 0; font-family: 'Jost', sans-serif; font-size: 0.9rem; background: transparent; color: var(--dark); }
+    .get-in-touch-form textarea { resize: none; min-height: 100px; }
+    .get-in-touch-form button { padding: 0.75rem 1.5rem; background: var(--primary); color: var(--white); border: none; border-radius: 0; font-family: 'Jost', sans-serif; font-weight: 500; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: all 0.2s; margin-top: 0.5rem; }
+    .get-in-touch-form button:hover { background: var(--dark); }
 
     footer { background: var(--cream); color: var(--text-muted); padding: 3rem 2rem; text-align: center; font-family: 'Jost', sans-serif; font-size: 0.75rem; }
     .footer-inner { max-width: 1200px; margin: 0 auto; }
@@ -288,31 +304,31 @@
 </section>
 
 <!-- GET IN TOUCH -->
-<section style="background: var(--light); padding: 4rem 2rem; margin: 3rem 0;">
-  <div style="max-width: 1200px; margin: 0 auto;">
-    <div style="text-align: center; margin-bottom: 3rem;">
-      <h2 style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2rem; font-weight: 400; margin-bottom: 0.5rem; color: var(--primary);">Get in Touch</h2>
-      <p style="color: var(--text-muted); font-family: 'Jost', sans-serif; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;">Ready to learn more? Reach out to Holly today</p>
+<section class="get-in-touch-section">
+  <div class="get-in-touch-inner">
+    <div class="get-in-touch-header">
+      <h2>Get in Touch</h2>
+      <p>Ready to learn more? Reach out to Holly today</p>
     </div>
 
-    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem; margin-bottom: 2rem;">
-      <div>
-        <div style="margin-bottom: 2rem;">
-          <div style="font-family: 'Jost', sans-serif; font-size: 0.65rem; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.5rem;">Phone</div>
-          <a href="tel:2395658760" style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.5rem; font-weight: 400; color: var(--primary); text-decoration: none; border-bottom: 1px solid var(--accent-soft);">239-565-8760</a>
+    <div class="get-in-touch-content">
+      <div class="get-in-touch-contact">
+        <div>
+          <div class="get-in-touch-contact-label">Phone</div>
+          <a href="tel:2395658760" class="get-in-touch-contact-link">239-565-8760</a>
         </div>
         <div>
-          <div style="font-family: 'Jost', sans-serif; font-size: 0.65rem; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.5rem;">Email</div>
-          <a href="mailto:holly@newdayrealty.com" style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.5rem; font-weight: 400; color: var(--primary); text-decoration: none; border-bottom: 1px solid var(--accent-soft);">holly@newdayrealty.com</a>
+          <div class="get-in-touch-contact-label">Email</div>
+          <a href="mailto:holly@newdayrealty.com" class="get-in-touch-contact-link">holly@newdayrealty.com</a>
         </div>
       </div>
 
-      <form style="background: var(--white); padding: 2rem; display: flex; flex-direction: column; gap: 1rem;" onsubmit="event.preventDefault(); alert('Thank you for your inquiry! Holly will contact you shortly.'); this.reset();">
-        <input type="text" placeholder="Your Name" required style="padding: 0.6rem; border: none; border-bottom: 1px solid var(--border); border-radius: 0; font-family: 'Jost', sans-serif; font-size: 0.9rem; background: transparent; color: var(--dark);">
-        <input type="email" placeholder="Your Email" required style="padding: 0.6rem; border: none; border-bottom: 1px solid var(--border); border-radius: 0; font-family: 'Jost', sans-serif; font-size: 0.9rem; background: transparent; color: var(--dark);">
-        <input type="tel" placeholder="Phone Number" style="padding: 0.6rem; border: none; border-bottom: 1px solid var(--border); border-radius: 0; font-family: 'Jost', sans-serif; font-size: 0.9rem; background: transparent; color: var(--dark);">
-        <textarea placeholder="Message or Questions..." style="padding: 0.6rem; border: none; border-bottom: 1px solid var(--border); border-radius: 0; font-family: 'Jost', sans-serif; font-size: 0.9rem; background: transparent; color: var(--dark); resize: none; min-height: 100px;"></textarea>
-        <button type="submit" style="padding: 0.75rem 1.5rem; background: var(--primary); color: var(--white); border: none; border-radius: 0; font-family: 'Jost', sans-serif; font-weight: 500; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: all 0.2s; margin-top: 0.5rem;">Send Inquiry</button>
+      <form class="get-in-touch-form" onsubmit="event.preventDefault(); alert('Thank you for your inquiry! Holly will contact you shortly.'); this.reset();">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <input type="tel" placeholder="Phone Number">
+        <textarea placeholder="Message or Questions..."></textarea>
+        <button type="submit">Send Inquiry</button>
       </form>
     </div>
   </div>
