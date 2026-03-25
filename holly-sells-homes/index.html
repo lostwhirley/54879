@@ -1709,11 +1709,11 @@
             '6174 Revelry Ct': 'listing/6174-revelry-ct-ave-maria-fl/',
             '6217 Harmony Dr': 'listing/6217-Harmony-Drive-ava-marie-fl/'
           };
-          const localPath = addressMap[line.split(' Unit')[0].split(' Apt')[0]];
+          // Extract street address (before the comma for city)
+          const streetAddress = line.split(',')[0].trim();
+          const localPath = addressMap[streetAddress];
           if (localPath) {
             window.location.href = localPath;
-          } else {
-            window.open(listing.href, '_blank');
           }
         });
 
