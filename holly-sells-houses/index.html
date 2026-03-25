@@ -1102,7 +1102,7 @@
           const streetAddress = line.split(',')[0].trim();
           // Convert to URL slug (e.g., '5872 Mayflower Way' -> '5872-mayflower-way')
           const slug = streetAddress.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9\-]/g, '');
-          window.location.href = `/listing/${slug}/`;
+          window.location.href = `listing/${slug}/`;
         });
 
         listingsGrid.appendChild(card);
