@@ -1053,8 +1053,44 @@
         return parseInt(b.listing_id) - parseInt(a.listing_id);
       });
 
-      // Save to sessionStorage for use on listing detail pages
-      sessionStorage.setItem('hollyListings', JSON.stringify(areaListings));
+      // Fetch detailed property information and images for each listing
+      const enhancedListings = await Promise.all(areaListings.map(async (listing) => {
+        try {
+          const propertyDetail = await fetch(`https://realty-us.p.rapidapi.com/properties/detail?propertyId=${listing.property_id}`, {
+            headers: {
+              'x-rapidapi-key': '2a1eca8e84msh49b38948c7d92c3p168af6jsnbb278f742246',
+              'x-rapidapi-host': 'realty-us.p.rapidapi.com'
+            }
+          });
+
+          const detailData = await propertyDetail.json();
+
+          // Extract and transform image URLs
+          let images = [];
+          if (detailData.data && detailData.data.photos) {
+            images = detailData.data.photos.map(photo => {
+              // Replace s.jpg with od-w1024_h768 for larger version
+              return photo.href.replace(/s\.jpg/, 'od-w1024_h768.jpg');
+            });
+          }
+
+          // Add images to listing object
+          return {
+            ...listing,
+            gallery_images: images
+          };
+        } catch (error) {
+          console.warn(`Error fetching details for property ${listing.property_id}:`, error);
+          // Return listing with empty images array if detail fetch fails
+          return {
+            ...listing,
+            gallery_images: []
+          };
+        }
+      }));
+
+      // Save enhanced listings to sessionStorage for use on listing detail pages
+      sessionStorage.setItem('hollyListings', JSON.stringify(enhancedListings));
 
       // Wait for minimum load time before showing results
       const elapsedTime = Date.now() - startTime;
@@ -1066,7 +1102,7 @@
       listingsGrid.innerHTML = '';
 
       // Generate listing cards
-      areaListings.forEach(listing => {
+      enhancedListings.forEach(listing => {
         const address = listing.location.address;
         const price = listing.list_price;
         const beds = listing.description.beds;
