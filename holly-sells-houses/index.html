@@ -162,17 +162,22 @@
       max-width: 1200px;
       margin: 0 auto;
       width: 100%;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
       align-items: center;
+      justify-content: center;
+      min-height: 620px;
+      padding: 0 2rem;
     }
 
     .hero-content {
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
-      text-align: left;
+      justify-content: center;
+      align-items: center;
+      padding: 4rem 2rem;
+      text-align: center;
     }
 
     .hero-content h1 {
@@ -192,7 +197,7 @@
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
-      justify-content: flex-start;
+      justify-content: center;
       margin-top: 1.5rem;
     }
 
@@ -554,9 +559,7 @@
       }
 
       .hero-inner {
-        grid-template-columns: 1fr;
-        padding: 0;
-        gap: 1.5rem;
+        padding: 0 1.5rem;
       }
 
       .hero-content h1 {
