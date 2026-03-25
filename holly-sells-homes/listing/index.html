@@ -436,7 +436,11 @@
     // Set home price to listing price when it loads
     setTimeout(() => {
       const price = parseInt(document.getElementById('price').textContent.replace(/[^0-9]/g, ''));
-      if (price) document.getElementById('homePrice').value = price;
+      if (price) {
+        document.getElementById('homePrice').value = price;
+        document.getElementById('homePriceSlider').value = price;
+        calculateMortgage();
+      }
     }, 100);
   });
 
