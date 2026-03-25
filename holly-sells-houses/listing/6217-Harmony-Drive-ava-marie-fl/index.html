@@ -507,5 +507,82 @@
   </div>
 </footer>
 
+<script>
+  // Fetch listing data from API and populate page
+  async function populateListingData() {
+    try {
+      const response = await fetch('https://realty-us.p.rapidapi.com/agents/v2/listings?fulfillmentId=100732851', {
+        headers: {
+          'x-rapidapi-key': '2a1eca8e84msh49b38948c7d92c3p168af6jsnbb278f742246',
+          'x-rapidapi-host': 'realty-us.p.rapidapi.com'
+        }
+      });
+
+      const data = await response.json();
+      const listings = data.data.home_search.results;
+
+      // Find listing matching this address (6217 Harmony Drive)
+      const listing = listings.find(l => l.location.address.line.includes('6217') && l.location.address.line.includes('Harmony'));
+
+      if (!listing) return;
+
+      const address = listing.location.address;
+      const desc = listing.description;
+
+      // Update hero price if needed
+      const priceEl = document.querySelector('.hero-price');
+      if (priceEl) {
+        priceEl.textContent = `$${listing.list_price.toLocaleString()}`;
+      }
+
+      // Update specs grid with API data
+      const specsGrid = document.querySelector('.specs-grid');
+      if (specsGrid) {
+        specsGrid.innerHTML = `
+          <div class="spec-item">
+            <div class="spec-label">Bedrooms</div>
+            <div class="spec-value">${desc.beds}</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Bathrooms</div>
+            <div class="spec-value">${desc.baths_consolidated}</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Price</div>
+            <div class="spec-value">$${listing.list_price.toLocaleString()}</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Square Feet</div>
+            <div class="spec-value">${desc.sqft ? desc.sqft.toLocaleString() : 'N/A'}</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Lot Size</div>
+            <div class="spec-value">${desc.lot_sqft ? desc.lot_sqft.toLocaleString() + ' sqft' : 'N/A'}</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Stories</div>
+            <div class="spec-value">${desc.stories || 'N/A'}</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Status</div>
+            <div class="spec-value">${listing.status.replace('_', ' ')}</div>
+          </div>
+          ${desc.sold_date ? `
+            <div class="spec-item">
+              <div class="spec-label">Last Sold</div>
+              <div class="spec-value">$${desc.sold_price.toLocaleString()}</div>
+            </div>
+          ` : ''}
+        `;
+      }
+    } catch (error) {
+      console.error('Error loading listing data:', error);
+    }
+  }
+
+  // Load data when page loads
+  document.addEventListener('DOMContentLoaded', populateListingData);
+</script>
+
 </body>
 </html>
