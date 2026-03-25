@@ -1026,6 +1026,59 @@
     const listingsGrid = document.getElementById('listings-grid');
 
     try {
+      // Check if listings are already cached in sessionStorage
+      const cachedListings = sessionStorage.getItem('hollyListings');
+      if (cachedListings) {
+        // Use cached data
+        const enhancedListings = JSON.parse(cachedListings);
+
+        // Clear loading message
+        listingsGrid.innerHTML = '';
+
+        // Generate listing cards from cached data
+        enhancedListings.forEach(listing => {
+          const address = listing.location.address;
+          const price = listing.list_price;
+          const beds = listing.description.beds;
+          const baths = listing.description.baths_consolidated;
+          const photo = listing.primary_photo?.href || '';
+          const line = address.line;
+
+          const card = document.createElement('div');
+          card.style.cssText = 'text-decoration: none; color: inherit;';
+
+          const photoHtml = photo
+            ? `<img src="${photo}" alt="${line}" style="width: 100%; height: 300px; object-fit: cover; display: block;">`
+            : `<div style="height: 300px; background: linear-gradient(135deg, #1a3c5e 0%, #2d5a7b 100%); display: flex; align-items: center; justify-content: center; color: white; font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em;">Photos Loading...</div>`;
+
+          card.innerHTML = `
+            <div class="listing-card">
+              ${photoHtml}
+              <div class="listing-content">
+                <div class="listing-price">$${price.toLocaleString()}</div>
+                <div class="listing-address">${line}</div>
+                <div class="listing-city">${address.city}, ${address.state_code} ${address.postal_code}</div>
+                <div class="listing-specs">
+                  <div class="spec">${beds} Bed</div>
+                  <div class="spec">${baths} Bath</div>
+                </div>
+                <div class="btn btn-primary">View ${address.street_number} ${address.street_name}</div>
+              </div>
+            </div>
+          `;
+
+          card.addEventListener('click', function(e) {
+            e.preventDefault();
+            sessionStorage.setItem('selectedListing', JSON.stringify(listing));
+            window.location.href = 'listing/';
+          });
+
+          listingsGrid.appendChild(card);
+        });
+
+        return; // Exit early since we're using cached data
+      }
+
       // Ensure spinner shows for at least 500ms
       const startTime = Date.now();
       const minLoadTime = 500;
