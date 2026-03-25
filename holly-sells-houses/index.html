@@ -1126,13 +1126,22 @@
       console.log(`Found ${listings.length} of Holly's listings`);
       const areaListings = listings;
 
-      // Populate gallery_images from API response
-      // Populate gallery_images from photos array in JSON
+      // Populate gallery_images from API response with high-res versions
       const enhancedListings = areaListings.map(listing => {
+        // Transform primary photo to high-res version
+        let primaryPhotoHref = listing.primary_photo?.href || '';
+        if (primaryPhotoHref && primaryPhotoHref.includes('s.jpg')) {
+          primaryPhotoHref = primaryPhotoHref.replace(/s\.jpg/, 'od-w1024_h768.jpg');
+        }
+
         // Get photos from listing (API format includes photos array with href property)
         const photos = listing.photos || [];
         const imageUrls = photos.map(photo => {
-          const url = typeof photo === 'string' ? photo : photo.href;
+          let url = typeof photo === 'string' ? photo : photo.href;
+          // Replace s.jpg with od-w1024_h768 for larger version
+          if (url && url.includes('s.jpg')) {
+            url = url.replace(/s\.jpg/, 'od-w1024_h768.jpg');
+          }
           return url;
         });
 
@@ -1140,6 +1149,7 @@
 
         return {
           ...listing,
+          primary_photo: { ...listing.primary_photo, href: primaryPhotoHref },
           gallery_images: imageUrls,
           photos: imageUrls.length > 0 ? imageUrls.map(url => ({ href: url })) : listing.photos
         };
