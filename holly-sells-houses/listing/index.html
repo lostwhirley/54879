@@ -379,51 +379,22 @@
       console.log('gallery_images:', listing.gallery_images);
       console.log('photos:', listing.photos);
 
-      // Fetch property photos from dedicated photos API
-      try {
-        const photosResponse = await fetch(`https://realty-in-us.p.rapidapi.com/properties/v3/get-photos?property_id=${listing.property_id}`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'x-rapidapi-host': 'realty-in-us.p.rapidapi.com',
-            'x-rapidapi-key': '2a1eca8e84msh49b38948c7d92c3p168af6jsnbb278f742246'
+      // Process photos from listing data (already includes all photos from API)
+      if (listing.photos && listing.photos.length > 0) {
+        const processedPhotos = listing.photos.map(photo => {
+          let url = typeof photo === 'string' ? photo : photo.href;
+          // Convert HTTP to HTTPS
+          if (url && url.startsWith('http://')) {
+            url = url.replace('http://', 'https://');
           }
+          // Upgrade to high-res version
+          if (url && url.includes('s.jpg')) {
+            url = url.replace(/s\.jpg/, 'od-w1024_h768.jpg');
+          }
+          return url;
         });
-        const photosData = await photosResponse.json();
-        console.log('Property photos API response:', photosData);
-
-        // Extract photos from API response
-        let apiPhotos = [];
-        if (Array.isArray(photosData)) {
-          apiPhotos = photosData;
-        } else if (photosData.data?.home_search?.results?.[0]?.photos && Array.isArray(photosData.data.home_search.results[0].photos)) {
-          apiPhotos = photosData.data.home_search.results[0].photos;
-        } else if (photosData.data && Array.isArray(photosData.data)) {
-          apiPhotos = photosData.data;
-        } else if (photosData.photos && Array.isArray(photosData.photos)) {
-          apiPhotos = photosData.photos;
-        }
-
-        // Process photos to high-res versions
-        if (apiPhotos.length > 0) {
-          const detailPhotos = apiPhotos.map(photo => {
-            let url = typeof photo === 'string' ? photo : photo.href;
-            // Convert HTTP to HTTPS
-            if (url && url.startsWith('http://')) {
-              url = url.replace('http://', 'https://');
-            }
-            // Upgrade to high-res version
-            if (url && url.includes('s.jpg')) {
-              url = url.replace(/s\.jpg/, 'od-w1024_h768.jpg');
-            }
-            return url;
-          });
-          console.log(`Photos API returned ${detailPhotos.length} photos`);
-          listing.gallery_images = detailPhotos;
-        }
-      } catch (error) {
-        console.warn('Error fetching property photos:', error);
-        // Continue with existing listing data if photos API fails
+        console.log(`Property has ${processedPhotos.length} photos`);
+        listing.gallery_images = processedPhotos;
       }
 
       const address = listing.location.address;
