@@ -252,8 +252,16 @@
 
   async function loadListing() {
     try {
-      // Show loader
+      // Reset page content immediately to avoid showing old data
+      document.getElementById('address').textContent = 'Loading...';
+      document.getElementById('price').textContent = '—';
+      document.getElementById('beds').textContent = '—';
+      document.getElementById('baths').textContent = '—';
+      document.getElementById('status-badge').textContent = '—';
+      document.getElementById('specs-grid').innerHTML = '<div class="spec-item"><div class="spec-label">Loading...</div><div class="spec-value">—</div></div>';
+
       const mainPhoto = document.getElementById('main-photo');
+      mainPhoto.src = '';
       mainPhoto.style.background = '#f0f0f0';
 
       // Try to get listings from sessionStorage first
