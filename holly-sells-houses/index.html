@@ -1091,7 +1091,7 @@
       const minLoadTime = 500;
 
       // Fetch from local listings.json instead of API (API quota exhausted)
-      const response = await fetch('../listings.json');
+      const response = await fetch('./listings.json');
       const data = await response.json();
       const listings = data.data?.home_search?.results || data;
 
