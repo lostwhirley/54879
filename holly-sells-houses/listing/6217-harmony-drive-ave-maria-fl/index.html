@@ -528,11 +528,48 @@
 
       const address = listing.location.address;
       const desc = listing.description;
+      const photos = listing.photos || [];
+      const primaryPhoto = listing.primary_photo?.href || '';
 
       // Update hero price if needed
       const priceEl = document.querySelector('.hero-price');
       if (priceEl) {
         priceEl.textContent = `$${listing.list_price.toLocaleString()}`;
+      }
+
+      // Update property image (if exists in this template)
+      const propertyImage = document.querySelector('.property-image img');
+      if (propertyImage && primaryPhoto) {
+        propertyImage.src = primaryPhoto;
+      }
+
+      // Add photo gallery after property image (if property image section exists)
+      if (photos.length > 0 && propertyImage) {
+        const photoGalleryHtml = `
+          <div style="max-width: 1200px; margin: 2rem auto; padding: 0 2rem;">
+            <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--primary);">Photo Gallery (${photos.length} photos)</h3>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2rem;">
+              ${photos.slice(0, 8).map((p, i) =>
+                `<img src="${p.href}" alt="Photo ${i+1}"
+                  style="width: 120px; height: 120px; object-fit: cover; cursor: pointer; border: 2px solid transparent; transition: all 0.2s; border-radius: 4px;"
+                  class="gallery-thumb"
+                  data-full="${p.href}"
+                  onmouseover="this.style.borderColor='var(--accent)'; this.style.transform='scale(1.05)'"
+                  onmouseout="this.style.borderColor='transparent'; this.style.transform='scale(1)'">`
+              ).join('')}
+            </div>
+          </div>
+        `;
+        const propertySection = document.querySelector('.property-image');
+        propertySection.insertAdjacentHTML('afterend', photoGalleryHtml);
+
+        // Add click handler to gallery thumbnails
+        document.querySelectorAll('.gallery-thumb').forEach(thumb => {
+          thumb.addEventListener('click', function() {
+            propertyImage.src = this.dataset.full;
+            propertyImage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          });
+        });
       }
 
       // Update specs grid with API data
