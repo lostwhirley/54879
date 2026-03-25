@@ -415,12 +415,6 @@
             <div class="spec-label">Status</div>
             <div class="spec-value">${listing.status.replace('_', ' ')}</div>
           </div>
-          ${desc.sold_date ? `
-            <div class="spec-item">
-              <div class="spec-label">Last Sold</div>
-              <div class="spec-value">$${desc.sold_price.toLocaleString()}</div>
-            </div>
-          ` : ''}
         `;
       }
     } catch (error) {
