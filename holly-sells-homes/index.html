@@ -1399,6 +1399,28 @@
         font-size: 1.5rem;
       }
     }
+
+    /* SPINNER LOADER */
+    .spinner-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 2rem;
+      grid-column: 1/-1;
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid rgba(176, 141, 122, 0.2);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
   </style>
 </head>
 <body>
@@ -1458,7 +1480,9 @@
 
   <div class="listings-grid" id="listings-grid">
     <!-- Listings will be loaded here by JavaScript -->
-    <div style="text-align: center; padding: 2rem; grid-column: 1/-1; color: var(--text-muted);">Loading listings...</div>
+    <div class="spinner-container">
+      <div class="spinner"></div>
+    </div>
   </div>
 </section>
 
@@ -1666,6 +1690,9 @@
       const areaListings = listings.filter(listing =>
         listing.location.address.city.toLowerCase() === 'ave maria'
       );
+
+      // Sort by listing_id descending (newest first)
+      areaListings.sort((a, b) => parseInt(b.listing_id) - parseInt(a.listing_id));
 
       // Clear loading message
       listingsGrid.innerHTML = '';
