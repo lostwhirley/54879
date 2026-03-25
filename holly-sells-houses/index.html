@@ -1098,10 +1098,9 @@
 
         card.addEventListener('click', function(e) {
           e.preventDefault();
-          // Create full slug with street, city, state (e.g., '5872-mayflower-way-ave-maria-fl')
-          const fullAddress = `${line}, ${address.city}, ${address.state_code}`;
-          const slug = fullAddress.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9\-]/g, '');
-          window.location.href = `listing/${slug}/`;
+          // Pass the listing object to the listing page
+          sessionStorage.setItem('selectedListing', JSON.stringify(listing));
+          window.location.href = 'listing/';
         });
 
         listingsGrid.appendChild(card);
