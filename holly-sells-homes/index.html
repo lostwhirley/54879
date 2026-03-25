@@ -1751,10 +1751,9 @@
 
         card.addEventListener('click', function(e) {
           e.preventDefault();
-          // Extract street address (before the comma for city)
-          const streetAddress = line.split(',')[0].trim();
-          // Convert to URL slug (e.g., '5872 Mayflower Way' -> '5872-mayflower-way')
-          const slug = streetAddress.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9\-]/g, '');
+          // Create full slug with street, city, state (e.g., '5872-mayflower-way-ave-maria-fl')
+          const fullAddress = `${line}, ${address.city}, ${address.state_code}`;
+          const slug = fullAddress.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9\-]/g, '');
           window.location.href = `listing/${slug}/`;
         });
 

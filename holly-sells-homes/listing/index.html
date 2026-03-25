@@ -234,14 +234,9 @@
 </footer>
 
 <script>
-  // Get address slug from URL path
+  // Get address slug from URL path (e.g., '5872-mayflower-way-ave-maria-fl')
   const pathParts = window.location.pathname.split('/').filter(p => p);
   const addressSlug = pathParts[pathParts.length - 2] || '';
-
-  // Convert slug to search terms (e.g., '5872-mayflower-way' -> '5872' and 'Mayflower')
-  const slugParts = addressSlug.split('-');
-  const streetNumber = slugParts[0];
-  const searchTerms = slugParts.slice(1);
 
   async function loadListing() {
     try {
@@ -278,10 +273,11 @@
         sessionStorage.setItem('hollyListings', JSON.stringify(listings));
       }
 
-      // Find matching listing
+      // Find matching listing by comparing URL slug with formatted address
       const listing = listings.find(l => {
-        const line = l.location.address.line.toUpperCase();
-        return line.includes(streetNumber) && searchTerms.every(term => line.includes(term.toUpperCase()));
+        const fullAddr = `${l.location.address.line}, ${l.location.address.city}, ${l.location.address.state_code}`;
+        const listingSlug = fullAddr.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9\-]/g, '');
+        return listingSlug === addressSlug;
       });
 
       if (!listing) {
