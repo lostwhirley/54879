@@ -5,63 +5,72 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title id="page-title">Listing | Holly Trapani</title>
   <meta name="description" id="page-description" content="Property listing - Holly Trapani Real Estate">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --primary: #1a3c5e;
-      --accent: #e8a838;
-      --dark: #111827;
-      --light: #f7f8fa;
+      --primary: #3d3530;
+      --accent: #b08d7a;
+      --accent-soft: #d4b8a8;
+      --dark: #2c2420;
+      --light: #f5f0eb;
+      --cream: #faf7f4;
       --white: #ffffff;
-      --gray: #9ca3af;
+      --gray: #a89d98;
+      --border: #e8ddd7;
+      --text-muted: #7a6e69;
     }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--dark); background: var(--white); line-height: 1.6; }
+    body { font-family: 'Jost', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--dark); background: var(--cream); line-height: 1.7; font-weight: 300; letter-spacing: 0.01em; }
 
-    nav { position: sticky; top: 0; background: var(--white); border-bottom: 1px solid #e5e7eb; z-index: 100; }
+    nav { position: sticky; top: 0; background: var(--cream); border-bottom: 1px solid var(--border); z-index: 100; }
     .nav-inner { max-width: 1200px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
-    .nav-logo { font-size: 1.25rem; font-weight: 700; color: var(--primary); text-decoration: none; }
-    .nav-logo span { display: block; font-size: 0.75rem; font-weight: 500; color: var(--gray); margin-top: 2px; }
-    .nav-back { color: var(--accent); text-decoration: none; font-size: 0.9rem; font-weight: 600; }
-    .nav-back:hover { text-decoration: underline; }
+    .nav-logo { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.25rem; font-style: italic; font-weight: 400; color: var(--primary); text-decoration: none; }
+    .nav-logo span { font-family: 'Jost', sans-serif; display: block; font-size: 0.65rem; font-weight: 500; color: var(--text-muted); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.15em; font-style: normal; }
+    .nav-back { color: var(--primary); text-decoration: none; font-family: 'Jost', sans-serif; font-size: 0.8rem; font-weight: 400; text-transform: uppercase; letter-spacing: 0.1em; }
+    .nav-back:hover { color: var(--accent); }
 
-    .hero { background: linear-gradient(135deg, var(--primary) 0%, #2d5a7b 100%); color: var(--white); padding: 4rem 2rem; }
+    .hero { background: var(--cream); color: var(--dark); padding: 4rem 2rem; }
     .hero-inner { max-width: 1200px; margin: 0 auto; }
-    .hero h1 { font-size: 2.8rem; margin-bottom: 0.75rem; font-weight: 700; letter-spacing: -0.5px; }
-    .hero-sub { font-size: 1.2rem; color: #d1d5db; margin-bottom: 1.25rem; font-weight: 500; }
-    .hero-price { font-size: 2.2rem; font-weight: 700; color: var(--accent); margin-bottom: 1.5rem; }
+    .hero h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2.8rem; margin-bottom: 0.75rem; font-weight: 400; letter-spacing: -0.5px; color: var(--primary); }
+    .hero-sub { font-family: 'Jost', sans-serif; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1.25rem; font-weight: 400; text-transform: uppercase; letter-spacing: 0.12em; }
+    .hero-price { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2.2rem; font-weight: 400; color: var(--accent); margin-bottom: 1.5rem; }
     .hero-specs { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-    .spec-badge { background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 0.65rem 1.25rem; border-radius: 25px; font-size: 0.95rem; font-weight: 500; border: 1px solid rgba(255,255,255,0.2); transition: all 0.2s; }
-    .spec-badge:hover { background: rgba(255,255,255,0.25); }
+    .spec-badge { background: transparent; border: 1px solid var(--border); padding: 0.65rem 1.25rem; border-radius: 0; font-family: 'Jost', sans-serif; font-size: 0.75rem; font-weight: 400; text-transform: uppercase; letter-spacing: 0.12em; color: var(--primary); transition: all 0.2s; }
+    .spec-badge:hover { border-color: var(--accent); color: var(--accent); }
 
     .property-image { max-width: 1200px; margin: 2rem auto; padding: 0 2rem; }
-    .property-image img { width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+    .property-image img { width: 100%; border-radius: 0; box-shadow: none; }
 
     .details { max-width: 1200px; margin: 3rem auto; padding: 0 2rem; }
-    .details h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; }
-    .details p { color: #4b5563; line-height: 1.8; margin-bottom: 1rem; }
+    .details h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.8rem; font-weight: 400; margin-bottom: 1rem; color: var(--primary); }
+    .details p { color: var(--text-muted); line-height: 1.8; margin-bottom: 1rem; font-family: 'Jost', sans-serif; font-weight: 300; }
 
     .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
-    .spec-item { background: var(--light); padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--accent); }
-    .spec-label { font-size: 0.8rem; font-weight: 600; color: var(--primary); text-transform: uppercase; margin-bottom: 0.5rem; }
-    .spec-value { font-size: 1.25rem; font-weight: 700; color: var(--dark); }
+    .spec-item { background: var(--white); padding: 1.5rem; border-radius: 0; border-bottom: 1px solid var(--border); }
+    .spec-label { font-family: 'Jost', sans-serif; font-size: 0.65rem; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.5rem; }
+    .spec-value { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.5rem; font-weight: 400; color: var(--primary); }
 
-    .contact-bar { background: var(--light); padding: 2rem; margin: 3rem 0; border-radius: 12px; }
+    .contact-bar { background: var(--cream); padding: 2rem; margin: 3rem 0; border-radius: 0; }
     .contact-inner { max-width: 1200px; margin: 0 auto; padding: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; }
-    .contact-info h3 { font-size: 1.25rem; margin-bottom: 1rem; }
+    .contact-info h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.5rem; font-weight: 400; margin-bottom: 1rem; color: var(--primary); }
     .contact-item { margin-bottom: 1rem; }
-    .contact-label { font-size: 0.8rem; font-weight: 600; color: var(--primary); text-transform: uppercase; margin-bottom: 0.25rem; }
-    .contact-value { font-size: 1rem; color: var(--dark); }
-    .contact-value a { color: var(--accent); text-decoration: none; font-weight: 600; }
+    .contact-label { font-family: 'Jost', sans-serif; font-size: 0.65rem; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.25rem; }
+    .contact-value { font-family: 'Jost', sans-serif; font-size: 0.95rem; font-weight: 300; color: var(--dark); }
+    .contact-value a { color: var(--accent); text-decoration: none; font-weight: 400; border-bottom: 1px solid var(--accent-soft); }
+    .contact-value a:hover { border-bottom-color: var(--accent); }
 
     .btn {
       padding: 0.75rem 1.5rem;
-      background: var(--accent);
-      color: var(--primary);
+      background: var(--primary);
+      color: var(--white);
       border: none;
-      border-radius: 6px;
-      font-weight: 600;
+      border-radius: 0;
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
       cursor: pointer;
       text-decoration: none;
       display: flex;
@@ -70,21 +79,21 @@
       transition: all 0.2s;
       min-height: 44px;
     }
-    .btn:hover { background: #f0b84f; transform: translateY(-2px); }
+    .btn:hover { background: var(--dark); }
 
-    .location-section { background: var(--white); padding: 4rem 2rem; margin: 3rem 0; }
+    .location-section { background: var(--cream); padding: 4rem 2rem; margin: 3rem 0; }
     .location-inner { max-width: 1200px; margin: 0 auto; }
     .location-header { margin-bottom: 2rem; }
-    .location-header h2 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--dark); letter-spacing: 0.05em; }
-    .location-header p { color: #4b5563; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; }
-    .location-map { width: 100%; height: 600px; border-radius: 8px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-top: 2rem; }
+    .location-header h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.8rem; font-weight: 400; margin-bottom: 0.5rem; color: var(--primary); letter-spacing: -0.01em; }
+    .location-header p { color: var(--text-muted); font-family: 'Jost', sans-serif; font-size: 0.75rem; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase; }
+    .location-map { width: 100%; height: 600px; border-radius: 0; overflow: hidden; box-shadow: none; margin-top: 2rem; }
     .location-map iframe { width: 100%; height: 100%; border: none; }
 
     .loader { text-align: center; padding: 4rem 2rem; }
-    .spinner { width: 50px; height: 50px; border: 4px solid rgba(232, 168, 56, 0.15); border-top-color: var(--accent); border-right-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto; }
+    .spinner { width: 50px; height: 50px; border: 4px solid rgba(176, 141, 122, 0.15); border-top-color: var(--accent); border-right-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto; }
     @keyframes spin { 0% { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-    .page-loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--white); display: flex; align-items: center; justify-content: center; z-index: 9999; }
+    .page-loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--cream); display: flex; align-items: center; justify-content: center; z-index: 9999; }
     .page-loader.hidden { display: none; }
 
     .hero { opacity: 0; }
@@ -92,84 +101,85 @@
     .property-image img { opacity: 0; }
     .property-image img.loaded { opacity: 1; transition: opacity 0.3s; }
 
-    .calculator-section { background: var(--light); padding: 3rem 2rem; margin: 3rem 0; border-radius: 8px; }
+    .calculator-section { background: var(--light); padding: 3rem 2rem; margin: 3rem 0; border-radius: 0; }
     .calculator-inner { max-width: 1200px; margin: 0 auto; }
-    .calculator-inner h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem; color: var(--primary); }
+    .calculator-inner h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.8rem; font-weight: 400; margin-bottom: 2rem; color: var(--primary); }
     .calculator-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
     .calc-input { display: flex; flex-direction: column; }
-    .calc-input label { font-size: 0.85rem; font-weight: 600; color: var(--primary); margin-bottom: 0.5rem; text-transform: uppercase; }
-    .calc-input input { padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 4px; font-size: 1rem; }
-    .calc-result { background: var(--white); padding: 1.5rem; border-radius: 4px; border-left: 4px solid var(--accent); }
-    .calc-label { font-size: 0.9rem; color: #6b7280; margin-bottom: 0.5rem; }
-    .calc-value { font-size: 1.75rem; font-weight: 700; color: var(--primary); }
-    .save-btn { background: none; border: 2px solid var(--accent); color: var(--accent); padding: 0.6rem 1.2rem; border-radius: 4px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
-    .save-btn:hover { background: var(--accent); color: var(--white); }
-    .save-btn.saved { background: var(--accent); color: var(--white); }
+    .calc-input label { font-family: 'Jost', sans-serif; font-size: 0.65rem; font-weight: 500; color: var(--text-muted); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.15em; }
+    .calc-input input { padding: 0.75rem; border: none; border-bottom: 1px solid var(--border); border-radius: 0; font-family: 'Jost', sans-serif; font-size: 0.9rem; background: transparent; color: var(--dark); }
+    .calc-input input:focus { outline: none; border-bottom-color: var(--accent); }
+    .calc-result { background: var(--white); padding: 1.5rem; border-radius: 0; border-bottom: 1px solid var(--border); }
+    .calc-label { font-family: 'Jost', sans-serif; font-size: 0.65rem; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.5rem; }
+    .calc-value { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2rem; font-weight: 400; color: var(--primary); }
+    .save-btn { background: none; border: 1px solid var(--accent); color: var(--accent); padding: 0.6rem 1.2rem; border-radius: 0; font-family: 'Jost', sans-serif; font-weight: 500; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: all 0.2s; }
+    .save-btn:hover { background: var(--accent-soft); }
+    .save-btn.saved { background: var(--accent); color: var(--white); border-color: var(--accent); }
 
-    footer { background: var(--primary); color: #d1d5db; padding: 3rem 2rem; text-align: center; font-size: 0.9rem; }
+    footer { background: var(--cream); color: var(--text-muted); padding: 3rem 2rem; text-align: center; font-family: 'Jost', sans-serif; font-size: 0.75rem; }
     .footer-inner { max-width: 1200px; margin: 0 auto; }
-    .footer-brokerage { font-weight: 600; color: var(--white); margin-bottom: 0.5rem; }
+    .footer-brokerage { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 400; color: var(--primary); margin-bottom: 0.5rem; font-size: 0.95rem; }
     .footer-links { display: flex; justify-content: center; gap: 2rem; margin-top: 1rem; flex-wrap: wrap; }
-    .footer-links a { color: #d1d5db; text-decoration: none; display: flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 0.5rem; }
+    .footer-links a { color: var(--text-muted); text-decoration: none; font-family: 'Jost', sans-serif; font-weight: 400; text-transform: uppercase; letter-spacing: 0.12em; display: flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 0.5rem; transition: color 0.2s; }
     .footer-links a:hover { color: var(--accent); }
 
     @media (max-width: 768px) {
       .nav-inner { padding: 0.75rem 1rem; }
-      .nav-logo { font-size: 1.2rem; }
-      .nav-logo span { font-size: 0.6rem; margin-top: 2px; }
+      .nav-logo { font-size: 1.15rem; }
+      .nav-logo span { font-size: 0.55rem; margin-top: 2px; }
       .hero { padding: 2rem 1.5rem; }
       .hero h1 { font-size: 1.8rem; }
-      .hero-sub { font-size: 1rem; }
+      .hero-sub { font-size: 0.7rem; }
       .hero-price { font-size: 1.8rem; }
       .hero-specs { gap: 0.75rem; flex-direction: column; }
       .spec-badge { width: 100%; text-align: center; }
       .property-image { padding: 0 1.5rem; margin: 1.5rem auto; }
       .details { padding: 2rem 1.5rem; margin: 2rem 0; }
-      .details h2 { font-size: 1.3rem; }
+      .details h2 { font-size: 1.4rem; }
       .specs-grid { gap: 1rem; }
       .contact-bar { padding: 1.5rem; margin: 2rem 0; }
       .contact-inner { grid-template-columns: 1fr; padding: 1.5rem; gap: 1.5rem; }
-      .contact-info h3 { font-size: 1.1rem; }
+      .contact-info h3 { font-size: 1.3rem; }
       .contact-item { margin-bottom: 0.75rem; }
       .btn { width: 100%; min-height: 48px; }
       .location-section { padding: 2rem 1.5rem; margin: 2rem 0; }
-      .location-header h2 { font-size: 1.5rem; }
+      .location-header h2 { font-size: 1.6rem; }
       .location-map { height: 400px; }
       footer { padding: 2rem 1.5rem; }
-      .footer-brokerage { font-size: 0.95rem; }
+      .footer-brokerage { font-size: 0.9rem; }
       .footer-links { gap: 1rem; }
       .footer-links a { min-height: 44px; padding: 0 0.25rem; }
     }
 
     @media (max-width: 480px) {
       .nav-inner { padding: 0.75rem 1rem; }
-      .nav-logo { font-size: 1.1rem; }
+      .nav-logo { font-size: 1.05rem; }
       .hero { padding: 2rem 1rem; }
       .hero h1 { font-size: 1.5rem; }
-      .hero-sub { font-size: 0.9rem; }
+      .hero-sub { font-size: 0.65rem; }
       .hero-price { font-size: 1.5rem; }
       .hero-specs { gap: 0.5rem; flex-direction: column; }
       .spec-badge { width: 100%; text-align: center; }
       .property-image { padding: 0 1rem; margin: 1rem auto; }
-      .property-image img { border-radius: 8px; }
+      .property-image img { border-radius: 0; }
       .details { padding: 1.5rem 1rem; margin: 1rem 0; }
-      .details h2 { font-size: 1.2rem; }
+      .details h2 { font-size: 1.3rem; }
       .specs-grid { grid-template-columns: 1fr; gap: 0.75rem; }
       .spec-item { padding: 1rem; }
-      .spec-label { font-size: 0.7rem; }
-      .spec-value { font-size: 1.1rem; }
+      .spec-label { font-size: 0.6rem; }
+      .spec-value { font-size: 1.2rem; }
       .contact-bar { padding: 1rem; margin: 1.5rem 0; }
       .contact-inner { padding: 1rem; gap: 1rem; }
-      .contact-info h3 { font-size: 1rem; }
+      .contact-info h3 { font-size: 1.1rem; }
       .contact-item { margin-bottom: 0.5rem; }
-      .contact-label { font-size: 0.7rem; }
-      .contact-value { font-size: 0.9rem; }
-      .btn { padding: 0.6rem 1.2rem; font-size: 0.9rem; }
+      .contact-label { font-size: 0.6rem; }
+      .contact-value { font-size: 0.85rem; }
+      .btn { padding: 0.6rem 1.2rem; font-size: 0.7rem; }
       .location-section { padding: 2rem 1rem; margin: 1.5rem 0; }
-      .location-header h2 { font-size: 1.3rem; }
+      .location-header h2 { font-size: 1.4rem; }
       .location-map { height: 300px; }
       footer { padding: 1.5rem 1rem; }
-      .footer-brokerage { font-size: 0.85rem; }
+      .footer-brokerage { font-size: 0.8rem; }
       .footer-links { gap: 0.5rem; }
     }
   </style>
