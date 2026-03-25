@@ -375,10 +375,15 @@
         return;
       }
 
+      console.log('Listing data from sessionStorage:', listing);
+      console.log('gallery_images:', listing.gallery_images);
+      console.log('photos:', listing.photos);
+
       const address = listing.location.address;
       const desc = listing.description;
       const photos = listing.gallery_images || listing.photos || [];
       const primaryPhoto = listing.primary_photo?.href || '';
+      console.log('Photos array:', photos);
 
       // Track current photo for navigation
       let currentPhotoIndex = 0;
