@@ -332,6 +332,10 @@
       const photos = listing.gallery_images || listing.photos || [];
       const primaryPhoto = listing.primary_photo?.href || '';
 
+      // Track current photo for navigation
+      let currentPhotoIndex = 0;
+      const allPhotos = photos.map(p => typeof p === 'string' ? p : p.href);
+
       // Update page title and meta
       const fullAddress = address.line;
       const price = listing.list_price.toLocaleString();
@@ -352,12 +356,78 @@
       if (primaryPhoto) {
         mainPhoto.src = primaryPhoto;
         mainPhoto.classList.add('loaded');
+
+        // Add arrow navigation overlays on main photo
+        if (allPhotos.length > 1) {
+          mainPhoto.style.position = 'relative';
+          const photoWrapper = mainPhoto.parentElement;
+          photoWrapper.style.position = 'relative';
+
+          const prevArrow = document.createElement('button');
+          prevArrow.innerHTML = '←';
+          prevArrow.style.cssText = `
+            position: absolute;
+            left: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid var(--border);
+            color: var(--primary);
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            font-size: 1.5rem;
+            z-index: 10;
+            transition: all 0.2s;
+          `;
+          prevArrow.addEventListener('mouseover', function() {
+            this.style.background = 'rgba(255, 255, 255, 1)';
+            this.style.borderColor = 'var(--accent)';
+          });
+          prevArrow.addEventListener('mouseout', function() {
+            this.style.background = 'rgba(255, 255, 255, 0.9)';
+            this.style.borderColor = 'var(--border)';
+          });
+          prevArrow.addEventListener('click', function() {
+            currentPhotoIndex = (currentPhotoIndex - 1 + allPhotos.length) % allPhotos.length;
+            mainPhoto.src = allPhotos[currentPhotoIndex];
+          });
+
+          const nextArrow = document.createElement('button');
+          nextArrow.innerHTML = '→';
+          nextArrow.style.cssText = `
+            position: absolute;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid var(--border);
+            color: var(--primary);
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            font-size: 1.5rem;
+            z-index: 10;
+            transition: all 0.2s;
+          `;
+          nextArrow.addEventListener('mouseover', function() {
+            this.style.background = 'rgba(255, 255, 255, 1)';
+            this.style.borderColor = 'var(--accent)';
+          });
+          nextArrow.addEventListener('mouseout', function() {
+            this.style.background = 'rgba(255, 255, 255, 0.9)';
+            this.style.borderColor = 'var(--border)';
+          });
+          nextArrow.addEventListener('click', function() {
+            currentPhotoIndex = (currentPhotoIndex + 1) % allPhotos.length;
+            mainPhoto.src = allPhotos[currentPhotoIndex];
+          });
+
+          photoWrapper.appendChild(prevArrow);
+          photoWrapper.appendChild(nextArrow);
+        }
       }
 
       // Add photo gallery
       if (photos.length > 1) {
-        let currentPhotoIndex = 0;
-        const allPhotos = photos.map(p => typeof p === 'string' ? p : p.href);
 
         const photoGalleryHtml = `
           <div style="max-width: 1200px; margin: 2rem auto; padding: 0 2rem;">
