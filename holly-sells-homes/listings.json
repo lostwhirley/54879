@@ -1,0 +1,281 @@
+{
+    "property_id": "9728116997",
+    "listing_id": "2989493050",
+    "status": "for_sale",
+    "description": {
+        "sold_date": "2023-01-06",
+        "baths_consolidated": "2",
+        "beds": 2,
+        "lot_sqft": 4356,
+        "sqft": 1459,
+        "stories": 1,
+        "sold_price": 390000,
+        "__typename": "SearchHomeDescription"
+    },
+    "location": {
+        "address": {
+            "postal_code": "34142",
+            "state": "Florida",
+            "street_name": "Mayflower",
+            "street_number": "5872",
+            "city": "Ave Maria",
+            "coordinate": {
+                "lat": 26.314938,
+                "lon": -81.447307,
+                "__typename": "Coordinate"
+            },
+            "state_code": "FL",
+            "line": "5872 Mayflower Way",
+            "__typename": "SearchHomeAddress"
+        },
+        "county": {
+            "state_code": "FL",
+            "__typename": "HomeCounty"
+        },
+        "search_areas": [
+            {
+                "city": "ave maria",
+                "state_code": "fl",
+                "county": "collier",
+                "__typename": "SearchArea"
+            }
+        ],
+        "__typename": "SearchHomeLocation"
+    },
+    "list_price": 329000,
+    "photos": [
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m3239344825od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m767134358od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m4143885741od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m4129181880od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m2491979862od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m1818162186od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m3831451045od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m2493796868od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m665138402od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m2251140902od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m1506327101od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m3280786876od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m3919309231od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m66010031od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m4184778012od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m1541522641od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m2355099060od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m4255820550od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m3571350872od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m4223073444od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m2917561728od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m3550268957od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m1640096942od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m411627572od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m868682203od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m2072475271od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m3291372557od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m3727264766od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m2269399881od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m2067396693od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m1941428836od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m477092065od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m4244355811od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m737994336od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m860807846od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m2533869258od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m678442229od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m196487476od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m2372838674od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m3918093322od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m1299856198od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m1507358916od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m4173217949od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m1657500702od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m3155748948od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m2141981819od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m2402149923od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m1127116399od-w1024_h768.jpg"
+        },
+        {
+            "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m2890208124od-w1024_h768.jpg"
+        }
+    ],
+    "primary_photo": {
+        "href": "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m3239344825rd-w960_h720.jpg",
+        "__typename": "HomePhoto"
+    },
+    "href": "https://www.realtor.com/realestateandhomes-detail/5872-Mayflower-Way_Ave-Maria_FL_34142_M97281-16997",
+    "permalink": "5872-Mayflower-Way_Ave-Maria_FL_34142_M97281-16997",
+    "advertisers": [
+        {
+            "fulfillment_id": "100732851",
+            "type": "seller",
+            "__typename": "HomeAdvertiser"
+        }
+    ],
+    "flags": {
+        "is_coming_soon": null,
+        "is_contingent": null,
+        "is_garage_present": true,
+        "is_new_construction": null,
+        "is_pending": null,
+        "is_short_sale": null,
+        "is_foreclosure": null,
+        "is_senior_community": true,
+        "is_for_rent": null,
+        "is_deal_available": null,
+        "is_price_excludes_land": null,
+        "is_promotion_present": null,
+        "is_subdivision": null,
+        "is_plan": null,
+        "is_price_reduced": true,
+        "is_new_listing": false,
+        "is_sales_builder": null,
+        "is_usda_eligible": null,
+        "__typename": "SearchHomeFlags"
+    },
+    "__typename": "SearchHome",
+    "gallery_images": [
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m3239344825od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m767134358od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m4143885741od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m4129181880od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m2491979862od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m1818162186od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m3831451045od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m2493796868od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m665138402od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m2251140902od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m1506327101od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m3280786876od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m3919309231od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m66010031od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m4184778012od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m1541522641od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m2355099060od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m4255820550od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m3571350872od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m4223073444od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m2917561728od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m3550268957od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m1640096942od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m411627572od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m868682203od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m2072475271od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m3291372557od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m3727264766od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m2269399881od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m2067396693od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m1941428836od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m477092065od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m4244355811od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m737994336od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m860807846od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m2533869258od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m678442229od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m196487476od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m2372838674od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m3918093322od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m1299856198od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m1507358916od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m4173217949od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m1657500702od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m3155748948od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m2141981819od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m2402149923od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m1127116399od-w1024_h768.jpg",
+        "https://ap.rdcpix.com/d090fc5460f98d79ad8b14831a6ffa58l-m2890208124od-w1024_h768.jpg"
+    ]
+}
