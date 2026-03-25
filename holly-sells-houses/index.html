@@ -1090,18 +1090,11 @@
 
         card.addEventListener('click', function(e) {
           e.preventDefault();
-          const addressMap = {
-            '5690 Mayflower Way Unit 608': 'listing/5690-mayflower-way-unit-608-ave-maria-fl/',
-            '5872 Mayflower Way': 'listing/5872-mayflower-way-ave-maria-fl/',
-            '6174 Revelry Ct': 'listing/6174-revelry-court-ave-maria-fl/',
-            '6217 Harmony Dr': 'listing/6217-harmony-drive-ave-maria-fl/'
-          };
           // Extract street address (before the comma for city)
           const streetAddress = line.split(',')[0].trim();
-          const localPath = addressMap[streetAddress];
-          if (localPath) {
-            window.location.href = localPath;
-          }
+          // Convert to URL slug (e.g., '5872 Mayflower Way' -> '5872-mayflower-way')
+          const slug = streetAddress.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9\-]/g, '');
+          window.location.href = `/listing/${slug}/`;
         });
 
         listingsGrid.appendChild(card);
