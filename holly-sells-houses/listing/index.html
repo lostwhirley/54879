@@ -115,7 +115,7 @@
     .calc-result { background: var(--white); padding: 1.5rem; border-radius: 0; border-bottom: 1px solid var(--border); }
     .calc-label { font-family: 'Jost', sans-serif; font-size: 0.65rem; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.5rem; }
     .calc-value { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2rem; font-weight: 400; color: var(--primary); }
-    .save-btn { background: none; border: 1px solid var(--accent); color: var(--accent); padding: 0.6rem 1.2rem; border-radius: 0; font-family: 'Jost', sans-serif; font-weight: 500; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: all 0.2s; }
+    .save-btn { background: none; border: 1px solid var(--accent); color: var(--accent); padding: 0.5rem 1rem; border-radius: 0; font-family: 'Jost', sans-serif; font-weight: 500; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
     .save-btn:hover { background: var(--accent-soft); }
     .save-btn.saved { background: var(--accent); color: var(--white); border-color: var(--accent); }
 
@@ -201,7 +201,10 @@
       Holly Trapani
       <span>New Day Realty</span>
     </a>
-    <a href="../#listings" class="nav-back">← Back to Listings</a>
+    <div style="display: flex; gap: 1.5rem; align-items: center;">
+      <a href="../#listings" class="nav-back">← Back to Listings</a>
+      <button id="save-btn" class="save-btn" onclick="toggleSaveListing()">♥ Save</button>
+    </div>
   </div>
 </nav>
 
@@ -216,7 +219,6 @@
       <div class="spec-badge"><span id="baths">—</span> Baths</div>
       <div class="spec-badge" id="status-badge">—</div>
     </div>
-    <button id="save-btn" class="save-btn" onclick="toggleSaveListing()" style="margin-top: 1.5rem;">♥ Save Listing</button>
   </div>
 </section>
 
