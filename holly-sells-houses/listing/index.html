@@ -5,59 +5,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title id="page-title">Listing | Holly Trapani</title>
   <meta name="description" id="page-description" content="Property listing - Holly Trapani Real Estate">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --primary: #3d3530;
-      --accent: #b08d7a;
-      --accent-soft: #d4b8a8;
-      --dark: #2c2420;
-      --light: #f5f0eb;
-      --cream: #faf7f4;
+      --primary: #1a3c5e;
+      --accent: #e8a838;
+      --dark: #111827;
+      --light: #f7f8fa;
       --white: #ffffff;
-      --gray: #a89d98;
-      --border: #e8ddd7;
-      --text-muted: #7a6e69;
+      --gray: #9ca3af;
+      --border: #d1d5db;
+      --text-muted: #6b7280;
     }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Jost', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--dark); background: var(--cream); line-height: 1.7; font-weight: 300; letter-spacing: 0.01em; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--dark); background: var(--white); line-height: 1.6; font-weight: 400; letter-spacing: 0; }
 
-    nav { position: sticky; top: 0; background: var(--cream); border-bottom: 1px solid var(--border); z-index: 100; }
+    nav { position: sticky; top: 0; background: var(--white); border-bottom: 1px solid var(--border); z-index: 100; }
     .nav-inner { max-width: 1200px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
-    .nav-logo { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.6rem; font-style: italic; font-weight: 400; color: var(--primary); text-decoration: none; }
-    .nav-logo span { font-family: 'Jost', sans-serif; display: block; font-size: 0.7rem; font-weight: 500; color: var(--text-muted); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.15em; font-style: normal; }
-    .nav-back { color: var(--primary); text-decoration: none; font-family: 'Jost', sans-serif; font-size: 0.8rem; font-weight: 400; text-transform: uppercase; letter-spacing: 0.1em; }
+    .nav-logo { font-family: 'Inter', sans-serif; font-size: 1.4rem; font-style: normal; font-weight: 700; color: var(--primary); text-decoration: none; }
+    .nav-logo span { font-family: 'Inter', sans-serif; display: block; font-size: 0.65rem; font-weight: 600; color: var(--gray); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.08em; font-style: normal; }
+    .nav-back { color: var(--primary); text-decoration: none; font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
     .nav-back:hover { color: var(--accent); }
 
-    .hero { background: var(--cream); color: var(--dark); padding: 3.5rem 2rem; }
+    .hero { background: var(--light); color: var(--dark); padding: 3.5rem 2rem; }
     .hero-inner { max-width: 1200px; margin: 0 auto; }
-    .hero h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2.7rem; margin-bottom: 0.5rem; font-weight: 400; letter-spacing: -0.5px; color: var(--primary); line-height: 1.2; text-align: center; }
-    .hero-sub { font-family: 'Jost', sans-serif; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 1rem; font-weight: 400; text-transform: uppercase; letter-spacing: 0.12em; text-align: center; }
-    .hero-price { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2.1rem; font-weight: 400; color: var(--accent); margin-bottom: 1.2rem; text-align: center; }
+    .hero h1 { font-family: 'Inter', sans-serif; font-size: 2.2rem; margin-bottom: 0.5rem; font-weight: 600; letter-spacing: -0.3px; color: var(--primary); line-height: 1.2; text-align: center; }
+    .hero-sub { font-family: 'Inter', sans-serif; font-size: 0.7rem; color: var(--gray); margin-bottom: 1rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; text-align: center; }
+    .hero-price { font-family: 'Inter', sans-serif; font-size: 1.8rem; font-weight: 600; color: var(--accent); margin-bottom: 1.2rem; text-align: center; }
     .hero-specs { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
-    .spec-badge { background: transparent; border: 1px solid var(--border); padding: 0.55rem 1rem; border-radius: 0; font-family: 'Jost', sans-serif; font-size: 0.7rem; font-weight: 400; text-transform: uppercase; letter-spacing: 0.12em; color: var(--primary); transition: all 0.2s; }
-    .spec-badge:hover { border-color: var(--accent); color: var(--accent); }
+    .spec-badge { background: transparent; border: 1px solid var(--border); padding: 0.5rem 0.9rem; border-radius: 4px; font-family: 'Inter', sans-serif; font-size: 0.65rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--primary); transition: all 0.2s; }
+    .spec-badge:hover { border-color: var(--accent); color: var(--white); background: var(--accent); }
 
     .property-image { max-width: 1200px; margin: 0.5rem auto 2rem auto; padding: 0 2rem; }
     .property-image img { width: 100%; border-radius: 0; box-shadow: none; }
 
     .details { max-width: 1200px; margin: 3rem auto; padding: 0 2rem; }
-    .details h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.8rem; font-weight: 400; margin-bottom: 1rem; color: var(--primary); }
-    .details p { color: var(--text-muted); line-height: 1.8; margin-bottom: 1rem; font-family: 'Jost', sans-serif; font-weight: 300; }
+    .details h2 { font-family: 'Inter', sans-serif; font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary); }
+    .details p { color: var(--gray); line-height: 1.6; margin-bottom: 1rem; font-family: 'Inter', sans-serif; font-weight: 400; }
 
     .specs-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 2rem auto; max-width: 1200px; padding: 0 2rem; }
-    .spec-item { background: var(--white); padding: 1rem 1.2rem; border-radius: 0; border-bottom: 1px solid var(--border); }
-    .spec-label { font-family: 'Jost', sans-serif; font-size: 0.6rem; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.35rem; }
-    .spec-value { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.3rem; font-weight: 400; color: var(--primary); }
+    .spec-item { background: var(--light); padding: 1rem 1.2rem; border-radius: 4px; border: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .spec-label { font-family: 'Inter', sans-serif; font-size: 0.55rem; font-weight: 600; color: var(--gray); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.35rem; }
+    .spec-value { font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; color: var(--primary); }
 
-    .contact-bar { background: var(--cream); padding: 2rem; margin: 3rem 0; border-radius: 0; }
+    .contact-bar { background: var(--light); padding: 2rem; margin: 3rem 0; border-radius: 0; }
     .contact-inner { max-width: 1200px; margin: 0 auto; padding: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; }
-    .contact-info h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.5rem; font-weight: 400; margin-bottom: 1rem; color: var(--primary); }
+    .contact-info h3 { font-family: 'Inter', sans-serif; font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary); }
     .contact-item { margin-bottom: 1rem; }
-    .contact-label { font-family: 'Jost', sans-serif; font-size: 0.65rem; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.25rem; }
-    .contact-value { font-family: 'Jost', sans-serif; font-size: 0.95rem; font-weight: 300; color: var(--dark); }
-    .contact-value a { color: var(--accent); text-decoration: none; font-weight: 400; border-bottom: 1px solid var(--accent-soft); }
+    .contact-label { font-family: 'Inter', sans-serif; font-size: 0.6rem; font-weight: 600; color: var(--gray); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem; }
+    .contact-value { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 400; color: var(--dark); }
+    .contact-value a { color: var(--accent); text-decoration: none; font-weight: 400; border-bottom: 1px solid var(--accent); }
     .contact-value a:hover { border-bottom-color: var(--accent); }
 
     .btn {
@@ -65,12 +63,12 @@
       background: var(--primary);
       color: var(--white);
       border: none;
-      border-radius: 0;
-      font-family: 'Jost', sans-serif;
-      font-weight: 500;
-      font-size: 0.75rem;
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.7rem;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.05em;
       cursor: pointer;
       text-decoration: none;
       display: flex;
@@ -79,21 +77,21 @@
       transition: all 0.2s;
       min-height: 44px;
     }
-    .btn:hover { background: var(--dark); }
+    .btn:hover { background: var(--accent); color: var(--primary); }
 
-    .location-section { background: var(--cream); padding: 4rem 0; margin: 3rem 0; }
+    .location-section { background: var(--light); padding: 4rem 0; margin: 3rem 0; }
     .location-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
     .location-header { margin-bottom: 2rem; }
-    .location-header h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.8rem; font-weight: 400; margin-bottom: 0.5rem; color: var(--primary); letter-spacing: -0.01em; }
-    .location-header p { color: var(--text-muted); font-family: 'Jost', sans-serif; font-size: 0.75rem; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase; }
-    .location-map { width: 100%; height: 600px; border-radius: 0; overflow: hidden; box-shadow: none; margin-top: 2rem; }
+    .location-header h2 { font-family: 'Inter', sans-serif; font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--primary); letter-spacing: 0; }
+    .location-header p { color: var(--gray); font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; }
+    .location-map { width: 100%; height: 600px; border-radius: 8px; overflow: hidden; box-shadow: none; margin-top: 2rem; }
     .location-map iframe { width: 100%; height: 100%; border: none; }
 
     .loader { text-align: center; padding: 4rem 2rem; }
-    .spinner { width: 50px; height: 50px; border: 4px solid rgba(176, 141, 122, 0.15); border-top-color: var(--accent); border-right-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto; }
+    .spinner { width: 50px; height: 50px; border: 4px solid rgba(232, 168, 56, 0.15); border-top-color: var(--accent); border-right-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto; }
     @keyframes spin { 0% { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-    .page-loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--cream); display: flex; align-items: center; justify-content: center; z-index: 9999; }
+    .page-loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--light); display: flex; align-items: center; justify-content: center; z-index: 9999; }
     .page-loader.hidden { display: none; }
 
     .hero { opacity: 0; }
@@ -103,48 +101,48 @@
 
     .calculator-section { background: var(--light); margin: 3rem 0; border-radius: 0; padding: 3rem 0; }
     .calculator-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-    .calculator-inner h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.8rem; font-weight: 400; margin-bottom: 2rem; color: var(--primary); }
+    .calculator-inner h2 { font-family: 'Inter', sans-serif; font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem; color: var(--primary); }
     .calculator-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 2rem; }
     .calc-input { display: flex; flex-direction: column; }
-    .calc-input label { font-family: 'Jost', sans-serif; font-size: 0.65rem; font-weight: 500; color: var(--text-muted); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; }
-    .calc-input input[type="number"] { padding: 0.6rem; border: none; border-bottom: 1px solid var(--border); border-radius: 0; font-family: 'Jost', sans-serif; font-size: 0.9rem; background: transparent; color: var(--dark); margin-bottom: 0.5rem; }
+    .calc-input label { font-family: 'Inter', sans-serif; font-size: 0.6rem; font-weight: 600; color: var(--gray); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .calc-input input[type="number"] { padding: 0.6rem; border: none; border-bottom: 1px solid var(--border); border-radius: 0; font-family: 'Inter', sans-serif; font-size: 0.9rem; background: transparent; color: var(--dark); margin-bottom: 0.5rem; }
     .calc-input input[type="number"]:focus { outline: none; border-bottom-color: var(--accent); }
     .calc-input input[type="range"] { width: 100%; height: 4px; border-radius: 0; background: var(--border); outline: none; -webkit-appearance: none; appearance: none; cursor: pointer; }
     .calc-input input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 14px; height: 14px; border-radius: 50%; background: var(--accent); cursor: pointer; }
     .calc-input input[type="range"]::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: var(--accent); cursor: pointer; border: none; }
     .calc-result { background: var(--white); padding: 1.5rem; border-radius: 0; border-bottom: 1px solid var(--border); }
-    .calc-label { font-family: 'Jost', sans-serif; font-size: 0.65rem; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.5rem; }
-    .calc-value { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2rem; font-weight: 400; color: var(--primary); }
-    .save-btn { background: none; border: 1px solid var(--accent); color: var(--accent); padding: 0.5rem 1rem; border-radius: 0; font-family: 'Jost', sans-serif; font-weight: 500; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
-    .save-btn:hover { background: var(--accent-soft); }
+    .calc-label { font-family: 'Inter', sans-serif; font-size: 0.6rem; font-weight: 600; color: var(--gray); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+    .calc-value { font-family: 'Inter', sans-serif; font-size: 1.6rem; font-weight: 600; color: var(--primary); }
+    .save-btn { background: none; border: 1px solid var(--accent); color: var(--accent); padding: 0.5rem 1rem; border-radius: 4px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+    .save-btn:hover { background: var(--accent); color: var(--primary); }
     .save-btn.saved { background: var(--accent); color: var(--white); border-color: var(--accent); }
 
     .get-in-touch-section { background: var(--light); padding: 4rem 0; margin: 3rem 0; }
     .get-in-touch-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
     .get-in-touch-header { margin-bottom: 2.5rem; }
-    .get-in-touch-header h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2rem; font-weight: 400; margin-bottom: 0.5rem; color: var(--primary); }
-    .get-in-touch-header p { color: var(--text-muted); font-family: 'Jost', sans-serif; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; }
+    .get-in-touch-header h2 { font-family: 'Inter', sans-serif; font-size: 1.6rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--primary); }
+    .get-in-touch-header p { color: var(--gray); font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 500; }
     .get-in-touch-content { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem; align-items: start; }
     .get-in-touch-contact { text-align: center; }
     .get-in-touch-contact div { margin-bottom: 2rem; }
-    .get-in-touch-contact-label { font-family: 'Jost', sans-serif; font-size: 0.65rem; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.5rem; }
-    .get-in-touch-contact-link { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.5rem; font-weight: 400; color: var(--primary); text-decoration: none; border-bottom: 1px solid var(--accent-soft); display: inline-block; }
-    .get-in-touch-form { background: var(--white); padding: 2.5rem; display: flex; flex-direction: column; gap: 1.2rem; border: 2px solid var(--accent-soft); box-shadow: 0 4px 12px rgba(176, 141, 122, 0.15); }
+    .get-in-touch-contact-label { font-family: 'Inter', sans-serif; font-size: 0.6rem; font-weight: 600; color: var(--gray); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+    .get-in-touch-contact-link { font-family: 'Inter', sans-serif; font-size: 1.2rem; font-weight: 600; color: var(--primary); text-decoration: none; border-bottom: 1px solid var(--accent); display: inline-block; }
+    .get-in-touch-form { background: var(--white); padding: 2.5rem; display: flex; flex-direction: column; gap: 1.2rem; border: 2px solid var(--border); box-shadow: 0 4px 12px rgba(26, 60, 94, 0.08); }
     .get-in-touch-form input,
-    .get-in-touch-form textarea { padding: 0.8rem 0.6rem; border: none; border-bottom: 2px solid var(--border); border-radius: 0; font-family: 'Jost', sans-serif; font-size: 0.9rem; background: transparent; color: var(--dark); transition: all 0.3s; }
+    .get-in-touch-form textarea { padding: 0.8rem 0.6rem; border: none; border-bottom: 2px solid var(--border); border-radius: 0; font-family: 'Inter', sans-serif; font-size: 0.9rem; background: transparent; color: var(--dark); transition: all 0.3s; }
     .get-in-touch-form input::placeholder,
-    .get-in-touch-form textarea::placeholder { color: var(--text-muted); }
+    .get-in-touch-form textarea::placeholder { color: var(--gray); }
     .get-in-touch-form input:focus,
     .get-in-touch-form textarea:focus { outline: none; border-bottom-color: var(--accent); background: rgba(212, 184, 168, 0.05); }
     .get-in-touch-form textarea { resize: none; min-height: 120px; }
-    .get-in-touch-form button { padding: 1rem 2rem; background: var(--primary); color: var(--white); border: none; border-radius: 0; font-family: 'Jost', sans-serif; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.12em; cursor: pointer; transition: all 0.3s; margin-top: 0.5rem; }
+    .get-in-touch-form button { padding: 1rem 2rem; background: var(--primary); color: var(--white); border: none; border-radius: 4px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; transition: all 0.3s; margin-top: 0.5rem; }
     .get-in-touch-form button:hover { background: var(--accent); transform: translateY(-2px); box-shadow: 0 4px 8px rgba(61, 53, 48, 0.2); }
 
-    footer { background: var(--cream); color: var(--text-muted); padding: 3rem 2rem; text-align: center; font-family: 'Jost', sans-serif; font-size: 0.75rem; }
+    footer { background: var(--light); color: var(--gray); padding: 3rem 2rem; text-align: center; font-family: 'Inter', sans-serif; font-size: 0.75rem; }
     .footer-inner { max-width: 1200px; margin: 0 auto; }
-    .footer-brokerage { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 400; color: var(--primary); margin-bottom: 0.5rem; font-size: 0.95rem; }
+    .footer-brokerage { font-family: 'Inter', sans-serif; font-style: normal; font-weight: 600; color: var(--primary); margin-bottom: 0.5rem; font-size: 0.9rem; }
     .footer-links { display: flex; justify-content: center; gap: 2rem; margin-top: 1rem; flex-wrap: wrap; }
-    .footer-links a { color: var(--text-muted); text-decoration: none; font-family: 'Jost', sans-serif; font-weight: 400; text-transform: uppercase; letter-spacing: 0.12em; display: flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 0.5rem; transition: color 0.2s; }
+    .footer-links a { color: var(--gray); text-decoration: none; font-family: 'Inter', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 0.5rem; transition: color 0.2s; }
     .footer-links a:hover { color: var(--accent); }
 
     @media (max-width: 768px) {
@@ -225,10 +223,10 @@
     <div style="display: flex; gap: 1.5rem; align-items: center;">
       <a href="../#listings" class="nav-back">← Back to Listings</a>
       <button id="save-btn" class="save-btn" onclick="toggleSaveListing()">♥ Save</button>
-      <a href="tel:2395658760" title="Call Holly" style="color: var(--text-muted); transition: color 0.2s; text-decoration: none; font-size: 1.3rem;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-muted)'">
+      <a href="tel:2395658760" title="Call Holly" style="color: var(--gray); transition: color 0.2s; text-decoration: none; font-size: 1.3rem;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--gray)'">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       </a>
-      <a href="https://www.facebook.com/holly.trapani" target="_blank" title="Facebook" style="color: var(--text-muted); transition: color 0.2s; text-decoration: none; font-size: 1.3rem;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-muted)'">
+      <a href="https://www.facebook.com/holly.trapani" target="_blank" title="Facebook" style="color: var(--gray); transition: color 0.2s; text-decoration: none; font-size: 1.3rem;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--gray)'">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
       </a>
     </div>
