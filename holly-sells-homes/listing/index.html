@@ -462,6 +462,7 @@
       document.title = `${fullAddress} | $${price} | Holly Trapani`;
       document.getElementById('page-title').textContent = `${fullAddress} | Holly Trapani`;
       document.getElementById('page-description').textContent = `${fullAddress}, ${address.city}, ${address.state_code}. ${desc.beds} bed${desc.beds !== 1 ? 's' : ''}, ${desc.baths_consolidated} bath${desc.baths_consolidated !== 1 ? 's' : ''}. $${price}`;
+      document.getElementById('description').textContent = listing.description.comments || 'Beautiful home in Ave Maria.';
 
       // Update hero
       document.getElementById('address').textContent = fullAddress;
