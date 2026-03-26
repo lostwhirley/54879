@@ -1778,43 +1778,6 @@
       console.log(`Found ${listings.length} of Holly's listings`);
       const areaListings = listings;
 
-      // Fetch full property details including descriptions from API
-      const apiKey = '2a1eca8e84msh49b38948c7d92c3p168af6jsnbb278f742246';
-      const apiHost = 'realty-in-us.p.rapidapi.com';
-
-      for (let listing of areaListings) {
-        try {
-          const detailResponse = await fetch(
-            `https://${apiHost}/properties/v3/detail?property_id=${listing.property_id}`,
-            {
-              method: 'GET',
-              headers: {
-                'Content-Type': 'application/json',
-                'x-rapidapi-host': apiHost,
-                'x-rapidapi-key': apiKey
-              }
-            }
-          );
-          const detailData = await detailResponse.json();
-          console.log(`Fetched details for property ${listing.property_id}:`, detailData);
-
-          // Merge property details including description
-          if (detailData.data) {
-            const details = detailData.data;
-            listing.full_details = details;
-            // Extract description from various possible locations
-            listing.property_description =
-              details.description?.trim() ||
-              details.remarks?.trim() ||
-              details.property_description?.trim() ||
-              'Beautiful property in Ave Maria, Florida.';
-          }
-        } catch (error) {
-          console.warn(`Error fetching details for property ${listing.property_id}:`, error);
-          listing.property_description = 'Beautiful property in Ave Maria, Florida.';
-        }
-      }
-
       // Populate gallery_images from API response with high-res versions
       const enhancedListings = areaListings.map(listing => {
         // Transform primary photo to high-res version

@@ -709,7 +709,8 @@
             "is_usda_eligible": null,
             "__typename": "SearchHomeFlags"
           },
-          "__typename": "SearchHome"
+          "__typename": "SearchHome",
+          "property_description": "Beautiful property in Ave Maria, Florida."
         },
         {
           "property_id": "9728116997",
@@ -1411,7 +1412,8 @@
             "is_usda_eligible": null,
             "__typename": "SearchHomeFlags"
           },
-          "__typename": "SearchHome"
+          "__typename": "SearchHome",
+          "property_description": "Beautiful property in Ave Maria, Florida."
         },
         {
           "property_id": "9337886864",
@@ -2041,7 +2043,8 @@
             "is_usda_eligible": null,
             "__typename": "SearchHomeFlags"
           },
-          "__typename": "SearchHome"
+          "__typename": "SearchHome",
+          "property_description": "Beautiful property in Ave Maria, Florida."
         },
         {
           "property_id": "9238269562",
@@ -2214,7 +2217,8 @@
             "is_usda_eligible": null,
             "__typename": "SearchHomeFlags"
           },
-          "__typename": "SearchHome"
+          "__typename": "SearchHome",
+          "property_description": "Beautiful property in Ave Maria, Florida."
         },
         {
           "property_id": "9190425429",
@@ -2968,7 +2972,8 @@
             "is_usda_eligible": null,
             "__typename": "SearchHomeFlags"
           },
-          "__typename": "SearchHome"
+          "__typename": "SearchHome",
+          "property_description": "Beautiful property in Ave Maria, Florida."
         }
       ],
       "count": 5,
