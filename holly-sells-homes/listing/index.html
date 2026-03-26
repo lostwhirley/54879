@@ -372,10 +372,6 @@
   async function loadListing() {
     console.log('loadListing function started');
     try {
-      console.log('Getting listing from sessionStorage...');
-      const selectedListingData = sessionStorage.getItem('selectedListing');
-      console.log('selectedListingData:', selectedListingData ? 'Found' : 'NOT FOUND');
-
       // Reset page content immediately to avoid showing old data
       document.getElementById('address').textContent = 'Loading...';
       document.getElementById('price').textContent = '—';
