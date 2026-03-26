@@ -342,6 +342,85 @@
       text-align: center;
     }
 
+    /* INSIGHTS SECTION */
+    .insights-section {
+      max-width: 1200px;
+      margin: 5rem auto;
+      padding: 0 2rem;
+    }
+
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .insight-card {
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+      transition: all 0.3s;
+    }
+
+    .insight-card:hover {
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      transform: translateY(-4px);
+    }
+
+    .insight-tag {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--white);
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+
+    .insight-content {
+      padding: 2rem;
+    }
+
+    .insight-date {
+      color: var(--gray);
+      font-size: 0.85rem;
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+    }
+
+    .insight-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 1rem;
+      line-height: 1.4;
+    }
+
+    .insight-excerpt {
+      color: var(--gray);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .insight-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+
+    .insight-link:hover {
+      color: var(--primary);
+    }
+
     /* ABOUT SECTION */
     .about-section {
       background: var(--light);
@@ -918,6 +997,7 @@
     </a>
     <ul class="nav-links">
       <li><a href="#listings">Listings</a></li>
+      <li><a href="#insights">Insights</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -955,6 +1035,46 @@
     <!-- Listings will be loaded here by JavaScript -->
     <div class="spinner-container">
       <div class="spinner"></div>
+    </div>
+  </div>
+</section>
+
+<!-- INSIGHTS -->
+<section class="insights-section" id="insights">
+  <div class="section-header">
+    <div class="section-label">Market Knowledge</div>
+    <h2 class="section-title">Real Estate Insights</h2>
+  </div>
+
+  <div class="insights-grid">
+    <div class="insight-card">
+      <div class="insight-content">
+        <div class="insight-tag">Buying</div>
+        <div class="insight-date">March 2025</div>
+        <h3 class="insight-title">Why Ave Maria is Southwest Florida's Best-Kept Secret</h3>
+        <p class="insight-excerpt">Discover why Ave Maria has become one of the most sought-after communities in Southwest Florida, from its master-planned amenities to its strong sense of community.</p>
+        <a href="#" class="insight-link">Read More →</a>
+      </div>
+    </div>
+
+    <div class="insight-card">
+      <div class="insight-content">
+        <div class="insight-tag">Market</div>
+        <div class="insight-date">February 2025</div>
+        <h3 class="insight-title">2025 Southwest Florida Market Update</h3>
+        <p class="insight-excerpt">Get the latest insights on market trends, inventory levels, and pricing in Southwest Florida. Understand what's happening in your local real estate market.</p>
+        <a href="#" class="insight-link">Read More →</a>
+      </div>
+    </div>
+
+    <div class="insight-card">
+      <div class="insight-content">
+        <div class="insight-tag">Lifestyle</div>
+        <div class="insight-date">January 2025</div>
+        <h3 class="insight-title">Del Webb at Ave Maria: A Guide to 55+ Living</h3>
+        <p class="insight-excerpt">Explore what makes Del Webb communities perfect for active 55+ adults, from social activities to world-class amenities and maintenance-free living.</p>
+        <a href="#" class="insight-link">Read More →</a>
+      </div>
     </div>
   </div>
 </section>
@@ -1040,6 +1160,7 @@
 
     <div class="footer-links">
       <a href="#listings">Listings</a>
+      <a href="#insights">Insights</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </div>
