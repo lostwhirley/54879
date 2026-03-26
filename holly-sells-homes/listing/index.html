@@ -234,6 +234,8 @@
     <div class="hero-specs" id="hero-specs">
       <div class="spec-badge"><span id="beds">—</span> Beds</div>
       <div class="spec-badge"><span id="baths">—</span> Baths</div>
+      <div class="spec-badge"><span id="sqft">—</span> Sq Ft</div>
+      <div class="spec-badge"><span id="price-badge">—</span></div>
       <div class="spec-badge" id="status-badge">—</div>
     </div>
   </div>
@@ -420,6 +422,8 @@
       document.getElementById('price').textContent = `$${price}`;
       document.getElementById('beds').textContent = desc.beds;
       document.getElementById('baths').textContent = desc.baths_consolidated;
+      document.getElementById('sqft').textContent = desc.sqft ? desc.sqft.toLocaleString() : '—';
+      document.getElementById('price-badge').textContent = `$${price}`;
       document.getElementById('status-badge').textContent = listing.status.replace('_', ' ');
       document.querySelector('.hero').classList.add('loaded');
 
