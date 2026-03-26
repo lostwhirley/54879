@@ -41,7 +41,17 @@ async function fetchListingsWithDetails() {
     'x-rapidapi-key': apiKey
   };
 
-  const allListings = [...homesListings, ...housesListings];
+  let allListings = [...homesListings, ...housesListings];
+
+  // Deduplicate by property_id
+  const uniqueMap = new Map();
+  allListings.forEach(listing => {
+    if (!uniqueMap.has(listing.property_id)) {
+      uniqueMap.set(listing.property_id, listing);
+    }
+  });
+  allListings = Array.from(uniqueMap.values());
+  console.log(`Combined listings: ${homesListings.length + housesListings.length} total, ${allListings.length} unique`);
 
   for (let i = 0; i < allListings.length; i++) {
     const listing = allListings[i];
