@@ -52,12 +52,14 @@ async function fetchListingsWithDetails() {
 
       if (detailData.data) {
         const details = detailData.data;
+        // Extract description from home.description.text field
         listing.property_description =
+          details.home?.description?.text?.trim() ||
           details.description?.trim() ||
           details.remarks?.trim() ||
           details.property_description?.trim() ||
           'Beautiful property in Ave Maria, Florida.';
-        console.log(`  ✓ Description: "${listing.property_description.substring(0, 50)}..."`);
+        console.log(`  ✓ Description: "${listing.property_description.substring(0, 60)}..."`);
       }
       // Add small delay to avoid rate limiting
       await new Promise(resolve => setTimeout(resolve, 500));
