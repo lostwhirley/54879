@@ -2729,6 +2729,7 @@ document.getElementById('inquiryForm').addEventListener('submit', function(e) {
   const btn = form.querySelector('.inquiry-submit');
   const data = new FormData(form);
   data.append('_subject', 'New Inquiry — 54879 Indian Lake Road');
+  data.append('_cc', 'bethvan@bonrealty.com');
   data.append('_captcha', 'false');
   data.append('_template', 'table');
   btn.disabled = true;
