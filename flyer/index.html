@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Property Flyers — 54879 Indian Lake Road</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --water:#2C5F7A;--water-light:#5C8FA3;--water-pale:#E8F2F7;--sand:#C4A882;--white:#FDFCFB;--border:#c8dce6;--muted:#6a8fa0; }
+    body { background: var(--water-pale); font-family: 'Jost', sans-serif; color: var(--water); min-height: 100vh; }
+    header { border-bottom: 1.5px solid var(--border); padding: 32px 48px 24px; display: flex; justify-content: space-between; align-items: flex-end; background: var(--white); }
+    .tagline { font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--water-light); margin-bottom: 6px; }
+    .name { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 500; font-style: italic; color: var(--water); }
+    .header-right { text-align: right; font-size: 11px; color: var(--muted); line-height: 1.8; }
+    .header-right a { color: var(--water); text-decoration: none; }
+    .header-right a:hover { text-decoration: underline; }
+    main { max-width: 960px; margin: 0 auto; padding: 48px 24px 72px; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; font-style: italic; margin-bottom: 28px; color: var(--water); }
+    .flyer-item { background: var(--white); border: 1px solid var(--border); padding: 20px 24px; margin-bottom: 2px; }
+    .flyer-item:first-child { border-radius: 4px 4px 0 0; }
+    .flyer-item:last-child { border-radius: 0 0 4px 4px; margin-bottom: 0; }
+    .flyer-info { margin-bottom: 12px; }
+    .flyer-address { font-size: 14px; font-weight: 500; display: block; margin-bottom: 2px; color: var(--water); }
+    .flyer-city { font-size: 11px; color: var(--muted); }
+    .flyer-links { display: flex; gap: 8px; flex-wrap: wrap; }
+    .flyer-link { display: flex; align-items: center; gap: 6px; padding: 7px 14px; border: 1px solid var(--border); border-radius: 3px; text-decoration: none; color: var(--water); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; transition: background 0.2s, border-color 0.2s; }
+    .flyer-link:hover { background: var(--water-pale); border-color: var(--water-light); }
+    .flyer-link svg { width: 13px; height: 13px; fill: none; stroke: var(--water); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* Videos section */
+    .videos-section { margin-top: 48px; }
+    .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .video-card { background: var(--white); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; text-decoration: none; display: block; transition: box-shadow 0.2s; }
+    .video-card:hover { box-shadow: 0 4px 16px rgba(44,95,122,0.15); }
+    .video-thumb { position: relative; aspect-ratio: 16/9; overflow: hidden; background: #1a1a1a; }
+    .video-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .video-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(28,50,70,0.4); }
+    .video-play svg { width: 42px; height: 42px; fill: white; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5)); }
+    .video-info { padding: 12px 14px; }
+    .video-label { font-size: 12px; font-weight: 600; color: var(--water); letter-spacing: 0.04em; }
+
+    footer { border-top: 1.5px solid var(--border); padding: 20px 48px; text-align: center; font-size: 11px; color: var(--muted); background: var(--white); }
+    footer a { color: var(--water); text-decoration: none; }
+
+    @media (max-width: 600px) {
+      header { padding: 20px 20px 16px; flex-direction: column; gap: 10px; }
+      .header-right { text-align: left; }
+      main { padding: 28px 16px 48px; }
+      .video-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <div class="tagline">Property Flyers &amp; Videos</div>
+      <div class="name">54879 Indian Lake Road</div>
+    </div>
+    <div class="header-right">
+      Beth Van · Bon Realty, Niles, MI<br>
+      <a href="mailto:bethvan@bonrealty.com">bethvan@bonrealty.com</a> · <a href="tel:2696844445">(269) 684-4445</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="section-title">Printable Flyers</div>
+
+    <div class="flyer-item" style="border-radius:4px;">
+      <div class="flyer-info">
+        <span class="flyer-address">54879 Indian Lake Road</span>
+        <span class="flyer-city">Dowagiac, MI 49047 · $399,000 · 3 Bed · 3 Bath · Indian Lake</span>
+      </div>
+      <div class="flyer-links">
+        <a class="flyer-link" href="output/flyer-54879-indian-lake-rd-1.pdf" target="_blank">
+          <span>Style 1 — Classic</span>
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </a>
+        <a class="flyer-link" href="output/flyer-54879-indian-lake-rd-2.pdf" target="_blank">
+          <span>Style 2 — Elegant</span>
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </a>
+        <a class="flyer-link" href="output/flyer-54879-indian-lake-rd-3.pdf" target="_blank">
+          <span>Style 3 — Modern</span>
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </a>
+        <a class="flyer-link" href="output/flyer-54879-indian-lake-rd-4.pdf" target="_blank">
+          <span>Style 4 — Comfort</span>
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </a>
+        <a class="flyer-link" href="videos/video-54879-indian-lake-rd.mp4" target="_blank" style="background:var(--water);color:#fff;border-color:var(--water);">
+          <span>Facebook Video</span>
+          <svg viewBox="0 0 24 24" style="stroke:#fff;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </a>
+        <a class="flyer-link" href="youtube/youtube-54879-indian-lake-rd.mp4" target="_blank" style="background:#cc0000;color:#fff;border-color:#cc0000;">
+          <span>YouTube Video</span>
+          <svg viewBox="0 0 24 24" style="stroke:#fff;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="videos-section">
+      <div class="section-title">Property Videos</div>
+      <div class="video-grid">
+        <a class="video-card" href="https://youtu.be/3MFiav_htrk" target="_blank">
+          <div class="video-thumb">
+            <img src="https://img.youtube.com/vi/3MFiav_htrk/maxresdefault.jpg" alt="Exterior video">
+            <div class="video-play">
+              <svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg>
+            </div>
+          </div>
+          <div class="video-info"><div class="video-label">Exterior</div></div>
+        </a>
+        <a class="video-card" href="https://youtu.be/BZ9La2xtV_g" target="_blank">
+          <div class="video-thumb">
+            <img src="https://img.youtube.com/vi/BZ9La2xtV_g/maxresdefault.jpg" alt="Lake view video">
+            <div class="video-play">
+              <svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg>
+            </div>
+          </div>
+          <div class="video-info"><div class="video-label">Lake View</div></div>
+        </a>
+        <a class="video-card" href="https://youtu.be/dxB1biCbrNA" target="_blank">
+          <div class="video-thumb">
+            <img src="../sunroom_thumb.jpg" alt="Sunroom video">
+            <div class="video-play">
+              <svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg>
+            </div>
+          </div>
+          <div class="video-info"><div class="video-label">Sunroom</div></div>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <a href="/">54879indianlake.com</a> &nbsp;·&nbsp; Beth Van · Bon Realty, Niles, MI &nbsp;·&nbsp;
+    <a href="mailto:bethvan@bonrealty.com">bethvan@bonrealty.com</a>
+  </footer>
+</body>
+</html>
